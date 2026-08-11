@@ -1,5 +1,5 @@
 # 👥 SENTINEL Team Role Allocation & Strategy
-> **Customized Task Matrix for 2 Cybersecurity Specialists + 1 Full-Stack Developer**
+> **Customized Task Matrix for 2 Cybersecurity Specialists + 1 Full-Stack & AI Optimization Developer**
 
 ---
 
@@ -7,9 +7,9 @@
 
 | Team Member | Role Title | Primary Focus Area | Key Technologies / Tools |
 | :--- | :--- | :--- | :--- |
-| **Member 1 (You / Lead)** | 🛡️ Cyber Lead — Detection & SIEM | Wazuh SIEM, Log Parsing, MITRE ATT&CK Mapping | Wazuh, Elastic, Suricata, Python, Linux |
-| **Member 2** | 🔒 Cyber Specialist — Privacy & Threat AI | Zero-Trust Sanitizer, Threat Intel & Red-Teaming LLMs | Regex, Ollama (`llama3.1:8b`, `deepseek-r1`), Groq API, Threat Intel |
-| **Member 3** | 💻 Full-Stack Developer — Dashboard & APIs | Web UI, Fast API Backend, Real-time WebSockets & PDF Reports | React / Vite / Streamlit, FastAPI, WebSockets, ReportLab / PDFkit |
+| **Member 1 (You / Lead)** | 🛡️ Cyber Lead — Detection & SIEM | Wazuh SIEM, Log Parsing, MITRE ATT&CK Mapping, Benchmark Suite | Wazuh, Elastic, Suricata, Python, Linux |
+| **Member 2** | 🔒 Cyber Specialist — Privacy & Threat Rules | Zero-Trust Sanitizer, Prompt Injection Firewall, ChromaDB RAG Memory | Regex, ChromaDB, Security Prompts, Threat Rules |
+| **Member 3** | 💻 Full-Stack & AI Optimization Dev | Dashboard UI, FastAPI, WebSockets, AI Client Optimization (Ollama/Groq), PDF Exporter | React / Vite, FastAPI, Ollama Streaming, Groq API, ReportLab PDF |
 
 ---
 
@@ -20,20 +20,20 @@
                               │           Wazuh SIEM / Live Logs             │
                               └──────────────────────┬───────────────────────┘
                                                      │
-                                        (Cyber Lead 1: SIEM Ingestion)
+                                      (🛡️ Cyber Lead 1: SIEM Ingestion)
                                                      │
                                                      ▼
                               ┌──────────────────────────────────────────────┐
-                              │  Zero-Trust Data Sanitizer & AI Engine       │
+                              │  Zero-Trust Data Sanitizer & Threat Rules    │
                               └──────────────────────┬───────────────────────┘
                                                      │
-                                        (Cyber Spec 2: Privacy & LLM Triage)
+                                      (🔒 Cyber Spec 2: Privacy Shield)
                                                      │
                                                      ▼
                               ┌──────────────────────────────────────────────┐
-                              │  FastAPI Backend & Interactive Web UI        │
+                              │ FastAPI API, AI Optimization & Web Dashboard │
                               └──────────────────────────────────────────────┘
-                                        (Full-Stack Dev 3: App & Dashboard)
+                                      (💻 Full-Stack & AI Opt Dev 3)
 ```
 
 ---
@@ -41,53 +41,26 @@
 ### 🛡️ Cybersecurity Teammate 1 — Detection & SIEM Specialist
 * **Responsibilities**:
   1. Set up and configure the **Wazuh SIEM** lab (in VirtualBox / Docker).
-  2. Configure Wazuh rules to forward high-priority alerts (Severity 7+) to SENTINEL via webhooks/log streaming.
-  3. Map incoming alerts directly to **MITRE ATT&CK** Tactics & Techniques (TTPs).
-  4. Perform threat triage validation to ensure false positives are reduced.
-* **Deliverables**:
-  - `src/ingestion/wazuh_listener.py` (Receives live Wazuh JSON alerts).
-  - `src/mitre_mapper.py` (Translates alert IDs to MITRE ATT&CK IDs like `T1110 - Brute Force`).
+  2. Build `src/ingestion/wazuh_listener.py` to stream live Wazuh alerts into SENTINEL.
+  3. Map incoming alerts directly to **MITRE ATT&CK** Tactics & Techniques (`src/mitre_mapper.py`).
+  4. Build empirical evaluation suite (`scripts/benchmark.py`) to measure F1-Score, Precision, and Recall on CIC-IDS datasets.
 
 ---
 
-### 🔒 Cybersecurity Teammate 2 — Privacy Shield & AI Prompt Engineering
+### 🔒 Cybersecurity Teammate 2 — Privacy Shield & Threat Rules Specialist
 * **Responsibilities**:
-  1. Expand the **Zero-Trust Data Sanitizer** ([src/sanitizer.py](file:///c:/Users/siva2/Projects/SENTINEL/src/sanitizer.py)) to cover internal hostnames, JWT tokens, API keys, and custom PII formats.
-  2. Craft system prompts for Tier 1 Ollama (`llama3.1:8b`, `deepseek-r1:8b`) to prevent prompt injection and guarantee structured JSON output.
-  3. Red-team local LLMs to verify they do not output sensitive tokens or hallucinate false security advice.
-* **Deliverables**:
-  - `src/sanitizer.py` (Production-grade PII & secret obfuscation engine).
-  - `src/prompts/triage_prompts.py` (Structured SOC investigation prompts).
-  - `src/router.py` (3-tier decision engine between Ollama, Groq, and Claude/GPT-4o).
+  1. Expand the **Zero-Trust Data Sanitizer** ([src/sanitizer.py](file:///c:/Users/siva2/Projects/SENTINEL/src/sanitizer.py)) to scrub PII, usernames, internal IPs, API keys, and MAC addresses.
+  2. Implement the **Prompt Injection Firewall Guard** inside `sanitizer.py` to neutralize adversarial prompt override attacks.
+  3. Build `src/memory.py` using **ChromaDB Vector Database** for long-term threat memory and historical alert similarity search (`top_k=3`).
 
 ---
 
-### 💻 Full-Stack Developer Teammate 3 — Dashboard, API & PDF Reports
+### 💻 Full-Stack & AI Optimization Developer 3 — Dashboard, API & AI Client Integration
 * **Responsibilities**:
-  1. Build a modern, dark-mode **SOC Dashboard UI** to display live alerts, severity badges, and AI triage summaries.
-  2. Create a **FastAPI backend** that connects the Wazuh ingestion pipeline, Sanitizer, AI Router, and Web UI.
-  3. Build an automated **PDF Incident Report Generator** so analysts can download executive incident summaries with 1 click.
-  4. Implement real-time alert popups via WebSockets or Server-Sent Events (SSE).
-* **Deliverables**:
-  - `dashboard/` (React + Vite or Streamlit interactive web interface).
-  - `src/api/main.py` (FastAPI REST & WebSocket server).
-  - `src/reports/pdf_generator.py` (PDF report generator using ReportLab / WeasyPrint).
-
----
-
-## 🗓️ How the 3 Roles Collaborate Across Semesters
-
-### Semester 3 & 4: Core Engine & Lab Setup
-* **Cyber 1**: Deploys Wazuh SIEM lab + feeds raw alerts into local file.
-* **Cyber 2**: Builds regex sanitizer + tests local Ollama model on RTX 3050.
-* **Full-Stack**: Builds initial CLI dashboard & basic FastAPI endpoints.
-
-### Semester 5: Integrated Hybrid Platform (v0.5)
-* **Cyber 1**: Integrates MITRE ATT&CK heatmap data.
-* **Cyber 2**: Configures Groq Cloud API for Tier 2 reasoning.
-* **Full-Stack**: Integrates interactive web dashboard + MITRE heatmap visualizations.
-
-### Semester 6: Production Polish & Launch (v1.0 MVP)
-* **Cyber 1 & 2**: Drafts IEEE/USENIX research paper (methodology & benchmark evaluation).
-* **Full-Stack**: Adds PDF report exporter + optimizes UI animations and demo scripts.
-* **All Three**: Launches open-source GitHub repository & presents final live demo!
+  1. Build a modern, dark-mode **SOC Dashboard UI** (React + Vite) with live alert feeds, MITRE ATT&CK heatmaps, and a **Human-in-the-Loop (HITL) Action Approval Modal**.
+  2. Create a **FastAPI backend** (`src/api/main.py`) serving REST endpoints and real-time WebSockets.
+  3. **AI Model Optimization & Client Integration**:
+     - Implement token streaming (Server-Sent Events / WebSockets) from local Ollama GPU (`llama3.1:8b` on RTX 3050).
+     - Integrate fast Groq Cloud API (`deepseek-r1:70b`) for Tier 2 fallback.
+     - Implement prompt caching, context truncation reduction, and structured JSON output validation.
+  4. Build an automated **PDF Incident Report Generator** (`src/reports/pdf_generator.py`) using ReportLab.
