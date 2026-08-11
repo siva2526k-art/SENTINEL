@@ -109,7 +109,9 @@ def handle_end_session(member_name, brain_dir, custom_commit_msg=None, push_to_g
     status_output = run_git_cmd(["git", "status", "--porcelain"])
 
     if status_output:
-        run_git_cmd(["git", "add", "conversations/"])
+        member_folder = f"conversations/{member_name.lower()}/"
+        run_git_cmd(["git", "add", member_folder])
+        run_git_cmd(["git", "add", "conversations/TEAM_OVERVIEW.md"])
         run_git_cmd(["git", "add", "docs/TEAM_PROJECT_ACTIVITY.md"])
         run_git_cmd(["git", "add", "docs/MULTI_AGENT_TEAM_SYNC_GUIDE.md"])
         run_git_cmd(["git", "add", ".agents/"])

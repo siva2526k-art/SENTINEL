@@ -3,69 +3,62 @@
 
 ---
 
-## 💡 Overview
+## 💡 Overview & Automated Lifecycle
 
-When multiple team members work on SENTINEL using AI agents (like Antigravity), each person's agent generates conversation logs and updates code/docs. 
+When multiple team members work on SENTINEL using AI agents (like Antigravity), each person's agent generates conversation logs and updates code/docs.
 
-If all agents wrote to a single `SENTINEL_Conversation.md` file, committing to Git would cause **nasty merge conflicts**!
-
-**The Solution**:
-1. **Isolated Member Folders**: Each teammate exports conversation logs into `conversations/<member_name>/`.
-2. **Zero Collision Git Workflow**: `git push` and `git pull` cleanly merge because everyone owns their own folder.
-3. **Master Dashboard**: `conversations/TEAM_OVERVIEW.md` automatically aggregates stats and links to everyone's logs.
-4. **Feature Activity Feed**: `docs/TEAM_PROJECT_ACTIVITY.md` lets everyone see what features each friend's AI agent built.
+We have built an automated **Session Lifecycle Manager** (`scripts/sync_session.py`):
+1. **Starting a Session (`--start`)**: Automatically pulls the latest team updates from GitHub and displays the activity feed so you know what teammates worked on.
+2. **Closing a Session (`--end`)**: Automatically exports your agent's conversation log to your named member folder (`conversations/<member_name>/`), updates the master dashboard, creates an organized Git commit, and pushes to GitHub.
 
 ---
 
-## 🛠️ Step-by-Step Instructions for Friends & Teammates
+## 🛠️ Step-by-Step Instructions for Team Members
 
-### Step 1: Clone or Pull the SENTINEL Repository
+### 🟢 1. Starting Work with Antigravity
+When you sit down to start working on SENTINEL, open your terminal and run:
+
 ```bash
-git pull origin main
+python scripts/sync_session.py --start --member <your_name>
+```
+*Example for Priya*:
+```bash
+python scripts/sync_session.py --start --member priya
 ```
 
-### Step 2: Set Your Member Name (Optional but Recommended)
-Set an environment variable or pass your name directly to the export script:
-- **On Windows (PowerShell)**:
-  ```powershell
-  $env:SENTINEL_MEMBER_NAME="alex" # Replace 'alex' with your name
-  ```
-- **On Windows (Command Prompt)**:
-  ```cmd
-  set SENTINEL_MEMBER_NAME=alex
-  ```
+**What this does**:
+- Runs `git pull` to fetch all latest features and logs from GitHub.
+- Displays a summary of the latest team activity feed from `docs/TEAM_PROJECT_ACTIVITY.md`.
 
-### Step 3: Run the Conversation Exporter
-At any point during or after your work session with Antigravity, run:
+---
+
+### 🟡 2. During Your Work Session
+- Chat with Antigravity to build features, fix bugs, or write code.
+- Instruct your agent when you complete a feature:
+  > *"Update `docs/TEAM_PROJECT_ACTIVITY.md` with our new feature changes."*
+
+---
+
+### 🔴 3. Closing Your Work Session
+When you finish your coding session, run:
+
 ```bash
-python scripts/export_conversation.py --member <your_name>
+python scripts/sync_session.py --end --member <your_name>
 ```
-*Example*:
+*Example for Priya*:
 ```bash
-python scripts/export_conversation.py --member alex
+python scripts/sync_session.py --end --member priya
 ```
 
 **What this does automatically**:
-- Creates `conversations/alex/Conversation_Log.md` with your agent's exact chat history.
-- Scans all member folders and regenerates `conversations/TEAM_OVERVIEW.md`.
-
-### Step 4: Log New Features in `docs/TEAM_PROJECT_ACTIVITY.md`
-Whenever you or your Antigravity agent implement a new feature or fix a bug, instruct your agent:
-> *"Update `docs/TEAM_PROJECT_ACTIVITY.md` with our latest feature changes under the Latest Activity Feed."*
-
-### Step 5: Commit and Push to GitHub
-```bash
-git add .
-git commit -m "feat: updated alex conversation log and privacy sanitizer rules"
-git push origin main
-```
-
-Because your logs are in `conversations/alex/`, your push will succeed smoothly without merge conflicts!
+1. Exports your agent's chat history into `conversations/priya/Conversation_Log.md`.
+2. Updates `conversations/TEAM_OVERVIEW.md`.
+3. Stages and creates an organized Git commit: `docs(sync): update logs & team activity for Priya`.
+4. Runs `git push origin main` to publish your updates to GitHub.
 
 ---
 
-## 🔍 How to See What Teammates Are Doing
+## 🔍 Checking What Friends Are Doing
 
-1. Open [conversations/TEAM_OVERVIEW.md](file:///c:/Users/siva2/Projects/SENTINEL/conversations/TEAM_OVERVIEW.md) to see live message counts, active team members, and direct links to their logs.
-2. Open [docs/TEAM_PROJECT_ACTIVITY.md](file:///c:/Users/siva2/Projects/SENTINEL/docs/TEAM_PROJECT_ACTIVITY.md) to view the chronological log of all feature updates written by team members and their AI agents.
-3. Open any friend's log (e.g. `conversations/siva/Conversation_Log.md`) to read their agent's prompts and responses.
+1. Open [conversations/TEAM_OVERVIEW.md](file:///c:/Users/siva2/Projects/SENTINEL/conversations/TEAM_OVERVIEW.md) to see active team members, message counts, and direct links to their logs.
+2. Open [docs/TEAM_PROJECT_ACTIVITY.md](file:///c:/Users/siva2/Projects/SENTINEL/docs/TEAM_PROJECT_ACTIVITY.md) to view the chronological log of all features written by team members and their AI agents.
