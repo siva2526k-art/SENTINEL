@@ -194,15 +194,7 @@ def export_member_conversation(member_name, brain_dir):
     except Exception as e:
         print(f"⚠️ Failed to write {target_file}: {e}")
 
-    # Backward compatibility: if member is siva, also update root SENTINEL_Conversation.md
-    if member_name.lower() in ["siva", "siva2"]:
-        root_file = os.path.join(conversations_base, "SENTINEL_Conversation.md")
-        try:
-            with open(root_file, "w", encoding="utf-8") as f:
-                f.write(final_content)
-            print(f"✅ Updated legacy root conversation log: {root_file}")
-        except Exception as e:
-            print(f"Notice: Root log update skipped: {e}")
+
 
     return {
         "member": member_name.capitalize(),
