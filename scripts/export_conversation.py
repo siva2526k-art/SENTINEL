@@ -115,10 +115,10 @@ def export_member_conversation(member_name, brain_dir):
                     with open(log_path, "r", encoding="utf-8") as f:
                         log_text = f.read()
                     
-                    # Strictly include ONLY chats associated with the SENTINEL project workspace
-                    if "SENTINEL" not in log_text and "sentinel" not in log_text.lower():
+                    # Include chats associated with SENTINEL or HackTronix project workspaces
+                    if not any(k in log_text.lower() for k in ["sentinel", "hacktronix", "hackp"]):
                         continue
-                    # Ignore non-SENTINEL system troubleshooting chats
+                    # Ignore non-project system troubleshooting chats (e.g. MSI installer, BlueStacks)
                     if "msi not opening" in log_text or "BlueStacks" in log_text:
                         continue
 
