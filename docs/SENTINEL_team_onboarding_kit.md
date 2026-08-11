@@ -16,6 +16,8 @@ It solves **Alert Fatigue** by ingesting SIEM logs (from Wazuh / Elastic), scrub
 
 ## 👥 2. Task Segregation & Repository File Ownership
 
+> 📄 **Universal AI Master Prompt**: Give your teammates [docs/SENTINEL_universal_ai_prompt.md](file:///c:/Users/siva2/Projects/SENTINEL/docs/SENTINEL_universal_ai_prompt.md) to initialize any AI assistant with 100% project knowledge!
+
 ### 🛡️ Team Member 1: Cybersecurity Lead (SIEM Ingestion & MITRE Specialist)
 * **File Ownership**: `src/ingestion/`, `src/mitre_mapper.py`, `scripts/benchmark.py`
 * **Assigned Tasks**:
