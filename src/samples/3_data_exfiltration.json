@@ -1,0 +1,6 @@
+{
+  "alert_id": "INC-2026-8803",
+  "source": "Network Firewall Logs",
+  "raw_alert": "Unauthorized Data Exfiltration: 4.8 GB outbound SFTP transfer to 203.0.113.88 from internal host 10.0.4.15 for account suspect_target_99.",
+  "severity_hint": "CRITICAL"
+}

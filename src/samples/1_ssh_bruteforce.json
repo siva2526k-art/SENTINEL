@@ -1,0 +1,6 @@
+{
+  "alert_id": "INC-2026-8801",
+  "source": "Wazuh SIEM / Syslog",
+  "raw_alert": "Failed SSH authentication for user admin@keralapolice.gov.in from 192.168.1.45 on port 22. 500 failed attempts detected in 10 seconds.",
+  "severity_hint": "HIGH"
+}

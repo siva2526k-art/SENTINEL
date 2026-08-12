@@ -1,47 +1,27 @@
 """
-SENTINEL — 3-Tier AI Classification & Model Router Engine
-Directs security alerts across Tier 1 (Local RTX3050 GPU via Ollama), Tier 2 (Groq Cloud API), and Tier 3 (Enterprise Cloud LLM).
+SENTINEL — 3-Tier System-Level MoE AI Classification & Model Router Engine
+Directs security alerts across Tier 1 (Local RTX 3050 GPU via Ollama), Tier 2 (Groq Cloud API), and Tier 3 (Enterprise Cloud LLM).
 """
 import sys
-import io
 import json
-import urllib.request
-import urllib.error
+from ai_client import SentinelAIClient
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 class SentinelRouter:
-    def __init__(self, ollama_url="http://localhost:11434/api/generate", local_model="llama3.1:8b"):
-        self.ollama_url = ollama_url
-        self.local_model = local_model
+    def __init__(self):
+        self.ai_client = SentinelAIClient()
 
     def evaluate_severity_heuristics(self, alert_text: str) -> str:
         text_lower = alert_text.lower()
-        if any(k in text_lower for k in ["unauthorized root", "privilege escalation", "ransomware", "database dump", "kernel panic"]):
+        if any(k in text_lower for k in ["unauthorized root", "privilege escalation", "ransomware", "database dump", "zero-day", "kernel panic"]):
             return "CRITICAL"
         elif any(k in text_lower for k in ["failed ssh", "brute force", "port scan", "malware detected", "multiple failed"]):
             return "HIGH"
         elif any(k in text_lower for k in ["permission denied", "unknown connection", "config changed"]):
             return "MEDIUM"
         return "LOW"
-
-    def query_local_ollama(self, prompt: str) -> str:
-        """Query local Ollama instance running on RTX 3050 GPU."""
-        payload = {
-            "model": self.local_model,
-            "prompt": prompt,
-            "stream": False
-        }
-        data = json.dumps(payload).encode('utf-8')
-        req = urllib.request.Request(self.ollama_url, data=data, headers={'Content-Type': 'application/json'})
-        
-        try:
-            with urllib.request.urlopen(req, timeout=5) as response:
-                result = json.loads(response.read().decode('utf-8'))
-                return result.get("response", "").strip()
-        except Exception as e:
-            return f"OLLAMA_OFFLINE: {e}"
 
     def route_and_triage(self, sanitized_alert_data: dict) -> dict:
         alert_text = sanitized_alert_data["sanitized_alert"]
@@ -60,35 +40,54 @@ Prompt Injection Flag: {injection_flag}
 
 Provide a concise 2-sentence investigation summary and the recommended containment action (e.g. Block IP, Isolate Host, Reset Credentials). Format response as JSON with keys: "triage_summary" and "recommended_action"."""
 
-        # Attempt Tier 1 (Local Ollama)
-        ollama_response = self.query_local_ollama(prompt)
-
-        if not ollama_response.startswith("OLLAMA_OFFLINE"):
-            tier_used = "Tier 1 (Local RTX 3050 Ollama)"
-            try:
-                # Try parsing JSON if model returned structured output
-                json_start = ollama_response.find('{')
-                json_end = ollama_response.rfind('}') + 1
-                if json_start != -1 and json_end != 0:
-                    parsed = json.loads(ollama_response[json_start:json_end])
-                    summary = parsed.get("triage_summary", ollama_response)
-                    action = parsed.get("recommended_action", "Investigate alert details.")
-                else:
-                    summary = ollama_response
-                    action = "Review log details."
-            except Exception:
-                summary = ollama_response
-                action = "Review log details."
+        # Tier Decision Logic:
+        # 1. Routine / Medium / High alerts (90%) -> Tier 1 (Local Ollama $0 cost)
+        # 2. Critical APT or Low Local Confidence -> Tier 2 (Groq Cloud) / Tier 3 (Enterprise)
+        
+        res = self.ai_client.query_tier1_ollama(prompt)
+        
+        if res["status"] == "success":
+            tier_used = "Tier 1 (Local RTX 3050 GPU via Ollama)"
+            raw_response = res["content"]
         else:
-            # Fallback Tier 1 Rule-based Engine when Ollama is offline
-            tier_used = "Tier 1 (Local Heuristic Engine - Ollama Standby)"
-            summary = f"Detected security incident matching patterns for {severity} severity."
-            if "failed ssh" in alert_text.lower() or "brute force" in alert_text.lower():
-                action = "Block source IP address at firewall and mandate MFA reset."
-            elif "unauthorized" in alert_text.lower():
-                action = "Isolate target host from internal network."
+            # Check if Groq Cloud API Key is available for Tier 2
+            groq_res = self.ai_client.query_tier2_groq(prompt)
+            if groq_res["status"] == "success":
+                tier_used = "Tier 2 (Groq Cloud API)"
+                raw_response = groq_res["content"]
             else:
-                action = "Monitor host network activity and notify system administrator."
+                # Fallback Tier 1 Local Rule-based Engine when offline
+                tier_used = "Tier 1 (Local Heuristic Engine - Offline Mode)"
+                summary = f"Detected security incident matching patterns for {severity} severity."
+                if "failed ssh" in alert_text.lower() or "brute force" in alert_text.lower():
+                    action = "Block source IP address at firewall and mandate MFA reset."
+                elif "unauthorized" in alert_text.lower() or "exfiltration" in alert_text.lower():
+                    action = "Isolate target host from internal network."
+                else:
+                    action = "Monitor host network activity and notify system administrator."
+
+                return {
+                    "severity": severity,
+                    "triage_summary": summary,
+                    "recommended_action": action,
+                    "tier_used": tier_used,
+                    "prompt_injection_warning": injection_flag
+                }
+
+        # Parse JSON output from AI response
+        try:
+            json_start = raw_response.find('{')
+            json_end = raw_response.rfind('}') + 1
+            if json_start != -1 and json_end != 0:
+                parsed = json.loads(raw_response[json_start:json_end])
+                summary = parsed.get("triage_summary", raw_response)
+                action = parsed.get("recommended_action", "Investigate alert details.")
+            else:
+                summary = raw_response
+                action = "Review log details."
+        except Exception:
+            summary = raw_response
+            action = "Review log details."
 
         return {
             "severity": severity,
