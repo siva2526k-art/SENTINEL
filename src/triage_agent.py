@@ -70,6 +70,7 @@ class SentinelTriageAgent:
             "sanitized_alert": sanitized_alert,
             "reidentified_alert": reidentified_alert,
             "ip_map": ip_map,
+            "sanitizer": scrubbed,
             "mitre": mitre_info,
             "triage": triage_verdict
         }
