@@ -55,9 +55,33 @@ class SentinelAIClient:
             with urllib.request.urlopen(req, timeout=10) as response:
                 result = json.loads(response.read().decode('utf-8'))
                 content = result['choices'][0]['message']['content']
-                return {"status": "success", "tier": "Tier 2 (Groq Cloud API)", "content": content}
+                return {"status": "success", "tier": "Tier 2 (Groq Cloud DeepSeek 70B)", "content": content}
         except Exception as e:
             return {"status": "error", "error": f"Groq API error: {e}"}
+
+    def query_tier2_gemini_free(self, prompt: str) -> dict:
+        """
+        Tier 2 (Massive Context): Query Google AI Studio Gemini 2.0 Flash FREE API (2 Million Token Context Window!).
+        """
+        gemini_key = os.environ.get("GEMINI_API_KEY", "")
+        if not gemini_key:
+            return {"status": "error", "error": "GEMINI_API_KEY environment variable not set."}
+
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={gemini_key}"
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}]
+        }
+        data = json.dumps(payload).encode('utf-8')
+        headers = {'Content-Type': 'application/json'}
+        req = urllib.request.Request(url, data=data, headers=headers)
+
+        try:
+            with urllib.request.urlopen(req, timeout=12) as response:
+                result = json.loads(response.read().decode('utf-8'))
+                content = result['candidates'][0]['content']['parts'][0]['text']
+                return {"status": "success", "tier": "Tier 2 (Google Gemini 2.0 Flash 2M Context)", "content": content}
+        except Exception as e:
+            return {"status": "error", "error": f"Gemini API error: {e}"}
 
     def query_tier3_openrouter_free(self, prompt: str, model="deepseek/deepseek-r1:free") -> dict:
         """

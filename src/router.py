@@ -40,39 +40,48 @@ Prompt Injection Flag: {injection_flag}
 
 Provide a concise 2-sentence investigation summary and the recommended containment action (e.g. Block IP, Isolate Host, Reset Credentials). Format response as JSON with keys: "triage_summary" and "recommended_action"."""
 
-        # Tier Decision Logic:
-        # 1. Routine / Medium / High alerts (90%) -> Tier 1 (Local Ollama $0 cost)
-        # 2. Critical APT or Low Local Confidence -> Tier 2 (Groq Cloud) / Tier 3 (Enterprise)
+        # Smart Free-Tier Cascade Decision Gate:
+        # 1. Massive Log (> 4,000 chars) -> Google Gemini 2.0 Flash (2M Token Context, 4M Free Tokens/day)
+        # 2. Standard Routine Alert -> Tier 1 Local Ollama (deepseek-r1:8b $0 cost)
+        # 3. Failover / High Severity -> Groq Cloud (DeepSeek 70B @ 300 tokens/sec) -> Gemini Flash -> OpenRouter 671B
         
-        res = self.ai_client.query_tier1_ollama(prompt)
-        
+        if len(alert_text) > 4000:
+            res = self.ai_client.query_tier2_gemini_free(prompt)
+            if res["status"] != "success":
+                res = self.ai_client.query_tier1_ollama(prompt)
+        else:
+            res = self.ai_client.query_tier1_ollama(prompt)
+            if res["status"] != "success":
+                # Cascade 1: Groq Cloud DeepSeek 70B
+                res = self.ai_client.query_tier2_groq(prompt)
+                if res["status"] != "success":
+                    # Cascade 2: Google AI Studio Gemini 2.0 Flash
+                    res = self.ai_client.query_tier2_gemini_free(prompt)
+                    if res["status"] != "success":
+                        # Cascade 3: OpenRouter Free 671B DeepSeek-R1
+                        res = self.ai_client.query_tier3_openrouter_free(prompt)
+
         if res["status"] == "success":
-            tier_used = "Tier 1 (Local RTX 3050 GPU via Ollama)"
+            tier_used = res.get("tier", "AI Engine")
             raw_response = res["content"]
         else:
-            # Check if Groq Cloud API Key is available for Tier 2
-            groq_res = self.ai_client.query_tier2_groq(prompt)
-            if groq_res["status"] == "success":
-                tier_used = "Tier 2 (Groq Cloud API)"
-                raw_response = groq_res["content"]
+            # Fallback Tier 1 Local Rule-based Engine when offline
+            tier_used = "Tier 1 (Local Heuristic Engine - Offline Standby Mode)"
+            summary = f"Detected security incident matching patterns for {severity} severity."
+            if "failed ssh" in alert_text.lower() or "brute force" in alert_text.lower():
+                action = "Block source IP address at firewall and mandate MFA reset."
+            elif "unauthorized" in alert_text.lower() or "exfiltration" in alert_text.lower():
+                action = "Isolate target host from internal network."
             else:
-                # Fallback Tier 1 Local Rule-based Engine when offline
-                tier_used = "Tier 1 (Local Heuristic Engine - Offline Mode)"
-                summary = f"Detected security incident matching patterns for {severity} severity."
-                if "failed ssh" in alert_text.lower() or "brute force" in alert_text.lower():
-                    action = "Block source IP address at firewall and mandate MFA reset."
-                elif "unauthorized" in alert_text.lower() or "exfiltration" in alert_text.lower():
-                    action = "Isolate target host from internal network."
-                else:
-                    action = "Monitor host network activity and notify system administrator."
+                action = "Monitor host network activity and notify system administrator."
 
-                return {
-                    "severity": severity,
-                    "triage_summary": summary,
-                    "recommended_action": action,
-                    "tier_used": tier_used,
-                    "prompt_injection_warning": injection_flag
-                }
+            return {
+                "severity": severity,
+                "triage_summary": summary,
+                "recommended_action": action,
+                "tier_used": tier_used,
+                "prompt_injection_warning": injection_flag
+            }
 
         # Parse JSON output from AI response
         try:
