@@ -12,6 +12,7 @@ from correlation.entity_correlator import EntityCorrelator
 from correlation.temporal_engine import TemporalEngine
 from correlation.attack_graph import AttackGraphBuilder
 from audit_logger import SentinelAuditLogger
+from sandbox import SentinelCodeSandbox
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -26,6 +27,7 @@ class SentinelTriageAgent:
         self.temporal_engine = TemporalEngine()
         self.graph_builder = AttackGraphBuilder()
         self.audit_logger = SentinelAuditLogger()
+        self.sandbox = SentinelCodeSandbox()
 
     def process_alert(self, raw_alert_text: str) -> dict:
         print("\n" + "="*70)
@@ -100,6 +102,19 @@ class SentinelTriageAgent:
         )
         print("\n📜 [STEP 7: IMMUTABLE AUDIT TRAIL RECORDED]")
         print(f"   • Action Logged : {audit_entry['action']} by {audit_entry['actor']} at {audit_entry['timestamp']}")
+
+        # Step 8: Safe AI Code Execution & AST Sandbox Inspection (Phase 6)
+        sample_ai_deobfuscation_code = """
+import base64
+encoded_payload = "aQBlAHgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAA"
+decoded = base64.b64decode(encoded_payload).decode('utf-8')
+result = f"De-obfuscated Command Fragment: {decoded}"
+"""
+        sandbox_result = self.sandbox.execute_safe_code(sample_ai_deobfuscation_code)
+        print("\n🔒 [STEP 8: SAFE AI CODE EXECUTION & AST SANDBOX GUARD]")
+        print(f"   • AST Code Inspection  : {'✅ PASSED (Zero Violations)' if sandbox_result['is_safe'] else '❌ BLOCKED'}")
+        print(f"   • Sandbox Execution    : {sandbox_result['status']}")
+        print(f"   • Execution Output     : \"{sandbox_result.get('execution_output', 'N/A')}\"")
         print("="*70 + "\n")
 
         return {
@@ -111,7 +126,8 @@ class SentinelTriageAgent:
             "mitre": mitre_info,
             "triage": triage_verdict,
             "attack_graph": attack_graph,
-            "audit_entry": audit_entry
+            "audit_entry": audit_entry,
+            "sandbox_result": sandbox_result
         }
 
 if __name__ == "__main__":
