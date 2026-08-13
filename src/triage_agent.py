@@ -7,6 +7,11 @@ import json
 from sanitizer import DataSanitizer
 from router import SentinelRouter
 from mitre_mapper import MitreMapper
+from correlation.incident_correlator import IncidentCorrelator
+from correlation.entity_correlator import EntityCorrelator
+from correlation.temporal_engine import TemporalEngine
+from correlation.attack_graph import AttackGraphBuilder
+from audit_logger import SentinelAuditLogger
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -16,6 +21,11 @@ class SentinelTriageAgent:
         self.sanitizer = DataSanitizer()
         self.router = SentinelRouter()
         self.mitre_mapper = MitreMapper()
+        self.correlator = IncidentCorrelator()
+        self.entity_correlator = EntityCorrelator()
+        self.temporal_engine = TemporalEngine()
+        self.graph_builder = AttackGraphBuilder()
+        self.audit_logger = SentinelAuditLogger()
 
     def process_alert(self, raw_alert_text: str) -> dict:
         print("\n" + "="*70)
@@ -59,10 +69,37 @@ class SentinelTriageAgent:
         print(f"   • [Officer Re-Identified]  : \"{reidentified_alert}\"")
 
         # Step 5: Human-in-the-Loop (HITL) Action Approval Modal Simulation
+        target_asset = list(ip_map.values())[0] if ip_map else 'Local Host'
         print("\n⚠️  [STEP 5: HUMAN-IN-THE-LOOP (HITL) ACTION APPROVAL MODAL]")
         print(f"   ► ACTION REQUEST: {triage_verdict['recommended_action']}")
-        print(f"   ► TARGET ASSET  : {list(ip_map.values())[0] if ip_map else 'Local Host'}")
+        print(f"   ► TARGET ASSET  : {target_asset}")
         print("   ► STATUS        : AWAITING AUTHORIZED POLICE OFFICER APPROVAL [ APPROVE ] / [ REJECT ]")
+
+        # Step 6: Incident Correlation & Attack Graph Reconstruction (Phase 3)
+        alert_item = {
+            "sanitized_alert": sanitized_alert,
+            "raw_alert": raw_alert_text,
+            "user": "[USER_1]" if "[USER_1]" in sanitized_alert else "Unknown",
+            "host": "POLICE-HQ-PC04",
+            "mitre_technique_id": mitre_info["primary_technique_id"],
+            "ip_tokens": list(ip_map.keys())
+        }
+        attack_graph = self.graph_builder.build_attack_graph({"incident_id": "INC-2026-8801", "alerts": [alert_item]})
+        print("\n🕸️ [STEP 6: INCIDENT CORRELATION & ATTACK GRAPH RECONSTRUCTION]")
+        print(f"   • Graph Nodes Generated: {len(attack_graph['nodes'])}")
+        print(f"   • Graph Edges Mapped   : {len(attack_graph['edges'])}")
+
+        # Step 7: Immutable Audit Logging (Phase 13)
+        audit_entry = self.audit_logger.log_event(
+            actor="SYSTEM_AGENT",
+            action="ALERT_TRIAGED",
+            incident_id="INC-2026-8801",
+            target=target_asset,
+            result="TRIAGED_SUCCESSFULLY",
+            metadata={"mitre": mitre_info["primary_technique_id"], "severity": triage_verdict["severity"]}
+        )
+        print("\n📜 [STEP 7: IMMUTABLE AUDIT TRAIL RECORDED]")
+        print(f"   • Action Logged : {audit_entry['action']} by {audit_entry['actor']} at {audit_entry['timestamp']}")
         print("="*70 + "\n")
 
         return {
@@ -72,7 +109,9 @@ class SentinelTriageAgent:
             "ip_map": ip_map,
             "sanitizer": scrubbed,
             "mitre": mitre_info,
-            "triage": triage_verdict
+            "triage": triage_verdict,
+            "attack_graph": attack_graph,
+            "audit_entry": audit_entry
         }
 
 if __name__ == "__main__":

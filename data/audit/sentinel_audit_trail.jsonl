@@ -1,0 +1,5 @@
+{"timestamp": "2026-08-13T15:49:47Z", "actor": "OFFICER_SHARMA", "action": "APPROVE_CONTAINMENT", "incident": "INC-2026-8801", "target": "[INTERNAL_IP_1]", "result": "SUCCESS", "metadata": {"technique": "T1110", "mode": "MOCK"}}
+{"timestamp": "2026-08-13T15:49:47Z", "actor": "ANALYST_KUMAR", "action": "REQUEST_REIDENTIFICATION", "incident": "INC-2026-8802", "target": "[USER_1]", "result": "AUTHORIZED", "metadata": {"role": "OFFICER"}}
+{"timestamp": "2026-08-13T15:50:32Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "192.168.1.45", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1110", "severity": "HIGH"}}
+{"timestamp": "2026-08-13T15:50:36Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "Local Host", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1059", "severity": "HIGH"}}
+{"timestamp": "2026-08-13T15:50:40Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "203.0.113.88", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1041", "severity": "LOW"}}

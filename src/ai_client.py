@@ -17,7 +17,7 @@ class SentinelAIClient:
         self.openai_api_key = openai_api_key or os.environ.get("OPENAI_API_KEY")
         self.ollama_url = "http://localhost:11434/api/generate"
 
-    def query_tier1_ollama(self, prompt: str, model="llama3.1:8b") -> dict:
+    def query_tier1_ollama(self, prompt: str, model="llama3.2:1b") -> dict:
         """Tier 1: Query Local Ollama running 100% offline on RTX 3050 GPU ($0 cost)."""
         payload = {"model": model, "prompt": prompt, "stream": False}
         data = json.dumps(payload).encode('utf-8')
