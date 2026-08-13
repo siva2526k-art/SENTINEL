@@ -100,10 +100,10 @@ class SentinelAIClient:
         except Exception as e:
             return {"status": "error", "error": f"Gemini API error: {e}"}
 
-    def query_tier3_openrouter_free(self, prompt: str, model="deepseek/deepseek-r1:free") -> dict:
+    def query_tier3_openrouter_free(self, prompt: str, model="nvidia/nemotron-3-ultra-550b-a55b:free") -> dict:
         """
-        Tier 3 (Ultra-Large Models > 70B): Query OpenRouter FREE Tier for 671B DeepSeek-R1 or 405B Llama 3.1.
-        Models: 'deepseek/deepseek-r1:free' (671B MoE) OR 'meta-llama/llama-3.1-405b-instruct:free' (405B).
+        Tier 3 (Ultra-Large Models > 70B): Query OpenRouter FREE Tier for 550B Nemotron-3 Ultra or 31B Gemma.
+        Models: 'nvidia/nemotron-3-ultra-550b-a55b:free' (550B Parameters) OR 'google/gemma-4-31b-it:free'.
         """
         openrouter_key = os.environ.get("OPENROUTER_API_KEY", "")
         url = "https://openrouter.ai/api/v1/chat/completions"

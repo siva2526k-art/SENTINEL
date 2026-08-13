@@ -61,8 +61,8 @@ def run_diagnostics():
     else:
         print("   ℹ️ [STATUS: SKIPPED]: GEMINI_API_KEY not set in .env (Add GEMINI_API_KEY to test)\n")
 
-    # 4. Test Tier 3 OpenRouter Free API (DeepSeek 671B)
-    print("4️⃣  Testing Tier 3: OpenRouter FREE API (deepseek/deepseek-r1:free 671B)...")
+    # 4. Test Tier 3 OpenRouter Free API (550B Nemotron-3)
+    print("4️⃣  Testing Tier 3: OpenRouter FREE API (nvidia/nemotron-3-ultra-550b-a55b:free 550B)...")
     t0 = time.time()
     res4 = client.query_tier3_openrouter_free(test_prompt)
     latency4 = round((time.time() - t0) * 1000, 2)
