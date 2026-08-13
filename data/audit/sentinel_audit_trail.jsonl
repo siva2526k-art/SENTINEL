@@ -6,3 +6,6 @@
 {"timestamp": "2026-08-13T16:18:08Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "192.168.1.45", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1110", "severity": "HIGH"}}
 {"timestamp": "2026-08-13T16:18:12Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "Local Host", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1059", "severity": "HIGH"}}
 {"timestamp": "2026-08-13T16:18:16Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "203.0.113.88", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1041", "severity": "LOW"}}
+{"timestamp": "2026-08-13T17:01:38Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "192.168.1.45", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1110", "severity": "HIGH"}}
+{"timestamp": "2026-08-13T17:01:42Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "Local Host", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1059", "severity": "HIGH"}}
+{"timestamp": "2026-08-13T17:01:46Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "10.0.4.15", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1041", "severity": "LOW"}}

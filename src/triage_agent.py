@@ -13,6 +13,8 @@ from correlation.temporal_engine import TemporalEngine
 from correlation.attack_graph import AttackGraphBuilder
 from audit_logger import SentinelAuditLogger
 from sandbox import SentinelCodeSandbox
+from memory import SentinelMemoryStore
+from response.response_engine import ResponseEngine
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -28,6 +30,8 @@ class SentinelTriageAgent:
         self.graph_builder = AttackGraphBuilder()
         self.audit_logger = SentinelAuditLogger()
         self.sandbox = SentinelCodeSandbox()
+        self.memory = SentinelMemoryStore()
+        self.response = ResponseEngine()
 
     def process_alert(self, raw_alert_text: str) -> dict:
         print("\n" + "="*70)
@@ -115,6 +119,19 @@ result = f"De-obfuscated Command Fragment: {decoded}"
         print(f"   • AST Code Inspection  : {'✅ PASSED (Zero Violations)' if sandbox_result['is_safe'] else '❌ BLOCKED'}")
         print(f"   • Sandbox Execution    : {sandbox_result['status']}")
         print(f"   • Execution Output     : \"{sandbox_result.get('execution_output', 'N/A')}\"")
+
+        # Step 9: Persistent ChromaDB RAG Vector Threat Memory Store (Phase 2)
+        self.memory.add_incident(
+            incident_id="INC-2026-8801",
+            sanitized_text=sanitized_alert,
+            metadata={"mitre": mitre_info["primary_technique_id"], "severity": triage_verdict["severity"]}
+        )
+        rag_matches = self.memory.search_similar_incidents(sanitized_alert, top_k=2)
+        print("\n🧠 [STEP 9: CHROMADB VECTOR RAG THREAT MEMORY]")
+        print(f"   • RAG Memory Collection : sentinel_threat_memory")
+        print(f"   • Historical Matches Found: {len(rag_matches)}")
+        if rag_matches:
+            print(f"   • Top Match Summary     : \"{rag_matches[0]['sanitized_summary']}\"")
         print("="*70 + "\n")
 
         return {
@@ -127,7 +144,8 @@ result = f"De-obfuscated Command Fragment: {decoded}"
             "triage": triage_verdict,
             "attack_graph": attack_graph,
             "audit_entry": audit_entry,
-            "sandbox_result": sandbox_result
+            "sandbox_result": sandbox_result,
+            "rag_matches": rag_matches
         }
 
 if __name__ == "__main__":
