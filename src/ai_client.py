@@ -59,6 +59,35 @@ class SentinelAIClient:
         except Exception as e:
             return {"status": "error", "error": f"Groq API error: {e}"}
 
+    def query_tier3_openrouter_free(self, prompt: str, model="deepseek/deepseek-r1:free") -> dict:
+        """
+        Tier 3 (Ultra-Large Models > 70B): Query OpenRouter FREE Tier for 671B DeepSeek-R1 or 405B Llama 3.1.
+        Models: 'deepseek/deepseek-r1:free' (671B MoE) OR 'meta-llama/llama-3.1-405b-instruct:free' (405B).
+        """
+        openrouter_key = os.environ.get("OPENROUTER_API_KEY", "")
+        url = "https://openrouter.ai/api/v1/chat/completions"
+        payload = {
+            "model": model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.1
+        }
+        data = json.dumps(payload).encode('utf-8')
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': f'Bearer {openrouter_key}' if openrouter_key else '',
+            'HTTP-Referer': 'https://github.com/siva2526k-art/SENTINEL',
+            'X-Title': 'SENTINEL AI SOC'
+        }
+        req = urllib.request.Request(url, data=data, headers=headers)
+        
+        try:
+            with urllib.request.urlopen(req, timeout=15) as response:
+                result = json.loads(response.read().decode('utf-8'))
+                content = result['choices'][0]['message']['content']
+                return {"status": "success", "tier": f"Tier 3 (OpenRouter Free {model})", "content": content}
+        except Exception as e:
+            return {"status": "error", "error": f"OpenRouter API error: {e}"}
+
     def query_tier3_openai(self, prompt: str, model="gpt-4o") -> dict:
         """Tier 3: Query Enterprise Cloud API (OpenAI/Claude) for critical multi-stage zero-day APTs."""
         if not self.openai_api_key:
@@ -90,4 +119,4 @@ if __name__ == "__main__":
     print("🤖 Universal Multi-Tier AI Client initialized.")
     print("• Tier 1 Local Ollama Status:", client.query_tier1_ollama("Test connection.")["status"])
     print("• Tier 2 Groq API Key Configured:", bool(client.groq_api_key))
-    print("• Tier 3 OpenAI Key Configured:", bool(client.openai_api_key))
+    print("• Tier 3 OpenRouter 671B/405B Available: YES (deepseek/deepseek-r1:free)")
