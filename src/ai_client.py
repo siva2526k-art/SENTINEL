@@ -11,10 +11,27 @@ import urllib.error
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
+def load_env_file():
+    env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".env"))
+    if os.path.exists(env_path):
+        with open(env_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    key, val = line.split("=", 1)
+                    key = key.strip()
+                    val = val.strip().strip("'").strip('"')
+                    if key and val:
+                        os.environ[key] = val
+
+load_env_file()
+
 class SentinelAIClient:
     def __init__(self, groq_api_key=None, openai_api_key=None):
         self.groq_api_key = groq_api_key or os.environ.get("GROQ_API_KEY")
         self.openai_api_key = openai_api_key or os.environ.get("OPENAI_API_KEY")
+        self.gemini_api_key = os.environ.get("GEMINI_API_KEY")
+        self.openrouter_api_key = os.environ.get("OPENROUTER_API_KEY")
         self.ollama_url = "http://localhost:11434/api/generate"
 
     def query_tier1_ollama(self, prompt: str, model="deepseek-r1:8b") -> dict:
