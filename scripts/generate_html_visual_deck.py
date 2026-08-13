@@ -1,7 +1,17 @@
 """
-SENTINEL — Customized Interactive Visual Presentation Deck Generator
-Customized for Sivabalan T (2nd Year CSE, Sri Sairam Engineering College).
-Includes Full System Architecture & Execution Pipeline slide.
+SENTINEL — Master Interactive Visual Presentation Deck Generator
+Structured specifically for Sivabalan T (Sri Sairam Engineering College):
+1. Introduction to Myself & My Project
+2. Core Problem Statement
+3. Existing Solutions & Critical Drawbacks
+4. The SENTINEL Solution & Innovation Matrix
+5. Full End-to-End System Architecture & Flowchart Mapping
+6. Architectural Provenance & Open-Source Adaptations
+7. Zero-Trust Sanitizer & Dual-View Interface
+8. 3-Tier System-Level MoE AI Routing Engine
+9. AST Code Sandbox Guard & Active Defense
+10. Courtroom PDF Briefs & Audit Trail
+11. Enterprise Impact & System Verification Victory
 """
 import os
 import sys
@@ -14,7 +24,7 @@ HTML_CONTENT = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SENTINEL — Autonomous AI SOC Triage & Zero-Trust Privacy Platform</title>
+  <title>SENTINEL — Master Interactive Presentation Deck</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -268,10 +278,11 @@ HTML_CONTENT = """<!DOCTYPE html>
     </header>
 
     <div class="slide-viewport">
-      <!-- SLIDE 1: FRONT PAGE (No Version Tag, No Status, Sri Sairam Engineering College) -->
+      <!-- SLIDE 1: INTRODUCTION TO MYSELF & MY PROJECT -->
       <div class="slide active">
         <h1 class="slide-title">SENTINEL — Autonomous AI SOC Triage & Privacy Platform</h1>
         <div class="slide-subtitle">Security Event Network Triage Investigation with Neural Engine and LLM</div>
+        <div class="takeaway-bar">📌 ENGINEERING INNOVATION: Next-Generation Privacy-Preserving Autonomous Cyber Defense Platform</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">🎓</div>
@@ -280,92 +291,153 @@ HTML_CONTENT = """<!DOCTYPE html>
           </div>
           <div class="card">
             <div class="card-icon">🛡️</div>
-            <div class="card-title">System Architecture</div>
-            <div class="card-text">Autonomous Security Operations Center Triage Engine & Zero-Trust Privacy Shield</div>
+            <div class="card-title">My Project Mission</div>
+            <div class="card-text">Building an autonomous, privacy-preserving AI SOC analyst from first principles to solve alert fatigue and prevent data leakage.</div>
           </div>
           <div class="card">
             <div class="card-icon">🚀</div>
-            <div class="card-title">Core Technical Breakthrough</div>
-            <div class="card-text">Zero-Trust Data Sanitizer + 3-Tier MoE AI Router + AST Code Sandbox Guard</div>
+            <div class="card-title">Core Breakthroughs</div>
+            <div class="card-text">Zero-Trust Data Sanitizer + 3-Tier MoE AI Router + AST Code Sandbox Guard + Courtroom PDF Briefs</div>
           </div>
         </div>
         <div class="notes-bar" id="notes-1">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "Good morning respected judges. I am Sivabalan T, 2nd year Computer Science Engineering student from Sri Sairam Engineering College. Today I present SENTINEL—an autonomous AI SOC triage and zero-trust privacy platform."
+          "Good morning respected judges. I am Sivabalan T, 2nd year Computer Science Engineering student from Sri Sairam Engineering College. Today I present my project, SENTINEL—an autonomous AI SOC triage and zero-trust privacy platform."
         </div>
       </div>
 
-      <!-- SLIDE 2: FULL SYSTEM ARCHITECTURE & TALKING HINT POINTS -->
+      <!-- SLIDE 2: CORE PROBLEM STATEMENT -->
       <div class="slide">
-        <h1 class="slide-title">🏗️ Full System Architecture & Execution Pipeline</h1>
-        <div class="slide-subtitle">Step-by-Step Data Flow with Easy Talking Hint Points</div>
-        <div class="takeaway-bar">📌 TOP TAKEAWAY: Complete end-to-end telemetry pipeline from Zero-Trust Sanitization to Courtroom PDF Generation.</div>
+        <h1 class="slide-title">🚨 The Core Problem Statement</h1>
+        <div class="slide-subtitle">Why Modern SOC Operations Are Overwhelmed and Vulnerable</div>
+        <div class="takeaway-bar">📌 THE CRISIS: Security Operations Centers face catastrophic alert fatigue while zero-day attacks slip through.</div>
         <div class="cards-grid">
           <div class="card">
-            <div class="card-icon">1️⃣</div>
-            <div class="card-title">Sanitizer & Firewall</div>
-            <div class="card-text">• Replaces PII with [USER_1], [INTERNAL_IP_1] in local RAM.<br>• Neutralizes log-embedded prompt injections.</div>
+            <div class="card-icon">⚡</div>
+            <div class="card-title">5,000+ Daily SIEM Alerts</div>
+            <div class="card-text">SOC teams handle over 5,000 raw logs daily. Manual log parsing takes 30-45 minutes per alert, leading to 70%+ ignored alerts.</div>
           </div>
           <div class="card">
-            <div class="card-icon">2️⃣</div>
-            <div class="card-title">3-Tier MoE AI Router</div>
-            <div class="card-text">• Maps MITRE tactics (T1110, T1059).<br>• Tier 1 Local GPU ($0 cost) ──► Tier 2 Groq/Gemini ──► Tier 3 550B.</div>
+            <div class="card-icon">⏳</div>
+            <div class="card-title">Time-to-Detect Latency</div>
+            <div class="card-text">Human triage latency allows ransomware and advanced persistent threats (APTs) to dwell undetected for weeks.</div>
           </div>
           <div class="card">
-            <div class="card-icon">3️⃣</div>
-            <div class="card-title">Graph & AST Sandbox</div>
-            <div class="card-text">• Reconstructs JSON attack graphs (Nodes & Edges).<br>• AST syntax tree parsing (ast.parse) blocks os.system().</div>
-          </div>
-          <div class="card">
-            <div class="card-icon">4️⃣</div>
-            <div class="card-title">RAG, HITL & PDF Brief</div>
-            <div class="card-text">• ChromaDB vector threat memory.<br>• Human-in-the-Loop officer approval gate.<br>• Courtroom PDF report generated in &lt; 30s.</div>
+            <div class="card-icon">🎯</div>
+            <div class="card-title">Uncorrelated SIEM Logs</div>
+            <div class="card-text">Isolated SIEM logs fail to connect lateral movement across users, hosts, processes, and network domains.</div>
           </div>
         </div>
         <div class="notes-bar" id="notes-2">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "Judges, here is our full 4-stage architecture pipeline: First, raw SIEM telemetry is scrubbed of PII in local RAM; second, our 3-Tier Router triages alerts locally on GPU; third, our AST sandbox blocks malicious code; and fourth, an executive PDF report is generated for authorized officers."
+          "Let us look at the core problem: SOC teams face over 5,000 alerts daily. Manual triage takes 30 to 45 minutes per alert, causing critical ransomware attacks to slip through."
         </div>
       </div>
 
-      <!-- SLIDE 3 -->
+      <!-- SLIDE 3: EXISTING SOLUTIONS & THEIR DRAWBACKS -->
       <div class="slide">
-        <h1 class="slide-title">🚨 The Crisis in Digital Incident Triage</h1>
-        <div class="slide-subtitle">Alert Fatigue, Data Leakage & Uncontrolled Cloud Token Costs</div>
-        <div class="takeaway-bar">📌 TOP TAKEAWAY: Manual log parsing drowns analysts while basic AI wrappers leak sensitive police data to public clouds.</div>
+        <h1 class="slide-title">⚠️ Existing Solutions & Critical Drawbacks</h1>
+        <div class="slide-subtitle">Why Current Commercial AI Wrappers and Legacy Tools Fail</div>
+        <div class="takeaway-bar">📌 CURRENT LIMITATIONS: Commercial AI wrappers leak sensitive police data, incur high costs, and risk system takeover.</div>
         <div class="cards-grid">
           <div class="card">
-            <div class="card-icon">⚡</div>
-            <div class="card-title">5,000+ Daily Alerts</div>
-            <div class="card-text">SOC analysts handle 5,000+ raw SIEM logs daily. Manual log parsing takes 30-45 minutes per alert, causing zero-day threats to slip through.</div>
-          </div>
-          <div class="card">
             <div class="card-icon">🔓</div>
-            <div class="card-title">Public Cloud PII Leakage</div>
-            <div class="card-text">Commercial AI wrappers leak real police emails, passwords, and internal IPs to public cloud LLMs, violating DPDP Act 2023 and GDPR.</div>
+            <div class="card-title">Drawback 1: Cloud PII Leakage</div>
+            <div class="card-text">Tools like AiSOC send raw police emails, passwords, and internal IPs to public cloud LLMs, violating DPDP Act 2023 & GDPR.</div>
           </div>
           <div class="card">
             <div class="card-icon">💸</div>
-            <div class="card-title">High Monthly API Costs</div>
-            <div class="card-text">Sending raw multi-megabyte SIEM log streams to commercial cloud APIs per token costs thousands of dollars monthly.</div>
+            <div class="card-title">Drawback 2: High API Token Costs</div>
+            <div class="card-text">Paying commercial cloud APIs per token on raw multi-megabyte log streams costs thousands of dollars monthly.</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">💥</div>
+            <div class="card-title">Drawback 3: Unchecked Code Risk</div>
+            <div class="card-text">Executing AI-generated scripts without AST verification allows prompt injection command execution (os.system).</div>
           </div>
         </div>
         <div class="notes-bar" id="notes-3">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "Cyber investigators drown in raw JSON logs daily. When teams use basic commercial AI, they leak confidential police PII to public cloud servers while burning thousands of dollars in API fees."
+          "Existing commercial AI wrappers have three major flaws: First, they leak raw police PII to public clouds; second, they burn thousands of dollars in cloud token fees; and third, they execute AI code blindly without security checks."
         </div>
       </div>
 
-      <!-- SLIDE 4: OPEN-SOURCE ADAPTATION & PROVENANCE -->
+      <!-- SLIDE 4: THE SENTINEL SOLUTION & INNOVATION MATRIX -->
       <div class="slide">
-        <h1 class="slide-title">🏛️ Architectural Provenance & Open-Source Adaptation</h1>
+        <h1 class="slide-title">💡 The SENTINEL Solution & Innovation Matrix</h1>
+        <div class="slide-subtitle">Engineered Solutions Addressing Every Existing Drawback</div>
+        <div class="takeaway-bar">📌 MY SOLUTION: A 4-pillar privacy-first AI architecture that operates locally for $0 cost with AST code safety.</div>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon">🔒</div>
+            <div class="card-title">1. Zero-Trust Sanitizer</div>
+            <div class="card-text">Replaces PII with synthetic tokens ([USER_1], [INTERNAL_IP_1]) in local RAM before any network transmission.</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🤖</div>
+            <div class="card-title">2. 3-Tier System MoE</div>
+            <div class="card-text">Triages 90% routine alerts offline on local workstation GPUs for $0 cost, cascading to cloud models only when needed.</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🔒</div>
+            <div class="card-title">3. AST Sandbox Guard</div>
+            <div class="card-text">Parses Python AST syntax trees (ast.parse) to block dangerous shell calls (os.system) before execution.</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">📄</div>
+            <div class="card-title">4. Courtroom PDF Briefs</div>
+            <div class="card-text">Generates 1-page executive courtroom-ready incident briefs in &lt; 30 seconds with dual-view evidence records.</div>
+          </div>
+        </div>
+        <div class="notes-bar" id="notes-4">
+          <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
+          "SENTINEL solves every drawback: A Zero-Trust Sanitizer isolates PII; a 3-Tier AI Router cuts software costs by 85%; an AST Sandbox blocks code injection; and an executive PDF report is generated in under 30 seconds."
+        </div>
+      </div>
+
+      <!-- SLIDE 5: FULL END-TO-END SYSTEM ARCHITECTURE & FLOWCHART MAPPING -->
+      <div class="slide">
+        <h1 class="slide-title">🏗️ Full System Architecture & Flowchart Mapping</h1>
+        <div class="slide-subtitle">Step-by-Step Data Flow from Ingestion to Courtroom Report</div>
+        <div class="takeaway-bar">📌 ARCHITECTURE FLOW: Telemetry ──► Level 1 Sanitizer ──► Level 2 MITRE ──► Level 3 MoE Router ──► Level 5 AST ──► PDF</div>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon">1️⃣</div>
+            <div class="card-title">Ingestion & Sanitization</div>
+            <div class="card-text">• Raw SIEM Log ──► Level 1 Data Sanitizer<br>• Scrubs PII to [USER_1] in local RAM.<br>• Prompt Injection Firewall neutralizes attacks.</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">2️⃣</div>
+            <div class="card-title">MITRE & 3-Tier AI Routing</div>
+            <div class="card-text">• Level 2 MITRE Mapper tags T1110.<br>• Level 3 Router: Tier 1 Local GPU ($0) ──► Tier 2 Groq/Gemini ──► Tier 3 550B.</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">3️⃣</div>
+            <div class="card-title">Graph & AST Sandbox</div>
+            <div class="card-text">• Level 4 Attack Graph Builder maps edges.<br>• Level 5 AST Sandbox inspects syntax trees & blocks os.system().</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">4️⃣</div>
+            <div class="card-title">RAG, HITL & PDF Brief</div>
+            <div class="card-text">• Level 6 ChromaDB RAG stores vectors.<br>• Level 7/8 Dual-View HITL Officer Gate.<br>• Level 9/10 Courtroom PDF generated.</div>
+          </div>
+        </div>
+        <div class="notes-bar" id="notes-5">
+          <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
+          "Judges, here is our full end-to-end architecture flowchart: Raw telemetry passes through Level 1 PII Sanitization, Level 2 MITRE Mapping, Level 3 3-Tier AI Routing, Level 5 AST Security Inspection, and Level 10 Courtroom PDF Generation."
+        </div>
+      </div>
+
+      <!-- SLIDE 6: ARCHITECTURAL PROVENANCE & OPEN-SOURCE ADAPTATION -->
+      <div class="slide">
+        <h1 class="slide-title">🏛️ Architectural Provenance & Open-Source Adaptations</h1>
         <div class="slide-subtitle">How SENTINEL Improves Upon Established Open-Source Projects</div>
-        <div class="takeaway-bar">📌 TOP TAKEAWAY: SENTINEL adapts industry open-source standards, fixing critical privacy, security, and cost flaws.</div>
+        <div class="takeaway-bar">📌 PROVENANCE: SENTINEL adapts industry open-source standards, fixing critical security, privacy, and cost flaws.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">🔒</div>
             <div class="card-title">Sanitizer (from Presidio)</div>
-            <div class="card-text"><b>Presidio Flaw</b>: Destroys PII or sends raw text.<br><b>SENTINEL Fix</b>: Reversible token mapping ([USER_1]) stored in encrypted local RAM.</div>
+            <div class="card-text"><b>Presidio Flaw</b>: Destroys PII or sends raw text.<br><b>SENTINEL Fix</b>: Reversible token mapping ([USER_1]) stored in local RAM.</div>
           </div>
           <div class="card">
             <div class="card-icon">🤖</div>
@@ -383,17 +455,17 @@ HTML_CONTENT = """<!DOCTYPE html>
             <div class="card-text"><b>LangChain Flaw</b>: Stores raw PII in vectors.<br><b>SENTINEL Fix</b>: Embeds only PII-scrubbed threat vectors in ChromaDB RAG.</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-4">
+        <div class="notes-bar" id="notes-6">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "To ensure maximum robustness, we adapted established open-source projects—Microsoft Presidio for sanitization, RouteLLM for routing, and ChromaDB for vector memory—while fixing their security and privacy limitations."
+          "We adapted established open-source projects—Microsoft Presidio for sanitization, RouteLLM for routing, and ChromaDB for vector memory—while fixing their security and privacy flaws."
         </div>
       </div>
 
-      <!-- SLIDE 5 -->
+      <!-- SLIDE 7 -->
       <div class="slide">
         <h1 class="slide-title">🔒 Zero-Trust Sanitizer & Dual-View Interface</h1>
-        <div class="slide-subtitle">Complete PII Isolation + Authorized Police Unmasking</div>
-        <div class="takeaway-bar">📌 TOP TAKEAWAY: Cloud AI models only see synthetic tokens; unmasking keys stay inside local RAM.</div>
+        <div class="slide-subtitle">Complete PII Cloud Isolation + Authorized Police Re-Identification</div>
+        <div class="takeaway-bar">📌 DUAL-VIEW ISOLATION: Cloud AI only sees synthetic tokens; authorized officers unmask identities locally.</div>
         <div class="cards-grid">
           <div class="card" style="grid-column: span 2;">
             <div class="card-title">Dual-View Live Telemetry Comparison</div>
@@ -407,17 +479,17 @@ HTML_CONTENT = """<!DOCTYPE html>
 "Failed SSH login for officer.sharma@keralapolice.gov.in from 192.168.1.45 on port 22."</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-5">
+        <div class="notes-bar" id="notes-7">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "Cloud AI engines only ever see PII-free tokens like [USER_1] from [INTERNAL_IP_1]. The unmasking key lives strictly inside local RAM, accessible only by authorized officers with role tokens."
+          "Cloud AI engines only ever see PII-free synthetic tokens like [USER_1] from [INTERNAL_IP_1]. The unmasking key lives strictly inside local RAM, accessible only by authorized officers with role tokens."
         </div>
       </div>
 
-      <!-- SLIDE 6 -->
+      <!-- SLIDE 8 -->
       <div class="slide">
         <h1 class="slide-title">🤖 3-Tier System-Level MoE AI Routing Engine</h1>
-        <div class="slide-subtitle">85%+ Software Cost Optimization + Automatic Failover</div>
-        <div class="takeaway-bar">📌 TOP TAKEAWAY: Local GPU AI handles 90% routine alerts for $0 cost, cascading to 550B models for zero-day threats.</div>
+        <div class="slide-subtitle">85%+ Software Cost Optimization + Automatic Cascade Failover</div>
+        <div class="takeaway-bar">📌 AI ROUTING: 90% routine alerts triaged offline on GPU ($0 cost); complex zero-days cascade to 550B cloud models.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">🖥️</div>
@@ -435,45 +507,17 @@ HTML_CONTENT = """<!DOCTYPE html>
             <div class="card-text"><b>nvidia/nemotron-3-ultra-550b-a55b:free</b><br>550 Billion Parameter intelligence for zero-day threat analysis.</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-6">
+        <div class="notes-bar" id="notes-8">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
           "Our 3-Tier Router processes 90% of routine alerts locally on GPU for $0 cost. For zero-day threats, SENTINEL cascades to Groq 70B, Gemini 2M Context, or OpenRouter 550B models."
         </div>
       </div>
 
-      <!-- SLIDE 7 -->
-      <div class="slide">
-        <h1 class="slide-title">🕸️ Incident Correlation & Attack Graph Builder</h1>
-        <div class="slide-subtitle">Multi-Factor Scoring & Machine-Readable JSON Graphs</div>
-        <div class="takeaway-bar">📌 TOP TAKEAWAY: Multi-factor scoring groups isolated alerts into single visual attack graphs.</div>
-        <div class="cards-grid">
-          <div class="card">
-            <div class="card-icon">📊</div>
-            <div class="card-title">Multi-Factor Scoring</div>
-            <div class="card-text">Evaluates entity similarity, temporal proximity, and MITRE tactics into a 0.0 - 1.0 correlation score.</div>
-          </div>
-          <div class="card">
-            <div class="card-icon">🕸️</div>
-            <div class="card-title">JSON Attack Graph</div>
-            <div class="card-text">Builds machine-readable attack graph nodes and edges mapping lateral movement across networks.</div>
-          </div>
-          <div class="card">
-            <div class="card-icon">🧠</div>
-            <div class="card-title">ChromaDB RAG Memory</div>
-            <div class="card-text">Persists sanitized threat vectors in data/chroma/, retrieving top 3 historical threat patterns.</div>
-          </div>
-        </div>
-        <div class="notes-bar" id="notes-7">
-          <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "Instead of presenting isolated alerts, SENTINEL correlates thousands of events into single incident clusters, building visual attack graphs showing lateral movement."
-        </div>
-      </div>
-
-      <!-- SLIDE 8 -->
+      <!-- SLIDE 9 -->
       <div class="slide">
         <h1 class="slide-title">🔒 AST Safe AI Code Execution Sandbox Guard</h1>
-        <div class="slide-subtitle">Syntax Tree Inspection Blocking Unsafe Shell Commands</div>
-        <div class="takeaway-bar">📌 TOP TAKEAWAY: AST syntax tree parsing prevents malicious AI-generated code execution.</div>
+        <div class="slide-subtitle">Syntax Tree Inspection Blocking Command Injection</div>
+        <div class="takeaway-bar">📌 CODE SAFETY: AST syntax tree inspection guarantees zero execution of malicious shell commands.</div>
         <div class="cards-grid">
           <div class="card" style="grid-column: span 2;">
             <div class="card-title">AST Syntax Tree Inspection Flow</div>
@@ -483,37 +527,9 @@ HTML_CONTENT = """<!DOCTYPE html>
 ❌ MALICIOUS: os.system("rm -rf /")         ──► BLOCKED INSTANTLY (AST Security Violation)</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-8">
-          <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "When AI generates Python scripts to de-obfuscate malware payloads, SENTINEL inspects the Python AST syntax tree first. If dangerous calls like os.system() are detected, SENTINEL blocks them instantly."
-        </div>
-      </div>
-
-      <!-- SLIDE 9 -->
-      <div class="slide">
-        <h1 class="slide-title">🛡️ Active Defense Containment & HITL Gateway</h1>
-        <div class="slide-subtitle">Controlled Adapters + Strict Server RBAC</div>
-        <div class="takeaway-bar">📌 TOP TAKEAWAY: Containment actions require explicit Human-in-the-Loop officer approval.</div>
-        <div class="cards-grid">
-          <div class="card">
-            <div class="card-icon">🔥</div>
-            <div class="card-title">Firewall Controller</div>
-            <div class="card-text">IP blocking rules in safe simulation mode (SENTINEL_RESPONSE_MODE=mock).</div>
-          </div>
-          <div class="card">
-            <div class="card-icon">⚡</div>
-            <div class="card-title">Process Controller</div>
-            <div class="card-text">Process termination adapters for malicious executable command strings.</div>
-          </div>
-          <div class="card">
-            <div class="card-icon">🔒</div>
-            <div class="card-title">Host Isolator</div>
-            <div class="card-text">Network isolation adapters for compromised internal host systems.</div>
-          </div>
-        </div>
         <div class="notes-bar" id="notes-9">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "SENTINEL never allows AI to execute arbitrary OS commands. All containment recommendations must pass through a server-side Human-in-the-Loop approval gateway."
+          "When AI generates Python scripts to de-obfuscate malware payloads, SENTINEL inspects the Python AST syntax tree first. If dangerous calls like os.system() are detected, SENTINEL blocks them instantly."
         </div>
       </div>
 
@@ -521,7 +537,7 @@ HTML_CONTENT = """<!DOCTYPE html>
       <div class="slide">
         <h1 class="slide-title">📜 Courtroom PDF Briefs & Immutable Audit Trail</h1>
         <div class="slide-subtitle">Courtroom-Ready Reports Generated in < 30 Seconds</div>
-        <div class="takeaway-bar">📌 TOP TAKEAWAY: Courtroom-ready 1-page PDF briefs are generated in under 30 seconds.</div>
+        <div class="takeaway-bar">📌 EVIDENCE INTEGRITY: Append-only audit logging and courtroom-ready 1-page PDF briefs generated in &lt; 30s.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">📄</div>
@@ -544,7 +560,7 @@ HTML_CONTENT = """<!DOCTYPE html>
       <div class="slide">
         <h1 class="slide-title">🏆 Enterprise Impact & System Verification</h1>
         <div class="slide-subtitle">All 10 Architectural Levels Verified Operational</div>
-        <div class="takeaway-bar">📌 TOP TAKEAWAY: SENTINEL is 100% verified operational across all 10 architectural levels.</div>
+        <div class="takeaway-bar">📌 VERIFICATION: SENTINEL is 100% verified operational across all 10 architectural levels.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">🟢</div>
@@ -635,7 +651,7 @@ def generate_html_deck(desktop_path=r"C:\Users\siva2\Desktop\SENTINEL_Interactiv
     with open(docs_path, "w", encoding="utf-8") as f:
         f.write(HTML_CONTENT)
 
-    print(f"✨ Customized Visual HTML Pitch Deck created successfully at:")
+    print(f"✨ Master Interactive Visual HTML Pitch Deck created successfully at:")
     print(f"   • Desktop: {desktop_path}")
     print(f"   • Project Docs: {docs_path}")
 

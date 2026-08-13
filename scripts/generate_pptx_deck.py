@@ -1,9 +1,17 @@
 """
-SENTINEL — Customized Professional Visual PowerPoint (.pptx) Deck Generator
-Front page customized:
-  - Presenter: Sivabalan T (2nd Year CSE, Sri Sairam Engineering College)
-  - Version Tag & Status removed from Page 1.
-Includes Full System Architecture Diagram & Step-by-Step Talking Hint Points slide.
+SENTINEL — Master PowerPoint (.pptx) Pitch Deck Generator
+Structured specifically for Sivabalan T (Sri Sairam Engineering College):
+1. Introduction to Myself & My Project
+2. Core Problem Statement
+3. Existing Solutions & Critical Drawbacks
+4. The SENTINEL Solution & Innovation Matrix
+5. Full End-to-End System Architecture & Flowchart Mapping
+6. Architectural Provenance & Open-Source Adaptations
+7. Zero-Trust Sanitizer & Dual-View Interface
+8. 3-Tier System-Level MoE AI Routing Engine
+9. AST Code Sandbox Guard & Active Defense
+10. Courtroom PDF Briefs & Audit Trail
+11. Enterprise Impact & System Verification Victory
 """
 import os
 import sys
@@ -14,7 +22,7 @@ from pptx.dml.color import RGBColor
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-def create_customized_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Enterprise_Pitch_Deck.pptx"):
+def create_master_structured_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Enterprise_Pitch_Deck.pptx"):
     prs = Presentation()
     prs.slide_width = Inches(13.33)
     prs.slide_height = Inches(7.5)
@@ -29,47 +37,72 @@ def create_customized_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Enterpr
     ACCENT_YELLOW = RGBColor(234, 179, 8)
 
     slides_content = [
-        # SLIDE 1: FRONT PAGE (No Version Tag, No Status, Sri Sairam Engineering College details)
+        # SLIDE 1: INTRODUCTION TO MYSELF & MY PROJECT
         {
-            "is_title_slide": True,
             "slide_title": "SENTINEL",
             "subtitle": "Autonomous AI SOC Triage & Zero-Trust Privacy Platform",
+            "takeaway": "ENGINEERING INNOVATION: Next-Generation Privacy-Preserving Autonomous Cyber Defense Platform",
             "cards": [
                 {"icon": "🎓", "title": "Presenter & Affiliation", "text": "<b>Sivabalan T</b>\nDepartment of Computer Science & Engineering (2nd Year)\nSri Sairam Engineering College"},
-                {"icon": "🛡️", "title": "System Architecture", "text": "Autonomous Security Operations Center Triage Engine & Zero-Trust Privacy Shield"},
-                {"icon": "🚀", "title": "Core Technical Breakthrough", "text": "Zero-Trust Data Sanitizer + 3-Tier MoE AI Router + AST Code Sandbox Guard"}
+                {"icon": "🛡️", "title": "My Project Mission", "text": "Building an autonomous, privacy-preserving AI SOC analyst from first principles to solve alert fatigue and prevent data leakage."},
+                {"icon": "🚀", "title": "Core Breakthroughs", "text": "Zero-Trust Data Sanitizer + 3-Tier MoE AI Router + AST Code Sandbox Guard + Courtroom PDF Briefs"}
             ],
-            "notes": "Good morning respected judges. I am Sivabalan T, 2nd year Computer Science Engineering student from Sri Sairam Engineering College. Today I present SENTINEL—an autonomous AI SOC triage and zero-trust privacy platform."
+            "notes": "Good morning respected judges. I am Sivabalan T, 2nd year Computer Science Engineering student from Sri Sairam Engineering College. Today I present my project, SENTINEL—an autonomous AI SOC triage and zero-trust privacy platform."
         },
-        # SLIDE 2: FULL SYSTEM ARCHITECTURE & TALKING HINT POINTS (NEW!)
+        # SLIDE 2: CORE PROBLEM STATEMENT
         {
-            "takeaway": "TOP TAKEAWAY: Complete end-to-end telemetry pipeline from Zero-Trust Sanitization to Courtroom PDF Generation.",
-            "slide_title": "🏗️ Full System Architecture & Execution Pipeline",
-            "subtitle": "Step-by-Step Data Flow with Easy Talking Hint Points",
+            "takeaway": "THE CRISIS: Security Operations Centers face catastrophic alert fatigue while zero-day attacks slip through.",
+            "slide_title": "🚨 The Core Problem Statement",
+            "subtitle": "Why Modern SOC Operations Are Overwhelmed and Vulnerable",
             "cards": [
-                {"icon": "1️⃣", "title": "Sanitizer & Firewall", "text": "• Replaces PII with [USER_1], [INTERNAL_IP_1] in local RAM.\n• Neutralizes log-embedded prompt injections."},
-                {"icon": "2️⃣", "title": "3-Tier MoE AI Router", "text": "• Maps MITRE tactics (T1110, T1059).\n• Tier 1 Local GPU ($0 cost) ──► Tier 2 Groq/Gemini ──► Tier 3 550B."},
-                {"icon": "3️⃣", "title": "Graph & AST Sandbox", "text": "• Reconstructs JSON attack graphs (Nodes & Edges).\n• AST syntax tree parsing (ast.parse) blocks os.system()."},
-                {"icon": "4️⃣", "title": "RAG, HITL & PDF Brief", "text": "• ChromaDB vector threat memory.\n• Human-in-the-Loop officer approval gate.\n• Courtroom PDF report generated in < 30s."}
+                {"icon": "⚡", "title": "5,000+ Daily SIEM Alerts", "text": "SOC teams handle over 5,000 raw logs daily. Manual log parsing takes 30-45 minutes per alert, leading to 70%+ ignored alerts."},
+                {"icon": "⏳", "title": "Critical Time-to-Detect Delay", "text": "Human triage latency allows ransomware and advanced persistent threats (APTs) to dwell undetected for weeks."},
+                {"icon": "🎯", "title": "Lack of Contextual Correlation", "text": "Isolated SIEM logs fail to connect lateral movement across users, hosts, processes, and network domains."}
             ],
-            "notes": "Judges, here is our full 4-stage architecture pipeline: First, raw SIEM telemetry is scrubbed of PII in local RAM; second, our 3-Tier Router triages alerts locally on GPU; third, our AST sandbox blocks malicious code; and fourth, an executive PDF report is generated for authorized officers."
+            "notes": "Let us look at the core problem: SOC teams face over 5,000 alerts daily. Manual triage takes 30 to 45 minutes per alert, causing critical ransomware attacks to slip through."
         },
-        # SLIDE 3
+        # SLIDE 3: EXISTING SOLUTIONS & THEIR DRAWBACKS
         {
-            "takeaway": "TOP TAKEAWAY: Manual log parsing drowns analysts while basic AI wrappers leak sensitive police data to public clouds.",
-            "slide_title": "🚨 The Crisis in Digital Incident Triage",
-            "subtitle": "Alert Fatigue, Data Leakage & Uncontrolled Cloud Token Costs",
+            "takeaway": "CURRENT LIMITATIONS: Commercial AI wrappers leak sensitive police data, incur high costs, and risk system takeover.",
+            "slide_title": "⚠️ Existing Solutions & Critical Drawbacks",
+            "subtitle": "Why Current Commercial AI Wrappers and Legacy Tools Fail",
             "cards": [
-                {"icon": "⚡", "title": "5,000+ Daily Alerts", "text": "Analysts handle 5,000+ raw SIEM logs daily, spending 40 mins per alert."},
-                {"icon": "🔓", "title": "Public Cloud PII Leakage", "text": "Commercial AI wrappers leak real police emails & internal IPs to public LLMs."},
-                {"icon": "💸", "title": "High Monthly API Costs", "text": "Sending raw multi-megabyte log files to commercial APIs costs thousands monthly."}
+                {"icon": "🔓", "title": "Drawback 1: Cloud PII Leakage", "text": "Tools like AiSOC send raw police emails, passwords, and internal IPs to public cloud LLMs, violating DPDP Act 2023 & GDPR."},
+                {"icon": "💸", "title": "Drawback 2: High API Token Costs", "text": "Paying commercial cloud APIs per token on raw multi-megabyte log streams costs thousands of dollars monthly."},
+                {"icon": "💥", "title": "Drawback 3: Unchecked Code Execution", "text": "Executing AI-generated scripts without AST verification allows prompt injection command execution (os.system)."}
             ],
-            "notes": "Cyber investigators drown in raw JSON logs daily. When teams use basic commercial AI, they leak confidential police PII to public cloud servers while burning thousands of dollars in API fees."
+            "notes": "Existing commercial AI wrappers have three major flaws: First, they leak raw police PII to public clouds; second, they burn thousands of dollars in cloud token fees; and third, they execute AI code blindly without security checks."
         },
-        # SLIDE 4: OPEN-SOURCE ADAPTATION & PROVENANCE
+        # SLIDE 4: THE SENTINEL SOLUTION & INNOVATION MATRIX
         {
-            "takeaway": "TOP TAKEAWAY: SENTINEL adapts industry open-source standards, fixing critical privacy, security, and cost flaws.",
-            "slide_title": "🏛️ Architectural Provenance & Open-Source Adaptation",
+            "takeaway": "MY SOLUTION: A 4-pillar privacy-first AI architecture that operates locally for $0 cost with AST code safety.",
+            "slide_title": "💡 The SENTINEL Solution & Innovation Matrix",
+            "subtitle": "Engineered Solutions Addressing Every Existing Drawback",
+            "cards": [
+                {"icon": "🔒", "title": "1. Zero-Trust Sanitizer", "text": "Replaces PII with synthetic tokens ([USER_1], [INTERNAL_IP_1]) in local RAM before any network transmission."},
+                {"icon": "🤖", "title": "2. 3-Tier System-Level MoE", "text": "Triages 90% routine alerts offline on local workstation GPUs for $0 cost, cascading to cloud models only when needed."},
+                {"icon": "🔒", "title": "3. AST Sandbox Guard", "text": "Parses Python AST syntax trees (ast.parse) to block dangerous shell calls (os.system) before execution."},
+                {"icon": "📄", "title": "4. Courtroom PDF Briefs", "text": "Generates 1-page executive courtroom-ready incident briefs in < 30 seconds with dual-view evidence records."}
+            ],
+            "notes": "SENTINEL solves every drawback: A Zero-Trust Sanitizer isolates PII; a 3-Tier AI Router cuts software costs by 85%; an AST Sandbox blocks code injection; and an executive PDF report is generated in under 30 seconds."
+        },
+        # SLIDE 5: FULL END-TO-END SYSTEM ARCHITECTURE & FLOWCHART MAPPING
+        {
+            "takeaway": "ARCHITECTURE FLOW: Telemetry ──► Level 1 Sanitizer ──► Level 2 MITRE ──► Level 3 MoE Router ──► Level 5 AST ──► PDF",
+            "slide_title": "🏗️ Full System Architecture & Flowchart Mapping",
+            "subtitle": "Step-by-Step Data Flow from Ingestion to Courtroom Report",
+            "cards": [
+                {"icon": "1️⃣", "title": "Ingestion & Sanitization", "text": "• Raw SIEM Log ──► Level 1 Data Sanitizer\n• Scrubs PII to [USER_1] in local RAM.\n• Prompt Injection Firewall neutralizes attacks."},
+                {"icon": "2️⃣", "title": "MITRE & 3-Tier AI Routing", "text": "• Level 2 MITRE Mapper tags T1110.\n• Level 3 Router: Tier 1 Local GPU ($0) ──► Tier 2 Groq/Gemini ──► Tier 3 550B."},
+                {"icon": "3️⃣", "title": "Graph & AST Sandbox", "text": "• Level 4 Attack Graph Builder maps edges.\n• Level 5 AST Sandbox inspects syntax trees & blocks os.system()."},
+                {"icon": "4️⃣", "title": "RAG, HITL & PDF Brief", "text": "• Level 6 ChromaDB RAG stores vectors.\n• Level 7/8 Dual-View HITL Officer Gate.\n• Level 9/10 Courtroom PDF generated."}
+            ],
+            "notes": "Judges, here is our full end-to-end architecture flowchart: Raw telemetry passes through Level 1 PII Sanitization, Level 2 MITRE Mapping, Level 3 3-Tier AI Routing, Level 5 AST Security Inspection, and Level 10 Courtroom PDF Generation."
+        },
+        # SLIDE 6: ARCHITECTURAL PROVENANCE & OPEN-SOURCE ADAPTATION
+        {
+            "takeaway": "PROVENANCE: SENTINEL adapts industry open-source standards, fixing critical security, privacy, and cost flaws.",
+            "slide_title": "🏛️ Architectural Provenance & Open-Source Adaptations",
             "subtitle": "How SENTINEL Improves Upon Established Open-Source Projects",
             "cards": [
                 {"icon": "🔒", "title": "Sanitizer (from Presidio)", "text": "<b>Presidio Flaw</b>: Destroys PII or sends raw text.\n<b>SENTINEL Fix</b>: Reversible token mapping ([USER_1]) stored in local RAM."},
@@ -77,21 +110,21 @@ def create_customized_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Enterpr
                 {"icon": "🔒", "title": "AST Guard (from PyInquirer)", "text": "<b>PyInquirer Flaw</b>: Unsafe eval() runtime wrappers.\n<b>SENTINEL Fix</b>: AST syntax tree parsing (ast.parse) blocking os.system()."},
                 {"icon": "🧠", "title": "RAG Memory (from ChromaDB)", "text": "<b>LangChain Flaw</b>: Stores raw PII in vectors.\n<b>SENTINEL Fix</b>: Embeds only PII-scrubbed threat vectors in ChromaDB RAG."}
             ],
-            "notes": "To ensure maximum robustness, we adapted established open-source projects—Microsoft Presidio for sanitization, RouteLLM for routing, and ChromaDB for vector memory—while fixing their security and privacy limitations."
+            "notes": "We adapted established open-source projects—Microsoft Presidio for sanitization, RouteLLM for routing, and ChromaDB for vector memory—while fixing their security and privacy flaws."
         },
-        # SLIDE 5
+        # SLIDE 7: ZERO-TRUST SANITIZER & DUAL-VIEW INTERFACE
         {
-            "takeaway": "TOP TAKEAWAY: Cloud AI models only see synthetic tokens; unmasking keys stay inside local RAM.",
+            "takeaway": "DUAL-VIEW ISOLATION: Cloud AI only sees synthetic tokens; authorized officers unmask identities locally.",
             "slide_title": "🔒 Zero-Trust Sanitizer & Dual-View Interface",
-            "subtitle": "Complete PII Isolation + Authorized Police Unmasking",
+            "subtitle": "Complete PII Cloud Isolation + Authorized Police Re-Identification",
             "code_box": "❌ RAW LOG (Local Workstation Only):\n\"Failed SSH login for officer.sharma@keralapolice.gov.in from 192.168.1.45 on port 22.\"\n\n✅ [Cloud / AI View] (Sent to Groq / Gemini / OpenRouter):\n\"Failed SSH login for [USER_1] from [INTERNAL_IP_1] on port 22.\"\n\n🔑 [Officer Re-Identified View] (Authorized Police Officer Only):\n\"Failed SSH login for officer.sharma@keralapolice.gov.in from 192.168.1.45 on port 22.\"",
-            "notes": "Cloud AI engines only ever see PII-free tokens like [USER_1] from [INTERNAL_IP_1]. The unmasking key lives strictly inside local RAM, accessible only by authorized officers with role tokens."
+            "notes": "Cloud AI engines only ever see PII-free synthetic tokens like [USER_1] from [INTERNAL_IP_1]. The unmasking key lives strictly inside local RAM, accessible only by authorized officers with role tokens."
         },
-        # SLIDE 6
+        # SLIDE 8: 3-TIER SYSTEM-LEVEL MoE AI ROUTING ENGINE
         {
-            "takeaway": "TOP TAKEAWAY: Local GPU AI handles 90% routine alerts for $0 cost, cascading to 550B models for zero-day threats.",
+            "takeaway": "AI ROUTING: 90% routine alerts triaged offline on GPU ($0 cost); complex zero-days cascade to 550B cloud models.",
             "slide_title": "🤖 3-Tier System-Level MoE AI Routing Engine",
-            "subtitle": "85%+ Software Cost Optimization + Automatic Failover",
+            "subtitle": "85%+ Software Cost Optimization + Automatic Cascade Failover",
             "cards": [
                 {"icon": "🖥️", "title": "Tier 1: Local GPU Ollama", "text": "deepseek-r1:8b / llama3.2:1b\n100% Offline GPU AI execution ($0.00 cost, 90% routine triage)."},
                 {"icon": "⚡", "title": "Tier 2: Groq & Gemini Flash", "text": "DeepSeek 70B @ 300 t/s & Gemini Flash 2M Context Window\nUltra-fast reasoning & massive log file ingestion."},
@@ -99,41 +132,17 @@ def create_customized_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Enterpr
             ],
             "notes": "Our 3-Tier Router processes 90% of routine alerts locally on GPU for $0 cost. For zero-day threats, SENTINEL cascades to Groq 70B, Gemini 2M Context, or OpenRouter 550B models."
         },
-        # SLIDE 7
+        # SLIDE 9: AST CODE SANDBOX GUARD & ACTIVE DEFENSE
         {
-            "takeaway": "TOP TAKEAWAY: Multi-factor scoring groups isolated alerts into single visual attack graphs.",
-            "slide_title": "🕸️ Incident Correlation & Attack Graph Builder",
-            "subtitle": "Multi-Factor Scoring & Machine-Readable JSON Graphs",
-            "cards": [
-                {"icon": "📊", "title": "Multi-Factor Scoring", "text": "Evaluates entity similarity, temporal proximity, and MITRE tactics into a 0.0 - 1.0 correlation score."},
-                {"icon": "🕸️", "title": "JSON Attack Graph", "text": "Builds machine-readable attack graph nodes and edges mapping lateral movement across networks."},
-                {"icon": "🧠", "title": "ChromaDB RAG Memory", "text": "Persists sanitized threat vectors in data/chroma/, retrieving top 3 historical threat patterns."}
-            ],
-            "notes": "Instead of presenting isolated alerts, SENTINEL correlates thousands of events into single incident clusters, building visual attack graphs showing lateral movement."
-        },
-        # SLIDE 8
-        {
-            "takeaway": "TOP TAKEAWAY: AST syntax tree parsing prevents malicious AI-generated code execution.",
+            "takeaway": "CODE SAFETY: AST syntax tree inspection guarantees zero execution of malicious shell commands.",
             "slide_title": "🔒 AST Safe AI Code Execution Sandbox Guard",
-            "subtitle": "Syntax Tree Inspection Blocking Unsafe Shell Commands",
+            "subtitle": "Syntax Tree Inspection Blocking Command Injection",
             "code_box": "AI Code Input ──► ast.parse() ──► ASTSecurityVisitor Inspection\n\n✅ SAFE CODE: base64.b64decode(\"aGVsbG8=\") ──► EXECUTED IN RESTRICTED NAMESPACE\n❌ MALICIOUS: os.system(\"rm -rf /\")         ──► BLOCKED INSTANTLY (AST Security Violation)",
             "notes": "When AI generates Python scripts to de-obfuscate malware payloads, SENTINEL inspects the Python AST syntax tree first. If dangerous calls like os.system() are detected, SENTINEL blocks them instantly."
         },
-        # SLIDE 9
+        # SLIDE 10: COURTROOM PDF BRIEFS & IMMUTABLE AUDIT TRAIL
         {
-            "takeaway": "TOP TAKEAWAY: Containment actions require explicit Human-in-the-Loop officer approval.",
-            "slide_title": "🛡️ Active Defense Containment & HITL Gateway",
-            "subtitle": "Controlled Containment Adapters + Strict Server RBAC",
-            "cards": [
-                {"icon": "🔥", "title": "Firewall Controller", "text": "IP blocking rules in safe simulation mode (SENTINEL_RESPONSE_MODE=mock)."},
-                {"icon": "⚡", "title": "Process Controller", "text": "Process termination adapters for malicious executable command strings."},
-                {"icon": "🔒", "title": "Host Isolator", "text": "Network isolation adapters for compromised internal host systems."}
-            ],
-            "notes": "SENTINEL never allows AI to execute arbitrary OS commands. All containment recommendations must pass through a server-side Human-in-the-Loop approval gateway."
-        },
-        # SLIDE 10
-        {
-            "takeaway": "TOP TAKEAWAY: Courtroom-ready 1-page PDF briefs are generated in under 30 seconds.",
+            "takeaway": "EVIDENCE INTEGRITY: Append-only audit logging and courtroom-ready 1-page PDF briefs generated in < 30s.",
             "slide_title": "📜 Courtroom PDF Briefs & Immutable Audit Trail",
             "subtitle": "Courtroom-Ready Reports Generated in < 30 Seconds",
             "cards": [
@@ -142,9 +151,9 @@ def create_customized_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Enterpr
             ],
             "notes": "SENTINEL logs every triage event to an append-only audit trail and generates a 1-page courtroom-ready executive PDF report in under 30 seconds."
         },
-        # SLIDE 11
+        # SLIDE 11: ENTERPRISE IMPACT & VERIFICATION VICTORY
         {
-            "takeaway": "TOP TAKEAWAY: SENTINEL is 100% verified operational across all 10 architectural levels.",
+            "takeaway": "VERIFICATION: SENTINEL is 100% verified operational across all 10 architectural levels.",
             "slide_title": "🏆 Enterprise Impact & System Verification",
             "subtitle": "All 10 Architectural Levels Verified Operational",
             "cards": [
@@ -160,7 +169,7 @@ def create_customized_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Enterpr
     for data in slides_content:
         slide = prs.slides.add_slide(blank_layout)
 
-        # Set Background Color
+        # Background Fill
         background = slide.background
         fill = background.fill
         fill.solid()
@@ -240,8 +249,8 @@ def create_customized_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Enterpr
         tf_notes.text = data.get("notes", "")
 
     prs.save(output_path)
-    print(f"🎉 Customized PowerPoint Deck created successfully at: {output_path}")
+    print(f"🎉 Master Structured PowerPoint Deck created successfully at: {output_path}")
     return output_path
 
 if __name__ == "__main__":
-    create_customized_pptx()
+    create_master_structured_pptx()
