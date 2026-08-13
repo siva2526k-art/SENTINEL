@@ -1,6 +1,6 @@
 """
-SENTINEL — Native PowerPoint (.pptx) Pitch Deck Generator
-Generates a native 10-slide PowerPoint presentation (.pptx) directly on Desktop.
+SENTINEL — Visual PowerPoint (.pptx) Pitch Deck Generator
+Generates a dark-mode, visual, card-based PowerPoint presentation (.pptx) directly on Desktop.
 """
 import os
 import sys
@@ -12,169 +12,195 @@ from pptx.dml.color import RGBColor
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-def create_humanized_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_HacKP_2026_Pitch_Deck.pptx"):
+def create_visual_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Visual_Pitch_Deck_2026.pptx"):
     prs = Presentation()
-    # Set 16:9 widescreen layout (13.33 x 7.5 inches)
+    # Widescreen 16:9 (13.33 x 7.5 inches)
     prs.slide_width = Inches(13.33)
     prs.slide_height = Inches(7.5)
-
     blank_layout = prs.slide_layouts[6]
+
+    # Color Palette
+    BG_NAVY = RGBColor(9, 13, 22)         # #090d16
+    CARD_BG = RGBColor(15, 23, 42)        # #0f172a
+    CARD_BORDER = RGBColor(59, 130, 246)  # #3b82f6
+    TEXT_WHITE = RGBColor(248, 250, 252)  # #f8fafc
+    TEXT_MUTED = RGBColor(148, 163, 184)  # #94a3b8
+    ACCENT_CYAN = RGBColor(6, 182, 212)   # #06b6d4
+    ACCENT_BLUE = RGBColor(96, 165, 250)  # #60a5fa
+    ACCENT_YELLOW = RGBColor(234, 179, 8) # #eab308
 
     slides_content = [
         {
             "slide_title": "SENTINEL — Autonomous AI SOC Triage & Privacy Platform",
             "subtitle": "Security Event Network Triage Investigation with Neural Engine and LLM",
-            "bullets": [
-                "Solo Presenter: Sivabalan T (Lead Architect)",
-                "Event: Hac'KP 2026 (Kerala Police Cyberdome Hackathon at Zoho Corporation)",
-                "Key Innovation: Zero-Trust Data Sanitizer + 3-Tier MoE AI Router + AST Code Sandbox Guard"
+            "cards": [
+                {"icon": "👤", "title": "Solo Presenter & Lead", "text": "Sivabalan T\nLead Security Engineer & System Architect"},
+                {"icon": "🏛️", "title": "Event & Venue", "text": "Hac'KP 2026 (7th National Cyberdome Hackathon)\nVenue: Zoho Corporation Campus"},
+                {"icon": "🚀", "title": "Core Breakthrough", "text": "Zero-Trust Privacy Shield + 3-Tier MoE Router + AST Sandbox Guard + Courtroom PDF Briefs"}
             ],
-            "notes": "Good morning respected judges and officers of Kerala Police Cyberdome. I am Sivabalan T, Lead Architect of SENTINEL. Today I present SENTINEL—an autonomous, privacy-preserving AI SOC platform built from first principles."
+            "notes": "Good morning respected judges. I am Sivabalan T, Lead Architect of SENTINEL. Today I present SENTINEL—a privacy-preserving, 3-tier AI SOC triage platform built from first principles."
         },
         {
-            "slide_title": "The Crisis in Cyber Investigations",
-            "subtitle": "Alert Fatigue, Data Leakage to Cloud LLMs & High API Costs",
-            "bullets": [
-                "Alert Fatigue: SOC analysts face 5,000+ raw logs daily, leading to missed zero-day threats.",
-                "Privacy & Legal Risk: Basic AI wrappers leak raw police emails, passwords, and internal IPs to public cloud LLMs.",
-                "High Token Costs: Paying commercial cloud APIs per token for millions of raw logs is financially unsustainable."
+            "slide_title": "🚨 The Crisis in Digital Investigations",
+            "subtitle": "Why Legacy SOC Workflows & Commercial AI Wrappers Fail",
+            "cards": [
+                {"icon": "⚡", "title": "Alert Fatigue", "text": "SOC analysts handle 5,000+ raw logs daily. Manual log parsing takes 30-45 minutes per alert, causing zero-day threats to slip through."},
+                {"icon": "🔓", "title": "Privacy & Legal Leakage", "text": "Basic AI wrappers leak raw police emails, passwords, and internal IPs to public cloud LLMs, violating DPDP Act 2023 and GDPR."},
+                {"icon": "💸", "title": "Uncontrolled Token Costs", "text": "Sending raw multi-megabyte SIEM log streams to commercial cloud APIs per token costs thousands of dollars monthly."}
             ],
-            "notes": "Cyber crime units handle thousands of complex logs daily. Sending raw telemetry to commercial AI like OpenAI leaks sensitive police emails and internal IP addresses, violating privacy laws. Furthermore, cloud token costs quickly run into thousands of dollars."
+            "notes": "Cyber investigators drown in raw JSON logs daily. When teams use basic commercial AI, they leak confidential police PII to public cloud servers, violating privacy laws while burning thousands of dollars in token fees."
         },
         {
-            "slide_title": "Introducing SENTINEL Architecture",
-            "subtitle": "Privacy-Preserving, Local-First Hybrid AI Infrastructure",
-            "bullets": [
-                "Zero-Trust Data Sanitizer: Scrubs PII & tokenizes IPs/emails into synthetic tokens ([USER_1], [INTERNAL_IP_1]) in local RAM.",
-                "Adversarial Prompt Injection Firewall: Neutralizes embedded log attack phrases before AI sees payload.",
-                "3-Tier MoE AI Router: Triages 90% routine alerts offline on workstation GPUs for $0 software cost.",
-                "AST Code Execution Sandbox Guard: Inspects AI code syntax tree to block dangerous shell calls (os.system)."
+            "slide_title": "💡 The SENTINEL Architecture Solution",
+            "subtitle": "4 Technical Pillars of First-Principles AI Engineering",
+            "cards": [
+                {"icon": "🔒", "title": "1. Zero-Trust Sanitizer", "text": "Replaces PII with synthetic tokens ([USER_1], [INTERNAL_IP_1]) in encrypted local RAM before network transit."},
+                {"icon": "🛡️", "title": "2. Prompt Injection Firewall", "text": "Neutralizes log-embedded attack phrases ([NEUTRALIZED_PROMPT_INJECTION]) before AI model processing."},
+                {"icon": "🤖", "title": "3. 3-Tier System-Level MoE", "text": "Triages 90% routine alerts offline on workstation GPUs for $0 software cost, cascading to cloud models only when needed."},
+                {"icon": "🔒", "title": "4. AST Code Sandbox Guard", "text": "Inspects AI code syntax trees (ast.parse) to block dangerous shell calls (os.system) before execution."}
             ],
-            "notes": "SENTINEL solves this through a 4-pillar architecture: Zero-Trust PII Sanitization, Prompt Injection Firewall, 3-Tier AI Routing, and AST Safe Code Sandbox Guard."
+            "notes": "SENTINEL solves this through 4 technical pillars: Zero-Trust Data Sanitization, Prompt Injection Neutralization, 3-Tier AI Cost Optimization, and AST Code Execution Guarding."
         },
         {
-            "slide_title": "Zero-Trust Data Sanitizer & Reversible Tokenization",
-            "subtitle": "Zero PII Exposure to Cloud AI + Courtroom Evidence Integrity",
-            "bullets": [
-                "Deterministic PII Scrubbing: IPv4, IPv6, Emails, MACs, JWTs, API Keys replaced automatically.",
-                "Ephemeral Local RAM Identity Mapping: Unmasking keys live strictly inside local workstation RAM.",
-                "Dual-View Interface: [Cloud AI View] sees PII-free tokens; [Officer View] allows authorized 1-click unmasking."
-            ],
-            "notes": "Cloud AI providers only ever see PII-free synthetic tokens like [USER_1] logged in from [INTERNAL_IP_1]. Real identity unmasking stays in encrypted local RAM, accessible only by authorized officers with role tokens."
+            "slide_title": "🔒 Zero-Trust Sanitizer & Dual-View Interface",
+            "subtitle": "Zero PII Cloud Exposure + Courtroom Evidence Integrity",
+            "code_box": "❌ RAW LOG (Local Workstation Only):\n\"Failed SSH login for officer.sharma@keralapolice.gov.in from 192.168.1.45 on port 22.\"\n\n✅ [Cloud / AI View] (Sent to Groq / Gemini / OpenRouter):\n\"Failed SSH login for [USER_1] from [INTERNAL_IP_1] on port 22.\"\n\n🔑 [Officer Re-Identified View] (Authorized Police Officer Only):\n\"Failed SSH login for officer.sharma@keralapolice.gov.in from 192.168.1.45 on port 22.\"",
+            "notes": "Cloud AI engines only ever see sanitized tokens like [USER_1] from [INTERNAL_IP_1]. The unmasking key lives strictly inside local RAM, accessible only by authorized officers with role tokens."
         },
         {
-            "slide_title": "3-Tier System-Level MoE AI Router",
-            "subtitle": "85%+ Software Cost Reduction + Multi-Model Failover",
-            "bullets": [
-                "Tier 1 (Local GPU Ollama): deepseek-r1:8b / llama3.2:1b running 100% offline ($0 cost).",
-                "Tier 2 (Cloud MoE Engine): Groq Cloud (DeepSeek 70B @ 300 t/s) & Google Gemini Flash (2M Context).",
-                "Tier 3 (Ultra-Large Models): OpenRouter FREE Tier (Nemotron-3 550B & DeepSeek 671B).",
-                "Smart Cascade Router: Automatically failover if internet drops or rate limits hit."
+            "slide_title": "🤖 3-Tier System-Level MoE AI Routing Engine",
+            "subtitle": "85%+ Software Cost Savings + Smart Cascade Failover",
+            "cards": [
+                {"icon": "🖥️", "title": "Tier 1: Local GPU Ollama", "text": "deepseek-r1:8b / llama3.2:1b\n100% Offline GPU AI execution ($0.00 cost, 90% routine triage)."},
+                {"icon": "⚡", "title": "Tier 2: Groq & Gemini Flash", "text": "DeepSeek 70B @ 300 t/s & Gemini Flash 2M Context Window\nUltra-fast reasoning & massive log file ingestion."},
+                {"icon": "🌌", "title": "Tier 3: OpenRouter Free 550B", "text": "nvidia/nemotron-3-ultra-550b-a55b:free\n550 Billion Parameter intelligence for zero-day threat analysis."}
             ],
-            "notes": "Our 3-Tier AI Router cuts software costs by 85%. 90% of routine alerts are triaged locally on GPU for $0 cost. For zero-day threats, SENTINEL cascades to Groq 70B, Gemini 2M Context, or OpenRouter 550B models."
+            "notes": "Our 3-Tier Router processes 90% of routine alerts locally on GPU for $0 cost. For zero-day threats, SENTINEL cascades to Groq 70B, Gemini 2M Context, or OpenRouter 550B models."
         },
         {
-            "slide_title": "Incident Correlation & Attack Graph Reconstruction",
-            "subtitle": "From Unstructured SIEM Telemetry to Actionable Intelligence",
-            "bullets": [
-                "Multi-Factor Scoring: Correlates entity similarity, temporal proximity, and MITRE tactics (0.0 to 1.0).",
-                "Attack Graph Builder: Reconstructs machine-readable JSON attack graphs (Nodes & Edges).",
-                "Entity Mapping: Tracks relationships across USER -> HOST -> PROCESS -> DOMAIN."
+            "slide_title": "🕸️ Incident Correlation & Attack Graph Builder",
+            "subtitle": "Multi-Factor Scoring & Machine-Readable JSON Graphs",
+            "cards": [
+                {"icon": "📊", "title": "Multi-Factor Scoring", "text": "Evaluates entity similarity, temporal proximity, and MITRE tactics into a 0.0 - 1.0 correlation score."},
+                {"icon": "🕸️", "title": "JSON Attack Graph", "text": "Builds machine-readable attack graph nodes and edges mapping lateral movement across networks."},
+                {"icon": "🧠", "title": "ChromaDB RAG Memory", "text": "Persists sanitized threat vectors in data/chroma/, retrieving top 3 historical threat patterns."}
             ],
-            "script": "Instead of showing isolated alerts, SENTINEL groups thousands of events into single incident clusters, building visual attack graphs showing exact lateral movement."
+            "notes": "Instead of presenting isolated alerts, SENTINEL correlates thousands of events into single incident clusters, building visual attack graphs showing lateral movement."
         },
         {
-            "slide_title": "AST Safe AI Code Execution Sandbox Guard",
-            "subtitle": "Syntax Tree Inspection Blocking Unsafe Shell Commands",
-            "bullets": [
-                "AST Visitor (ast.parse): Inspects AI-generated Python code at syntax tree level.",
-                "Forbidden Modules Blocked: Automatically rejects os, sys, subprocess, socket, exec, eval.",
-                "Restricted Namespace Execution: Runs safe de-obfuscation logic in isolated namespace (base64, json, re)."
-            ],
-            "notes": "Executing AI-generated code directly is dangerous. SENTINEL inspects the Python AST syntax tree first. If dangerous calls like os.system() are detected, SENTINEL blocks them instantly."
+            "slide_title": "🔒 AST Safe AI Code Execution Sandbox Guard",
+            "subtitle": "Syntax Tree Inspection Blocking Command Injection",
+            "code_box": "AI Code Input ──► ast.parse() ──► ASTSecurityVisitor Inspection\n\n✅ SAFE CODE: base64.b64decode(\"aGVsbG8=\") ──► EXECUTED IN RESTRICTED NAMESPACE\n❌ MALICIOUS: os.system(\"rm -rf /\")         ──► BLOCKED INSTANTLY (AST Security Violation)",
+            "notes": "When AI generates Python scripts to de-obfuscate malware payloads, SENTINEL inspects the Python AST syntax tree first. If dangerous calls like os.system() are detected, SENTINEL blocks them instantly."
         },
         {
-            "slide_title": "Active Defense Engine & Server-Side HITL Gateway",
-            "subtitle": "Controlled Containment Adapters + Strict Server RBAC",
-            "bullets": [
-                "Controlled Adapters: Firewall IP Blocking, Process Termination, Host Network Isolation.",
-                "Server-Side HITL Gate: Active defense requires explicit Officer approval token (OFFICER / ADMIN).",
-                "Safe Simulation Mode: Operates in SENTINEL_RESPONSE_MODE=mock for production safety."
+            "slide_title": "🛡️ Active Defense Containment & HITL Gateway",
+            "subtitle": "Controlled Adapters + Strict Server RBAC",
+            "cards": [
+                {"icon": "🔥", "title": "Firewall Controller", "text": "IP blocking rules in safe simulation mode (SENTINEL_RESPONSE_MODE=mock)."},
+                {"icon": "⚡", "title": "Process Controller", "text": "Process termination adapters for malicious executable command strings."},
+                {"icon": "🔒", "title": "Host Isolator", "text": "Network isolation adapters for compromised internal host systems."}
             ],
-            "notes": "SENTINEL never lets AI execute arbitrary shell commands. All containment actions require explicit Human-in-the-Loop officer approval, executed through controlled, audited adapters."
+            "notes": "SENTINEL never allows AI to execute arbitrary OS commands. All containment recommendations must pass through a server-side Human-in-the-Loop approval gateway."
         },
         {
-            "slide_title": "Courtroom PDF Incident Reports & Immutable Audit Trail",
-            "subtitle": "Courtroom-Ready Briefs Generated in < 30 Seconds",
-            "bullets": [
-                "1-Page Executive PDF Briefs: Formatted using ReportLab for law enforcement and judicial review.",
-                "Immutable Audit Trail: Writes append-only JSON logs (sentinel_audit_trail.jsonl) with zero PII exposure.",
-                "Complete Evidence Record: Captures sanitized alert, reidentified view, MITRE tactics, and HITL authorization."
+            "slide_title": "📜 Courtroom PDF Briefs & Immutable Audit Trail",
+            "subtitle": "Courtroom-Ready Reports Generated in < 30 Seconds",
+            "cards": [
+                {"icon": "📄", "title": "Courtroom PDF Briefs", "text": "Generates 1-page executive PDF incident briefs using ReportLab for law enforcement and judicial review."},
+                {"icon": "📜", "title": "Immutable Audit Trail", "text": "Writes append-only JSON logs (data/audit/sentinel_audit_trail.jsonl) with zero identity_map exposure."}
             ],
-            "notes": "SENTINEL logs every triage event to an append-only audit trail and generates courtroom-ready 1-page PDF reports in under 30 seconds."
+            "notes": "SENTINEL logs every triage event to an append-only audit trail and generates a 1-page courtroom-ready executive PDF report in under 30 seconds."
         },
         {
-            "slide_title": "Competitive Victory: Why SENTINEL Wins",
-            "subtitle": "100% Operational & Verified Across All 10 Levels",
-            "bullets": [
-                "Zero-Trust PII Isolation: Competitors leak police PII; SENTINEL is 100% privacy-compliant.",
-                "85%+ Software Cost Savings: Competitors rely on expensive cloud APIs; SENTINEL runs local GPU AI ($0).",
-                "AST Sandbox Safety: Competitors risk command injection; SENTINEL enforces syntax safety.",
-                "10/10 Verification Passed: All 10 architectural levels verified operational and live on GitHub."
+            "slide_title": "🏆 Competitive Victory: Why SENTINEL Wins",
+            "subtitle": "10/10 Architectural Level Verification PASSED",
+            "cards": [
+                {"icon": "🟢", "title": "Zero-Trust PII Isolation", "text": "Competitors leak police PII; SENTINEL is 100% privacy-compliant."},
+                {"icon": "🟢", "title": "85%+ Cost Optimization", "text": "Competitors burn cloud API fees; SENTINEL runs local GPU AI ($0)."},
+                {"icon": "🟢", "title": "AST Code Safety", "text": "Competitors risk command injection; SENTINEL enforces syntax safety."},
+                {"icon": "🟢", "title": "10/10 Passed", "text": "All 10 architectural levels verified operational and live on GitHub master branch."}
             ],
             "notes": "To conclude, judges: SENTINEL delivers Zero-Trust Privacy, 3-Tier AI Cost Optimization, AST Code Security, and Courtroom PDF Briefs. All 10 architectural levels are verified live. Thank you!"
         }
     ]
 
-    # Theme colors
-    NAVY_BLUE = RGBColor(30, 58, 138)
-    DARK_TEXT = RGBColor(15, 23, 42)
-    ACCENT_BLUE = RGBColor(37, 99, 235)
-    LIGHT_BG = RGBColor(248, 250, 252)
-
     for data in slides_content:
         slide = prs.slides.add_slide(blank_layout)
 
-        # Header Box
-        header_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.5), Inches(11.7), Inches(1.2))
-        tf_h = header_box.text_frame
-        tf_h.word_wrap = True
+        # Set Slide Background Color to Dark Navy
+        background = slide.background
+        fill = background.fill
+        fill.solid()
+        fill.fore_color.rgb = BG_NAVY
 
-        p_title = tf_h.paragraphs[0]
-        p_title.text = data["slide_title"]
-        p_title.font.name = "Helvetica"
-        p_title.font.bold = True
-        p_title.font.size = Pt(24)
-        p_title.font.color.rgb = NAVY_BLUE
+        # Slide Header Title
+        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.5), Inches(11.7), Inches(1.2))
+        tf_t = title_box.text_frame
+        tf_t.word_wrap = True
 
-        p_sub = tf_h.add_paragraph()
+        p_t = tf_t.paragraphs[0]
+        p_t.text = data["slide_title"]
+        p_t.font.name = "Helvetica"
+        p_t.font.bold = True
+        p_t.font.size = Pt(24)
+        p_t.font.color.rgb = TEXT_WHITE
+
+        p_sub = tf_t.add_paragraph()
         p_sub.text = data["subtitle"]
         p_sub.font.name = "Helvetica"
         p_sub.font.bold = True
-        p_sub.font.size = Pt(14)
-        p_sub.font.color.rgb = ACCENT_BLUE
+        p_sub.font.size = Pt(13)
+        p_sub.font.color.rgb = ACCENT_CYAN
+        p_sub.space_before = Pt(4)
 
-        # Bullets Box
-        bullet_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.8), Inches(11.7), Inches(4.5))
-        tf_b = bullet_box.text_frame
-        tf_b.word_wrap = True
+        # Render Visual Cards or Code Box
+        if "code_box" in data:
+            code_box = slide.shapes.add_textbox(Inches(0.8), Inches(2.0), Inches(11.7), Inches(4.8))
+            tf_c = code_box.text_frame
+            tf_c.word_wrap = True
+            p_code = tf_c.paragraphs[0]
+            p_code.text = data["code_box"]
+            p_code.font.name = "Courier New"
+            p_code.font.size = Pt(14)
+            p_code.font.color.rgb = ACCENT_BLUE
+        else:
+            cards = data.get("cards", [])
+            num_cards = len(cards)
+            card_width = Inches(3.6) if num_cards >= 3 else Inches(5.5)
+            gap = Inches(0.4)
+            start_left = Inches(0.8)
 
-        for idx, bullet_text in enumerate(data["bullets"]):
-            p = tf_b.paragraphs[0] if idx == 0 else tf_b.add_paragraph()
-            p.text = "• " + bullet_text
-            p.font.name = "Helvetica"
-            p.font.size = Pt(14)
-            p.font.color.rgb = DARK_TEXT
-            p.space_after = Pt(14)
+            for i, c_data in enumerate(cards):
+                left = start_left + i * (card_width + gap) if num_cards <= 3 else start_left + (i % 2) * (Inches(5.6) + gap)
+                top = Inches(2.0) if i < 3 else Inches(4.5)
 
-        # Presenter Notes
+                card_box = slide.shapes.add_textbox(left, top, card_width, Inches(2.2))
+                tf_card = card_box.text_frame
+                tf_card.word_wrap = True
+
+                p_c_title = tf_card.paragraphs[0]
+                p_c_title.text = f"{c_data['icon']} {c_data['title']}"
+                p_c_title.font.name = "Helvetica"
+                p_c_title.font.bold = True
+                p_c_title.font.size = Pt(15)
+                p_c_title.font.color.rgb = ACCENT_YELLOW
+                p_c_title.space_after = Pt(6)
+
+                p_c_text = tf_card.add_paragraph()
+                p_c_text.text = c_data["text"]
+                p_c_text.font.name = "Helvetica"
+                p_c_text.font.size = Pt(11)
+                p_c_text.font.color.rgb = TEXT_MUTED
+
+        # Presenter Notes Section
         notes_slide = slide.notes_slide
         tf_notes = notes_slide.notes_text_frame
         tf_notes.text = data.get("notes", "")
 
     prs.save(output_path)
-    print(f"🎉 Native PowerPoint Presentation created successfully at: {output_path}")
+    print(f"🎉 Dark-Mode Visual PowerPoint Deck created successfully at: {output_path}")
     return output_path
 
 if __name__ == "__main__":
-    create_humanized_pptx()
+    create_visual_pptx()
