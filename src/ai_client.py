@@ -17,21 +17,24 @@ class SentinelAIClient:
         self.openai_api_key = openai_api_key or os.environ.get("OPENAI_API_KEY")
         self.ollama_url = "http://localhost:11434/api/generate"
 
-    def query_tier1_ollama(self, prompt: str, model="llama3.2:1b") -> dict:
-        """Tier 1: Query Local Ollama running 100% offline on RTX 3050 GPU ($0 cost)."""
+    def query_tier1_ollama(self, prompt: str, model="deepseek-r1:8b") -> dict:
+        """Tier 1: Query Local Ollama running 100% offline on GPU ($0 cost)."""
         payload = {"model": model, "prompt": prompt, "stream": False}
         data = json.dumps(payload).encode('utf-8')
         req = urllib.request.Request(self.ollama_url, data=data, headers={'Content-Type': 'application/json'})
         
         try:
-            with urllib.request.urlopen(req, timeout=5) as response:
+            with urllib.request.urlopen(req, timeout=8) as response:
                 result = json.loads(response.read().decode('utf-8'))
-                return {"status": "success", "tier": "Tier 1 (Local Ollama)", "content": result.get("response", "").strip()}
-        except Exception as e:
-            return {"status": "error", "error": f"Ollama offline: {e}"}
+                return {"status": "success", "tier": f"Tier 1 (Local Ollama {model})", "content": result.get("response", "").strip()}
+        except Exception:
+            # Fallback to lightweight 1B model if 8B model is downloading or unavailable
+            if model != "llama3.2:1b":
+                return self.query_tier1_ollama(prompt, model="llama3.2:1b")
+            return {"status": "error", "error": "Local Ollama server unavailable."}
 
-    def query_tier2_groq(self, prompt: str, model="llama-3.1-70b-versatile") -> dict:
-        """Tier 2: Query Groq Cloud API for ultra-fast deep reasoning."""
+    def query_tier2_groq(self, prompt: str, model="deepseek-r1-distill-llama-70b") -> dict:
+        """Tier 2: Query Groq Cloud API (DeepSeek 70B Reasoning Model - FREE Tier at 300 tokens/sec)."""
         if not self.groq_api_key:
             return {"status": "error", "error": "GROQ_API_KEY environment variable not set."}
         
