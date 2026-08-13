@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SENTINEL — Master Interactive Visual Pitch Deck | Hac'KP 2026</title>
+  <title>SENTINEL — Enterprise Autonomous AI SOC Triage & Privacy Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -31,7 +31,6 @@
       width: 100vw;
     }
 
-    /* Background animated gradient glow */
     .bg-glow {
       position: absolute;
       width: 600px;
@@ -82,7 +81,6 @@
       border: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* Slide Content Viewport */
     .slide-viewport {
       flex: 1;
       display: flex;
@@ -108,34 +106,44 @@
     }
 
     .slide-title {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       font-weight: 800;
       line-height: 1.2;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       background: linear-gradient(135deg, #ffffff, #93c5fd);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .slide-subtitle {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--accent-cyan);
-      margin-bottom: 2rem;
+      margin-bottom: 0.5rem;
       font-weight: 600;
     }
 
-    /* Grid Layouts for Visual Cards */
+    .takeaway-bar {
+      background: rgba(234, 179, 8, 0.1);
+      border-left: 4px solid var(--accent-yellow);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fef08a;
+      margin-bottom: 1.5rem;
+    }
+
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
     }
 
     .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.5rem;
+      border-radius: 14px;
+      padding: 1.25rem;
       backdrop-filter: blur(12px);
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       transition: transform 0.2s ease, border-color 0.2s ease;
@@ -147,21 +155,21 @@
     }
 
     .card-icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .card-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text-main);
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
     }
 
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
     .card-text {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     .code-box {
@@ -176,7 +184,6 @@
       white-space: pre-wrap;
     }
 
-    /* Presenter Notes Bar */
     .notes-bar {
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid rgba(59, 130, 246, 0.4);
@@ -201,7 +208,6 @@
       margin-bottom: 0.3rem;
     }
 
-    /* Footer Navigation */
     footer {
       display: flex;
       justify-content: space-between;
@@ -246,101 +252,137 @@
   <div class="container">
     <header>
       <div class="brand">🛡️ SENTINEL</div>
-      <div style="color: var(--text-muted); font-size: 0.9rem;">Hac'KP 2026 Pitch Deck • Zoho Corporation</div>
-      <div class="slide-counter" id="slideNum">SLIDE 1 / 10</div>
+      <div style="color: var(--text-muted); font-size: 0.9rem;">Enterprise Product Brief • Version 1.0</div>
+      <div class="slide-counter" id="slideNum">SLIDE 1 / 11</div>
     </header>
 
     <div class="slide-viewport">
-      <!-- SLIDE 1 -->
+      <!-- SLIDE 1: PURE ENTERPRISE PRODUCT COVER -->
       <div class="slide active">
         <h1 class="slide-title">SENTINEL — Autonomous AI SOC Triage & Privacy Platform</h1>
         <div class="slide-subtitle">Security Event Network Triage Investigation with Neural Engine and LLM</div>
         <div class="cards-grid">
           <div class="card">
-            <div class="card-icon">👤</div>
-            <div class="card-title">Solo Presenter & Lead</div>
-            <div class="card-text"><b>Sivabalan T</b><br>Lead Security Engineer & System Architect</div>
+            <div class="card-icon">🛡️</div>
+            <div class="card-title">Enterprise SOC Platform</div>
+            <div class="card-text">Autonomous Security Operations Center Triage & Incident Response Platform</div>
           </div>
           <div class="card">
-            <div class="card-icon">🏛️</div>
-            <div class="card-title">Event & Venue</div>
-            <div class="card-text"><b>Hac'KP 2026</b> (7th National Hackathon by Kerala Police Cyberdome)<br>Venue: Zoho Corporation</div>
+            <div class="card-icon">👤</div>
+            <div class="card-title">Lead Security Engineer</div>
+            <div class="card-text"><b>Sivabalan T</b><br>Lead System Architect & Senior Security Engineer</div>
           </div>
           <div class="card">
             <div class="card-icon">🚀</div>
-            <div class="card-title">Core Breakthrough</div>
-            <div class="card-text">Zero-Trust Privacy Shield + 3-Tier MoE AI Router + AST Code Sandbox Guard + Courtroom PDF Briefs</div>
+            <div class="card-title">Core Architecture</div>
+            <div class="card-text">Zero-Trust Privacy Shield + 3-Tier MoE Router + AST Sandbox Guard + Courtroom PDF Briefs</div>
           </div>
         </div>
         <div class="notes-bar" id="notes-1">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "Respected Judges, good morning. I am Sivabalan T, Lead Architect of SENTINEL. Today I introduce SENTINEL—the world's first privacy-preserving, 3-tier AI SOC platform designed specifically for law enforcement and enterprise cyber defense."
+          "Good morning. I am Sivabalan T, Lead Architect of SENTINEL. Today I introduce SENTINEL—an enterprise-grade autonomous AI SOC triage and privacy platform engineered for next-generation cyber defense."
         </div>
       </div>
 
       <!-- SLIDE 2 -->
       <div class="slide">
-        <h1 class="slide-title">🚨 The Crisis in Digital Investigations</h1>
-        <div class="slide-subtitle">Why Legacy SOC Workflows & Basic Commercial AI Wrappers Fail</div>
+        <h1 class="slide-title">🚨 The Crisis in Digital Incident Triage</h1>
+        <div class="slide-subtitle">Alert Fatigue, Data Leakage & Uncontrolled Cloud Token Costs</div>
+        <div class="takeaway-bar">📌 TOP TAKEAWAY: Manual log parsing drowns analysts while basic AI wrappers leak sensitive police data to public clouds.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">⚡</div>
-            <div class="card-title">Alert Fatigue</div>
-            <div class="card-text">SOC analysts handle 5,000+ alerts daily. Manual log parsing takes 30-45 minutes per alert, causing zero-day threats to slip through.</div>
+            <div class="card-title">5,000+ Daily Alerts</div>
+            <div class="card-text">SOC analysts handle 5,000+ raw SIEM logs daily. Manual log parsing takes 30-45 minutes per alert, causing zero-day threats to slip through.</div>
           </div>
           <div class="card">
             <div class="card-icon">🔓</div>
-            <div class="card-title">Privacy & Legal Leakage</div>
-            <div class="card-text">Tools like AiSOC leak raw police emails, passwords, and internal IPs to public cloud LLMs, violating DPDP Act 2023 and GDPR.</div>
+            <div class="card-title">Public Cloud PII Leakage</div>
+            <div class="card-text">Commercial AI wrappers leak real police emails, passwords, and internal IPs to public cloud LLMs, violating DPDP Act 2023 and GDPR.</div>
           </div>
           <div class="card">
             <div class="card-icon">💸</div>
-            <div class="card-title">Uncontrolled Token Costs</div>
+            <div class="card-title">High Monthly API Costs</div>
             <div class="card-text">Sending raw multi-megabyte SIEM log streams to commercial cloud APIs per token costs thousands of dollars monthly.</div>
           </div>
         </div>
         <div class="notes-bar" id="notes-2">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "Every day, cyber investigators drown in raw JSON logs. When teams use basic commercial AI, they leak confidential police PII to public cloud servers, violating privacy laws while burning thousands of dollars in cloud token fees."
+          "Cyber investigators drown in raw JSON logs daily. When teams use basic commercial AI, they leak confidential police PII to public cloud servers while burning thousands of dollars in API fees."
         </div>
       </div>
 
       <!-- SLIDE 3 -->
       <div class="slide">
-        <h1 class="slide-title">💡 The SENTINEL Architecture Solution</h1>
-        <div class="slide-subtitle">4 Technical Pillars of First-Principles AI Engineering</div>
+        <h1 class="slide-title">💡 SENTINEL Architecture Matrix</h1>
+        <div class="slide-subtitle">First-Principles AI System Architecture for Cyber Operations</div>
+        <div class="takeaway-bar">📌 TOP TAKEAWAY: SENTINEL unifies Zero-Trust Privacy, 3-Tier AI Cost Control, and AST Code Execution Guarding.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">🔒</div>
             <div class="card-title">1. Zero-Trust Sanitizer</div>
-            <div class="card-text">Replaces PII with synthetic tokens ([USER_1], [INTERNAL_IP_1]) in encrypted local RAM before network transit.</div>
+            <div class="card-text">Replaces PII with synthetic tokens ([USER_1], [INTERNAL_IP_1]) in encrypted local RAM before transit.</div>
           </div>
           <div class="card">
             <div class="card-icon">🛡️</div>
-            <div class="card-title">2. Prompt Injection Firewall</div>
-            <div class="card-text">Neutralizes log-embedded attack phrases ([NEUTRALIZED_PROMPT_INJECTION]) before AI model processing.</div>
+            <div class="card-title">2. Injection Neutralizer</div>
+            <div class="card-text">Neutralizes log-embedded attack phrases ([NEUTRALIZED_PROMPT_INJECTION]) before AI processing.</div>
           </div>
           <div class="card">
             <div class="card-icon">🤖</div>
-            <div class="card-title">3. 3-Tier System-Level MoE</div>
-            <div class="card-text">Triages 90% routine alerts offline on workstation GPUs for $0 software cost, cascading to cloud models only when needed.</div>
+            <div class="card-title">3. 3-Tier System MoE</div>
+            <div class="card-text">Triages 90% routine alerts offline on workstation GPUs for $0 software cost.</div>
           </div>
           <div class="card">
             <div class="card-icon">🔒</div>
-            <div class="card-title">4. AST Code Sandbox Guard</div>
-            <div class="card-text">Inspects AI code syntax trees (ast.parse) to block dangerous shell calls (os.system) before execution.</div>
+            <div class="card-title">4. AST Code Sandbox</div>
+            <div class="card-text">Parses Python AST syntax trees (ast.parse) to block dangerous shell calls (os.system) before execution.</div>
           </div>
         </div>
         <div class="notes-bar" id="notes-3">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "SENTINEL solves this completely through 4 technical pillars: Zero-Trust Data Sanitization, Prompt Injection Neutralization, 3-Tier AI Cost Optimization, and AST Code Execution Guarding."
+          "SENTINEL solves this through 4 technical pillars: Zero-Trust Data Sanitization, Prompt Injection Neutralization, 3-Tier AI Cost Optimization, and AST Code Execution Guarding."
         </div>
       </div>
 
-      <!-- SLIDE 4 -->
+      <!-- SLIDE 4: OPEN-SOURCE ADAPTATION & PROVENANCE -->
+      <div class="slide">
+        <h1 class="slide-title">🏛️ Architectural Provenance & Open-Source Adaptation</h1>
+        <div class="slide-subtitle">How SENTINEL Improves Upon Established Open-Source Projects</div>
+        <div class="takeaway-bar">📌 TOP TAKEAWAY: SENTINEL adapts industry open-source standards, fixing critical privacy, security, and cost flaws.</div>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon">🔒</div>
+            <div class="card-title">Sanitizer (from Presidio)</div>
+            <div class="card-text"><b>Presidio Flaw</b>: Destroys PII or sends raw text.<br><b>SENTINEL Fix</b>: Reversible token mapping ([USER_1]) stored in encrypted local RAM.</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🤖</div>
+            <div class="card-title">AI Router (from RouteLLM)</div>
+            <div class="card-text"><b>RouteLLM Flaw</b>: Leaks prompt metadata to cloud.<br><b>SENTINEL Fix</b>: Sanitizes prompts first; processes 90% offline on local GPU ($0).</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🔒</div>
+            <div class="card-title">AST Guard (from PyInquirer)</div>
+            <div class="card-text"><b>PyInquirer Flaw</b>: Unsafe eval() runtime wrappers.<br><b>SENTINEL Fix</b>: AST syntax tree parsing (ast.parse) blocking os.system().</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🧠</div>
+            <div class="card-title">RAG Memory (from ChromaDB)</div>
+            <div class="card-text"><b>LangChain Flaw</b>: Stores raw PII in vectors.<br><b>SENTINEL Fix</b>: Embeds only PII-scrubbed threat vectors in ChromaDB RAG.</div>
+          </div>
+        </div>
+        <div class="notes-bar" id="notes-4">
+          <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
+          "To ensure maximum robustness, we adapted established open-source projects—Microsoft Presidio for sanitization, RouteLLM for routing, and ChromaDB for vector memory—while fixing their security and privacy limitations."
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
       <div class="slide">
         <h1 class="slide-title">🔒 Zero-Trust Sanitizer & Dual-View Interface</h1>
-        <div class="slide-subtitle">Zero PII Cloud Leakage + Courtroom Evidence Integrity</div>
+        <div class="slide-subtitle">Complete PII Isolation + Authorized Police Unmasking</div>
+        <div class="takeaway-bar">📌 TOP TAKEAWAY: Cloud AI models only see synthetic tokens; unmasking keys stay inside local RAM.</div>
         <div class="cards-grid">
           <div class="card" style="grid-column: span 2;">
             <div class="card-title">Dual-View Live Telemetry Comparison</div>
@@ -354,16 +396,17 @@
 "Failed SSH login for officer.sharma@keralapolice.gov.in from 192.168.1.45 on port 22."</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-4">
+        <div class="notes-bar" id="notes-5">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "Cloud AI engines only ever see sanitized tokens like [USER_1] from [INTERNAL_IP_1]. The unmasking key lives strictly inside local RAM, accessible only by authorized officers with role tokens."
+          "Cloud AI engines only ever see PII-free tokens like [USER_1] from [INTERNAL_IP_1]. The unmasking key lives strictly inside local RAM, accessible only by authorized officers with role tokens."
         </div>
       </div>
 
-      <!-- SLIDE 5 -->
+      <!-- SLIDE 6 -->
       <div class="slide">
         <h1 class="slide-title">🤖 3-Tier System-Level MoE AI Routing Engine</h1>
-        <div class="slide-subtitle">85%+ Software Cost Savings + Smart Cascade Failover</div>
+        <div class="slide-subtitle">85%+ Software Cost Optimization + Automatic Failover</div>
+        <div class="takeaway-bar">📌 TOP TAKEAWAY: Local GPU AI handles 90% routine alerts for $0 cost, cascading to 550B models for zero-day threats.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">🖥️</div>
@@ -381,16 +424,17 @@
             <div class="card-text"><b>nvidia/nemotron-3-ultra-550b-a55b:free</b><br>550 Billion Parameter intelligence for zero-day threat analysis.</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-5">
+        <div class="notes-bar" id="notes-6">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "Our 3-Tier Router processes 90% of routine alerts locally on GPU for $0 cost. For zero-day threats, SENTINEL cascades to Groq 70B, Gemini 2M Context, or OpenRouter 550B models—ensuring zero downtime."
+          "Our 3-Tier Router processes 90% of routine alerts locally on GPU for $0 cost. For zero-day threats, SENTINEL cascades to Groq 70B, Gemini 2M Context, or OpenRouter 550B models."
         </div>
       </div>
 
-      <!-- SLIDE 6 -->
+      <!-- SLIDE 7 -->
       <div class="slide">
         <h1 class="slide-title">🕸️ Incident Correlation & Attack Graph Builder</h1>
         <div class="slide-subtitle">Multi-Factor Scoring & Machine-Readable JSON Graphs</div>
+        <div class="takeaway-bar">📌 TOP TAKEAWAY: Multi-factor scoring groups isolated alerts into single visual attack graphs.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">📊</div>
@@ -408,16 +452,17 @@
             <div class="card-text">Persists sanitized threat vectors in data/chroma/, retrieving top 3 historical threat patterns.</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-6">
+        <div class="notes-bar" id="notes-7">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
           "Instead of presenting isolated alerts, SENTINEL correlates thousands of events into single incident clusters, building visual attack graphs showing lateral movement."
         </div>
       </div>
 
-      <!-- SLIDE 7 -->
+      <!-- SLIDE 8 -->
       <div class="slide">
         <h1 class="slide-title">🔒 AST Safe AI Code Execution Sandbox Guard</h1>
-        <div class="slide-subtitle">Syntax Tree Parsing Blocking Command Injection</div>
+        <div class="slide-subtitle">Syntax Tree Inspection Blocking Unsafe Shell Commands</div>
+        <div class="takeaway-bar">📌 TOP TAKEAWAY: AST syntax tree parsing prevents malicious AI-generated code execution.</div>
         <div class="cards-grid">
           <div class="card" style="grid-column: span 2;">
             <div class="card-title">AST Syntax Tree Inspection Flow</div>
@@ -427,16 +472,17 @@
 ❌ MALICIOUS: os.system("rm -rf /")         ──► BLOCKED INSTANTLY (AST Security Violation)</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-7">
+        <div class="notes-bar" id="notes-8">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
           "When AI generates Python scripts to de-obfuscate malware payloads, SENTINEL inspects the Python AST syntax tree first. If dangerous calls like os.system() are detected, SENTINEL blocks them instantly."
         </div>
       </div>
 
-      <!-- SLIDE 8 -->
+      <!-- SLIDE 9 -->
       <div class="slide">
         <h1 class="slide-title">🛡️ Active Defense Containment & HITL Gateway</h1>
         <div class="slide-subtitle">Controlled Adapters + Strict Server RBAC</div>
+        <div class="takeaway-bar">📌 TOP TAKEAWAY: Containment actions require explicit Human-in-the-Loop officer approval.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">🔥</div>
@@ -454,16 +500,17 @@
             <div class="card-text">Network isolation adapters for compromised internal host systems.</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-8">
+        <div class="notes-bar" id="notes-9">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
           "SENTINEL never allows AI to execute arbitrary OS commands. All containment recommendations must pass through a server-side Human-in-the-Loop approval gateway."
         </div>
       </div>
 
-      <!-- SLIDE 9 -->
+      <!-- SLIDE 10 -->
       <div class="slide">
         <h1 class="slide-title">📜 Courtroom PDF Briefs & Immutable Audit Trail</h1>
         <div class="slide-subtitle">Courtroom-Ready Reports Generated in < 30 Seconds</div>
+        <div class="takeaway-bar">📌 TOP TAKEAWAY: Courtroom-ready 1-page PDF briefs are generated in under 30 seconds.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">📄</div>
@@ -476,16 +523,17 @@
             <div class="card-text">Writes append-only JSON logs (data/audit/sentinel_audit_trail.jsonl) with zero identity_map exposure.</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-9">
+        <div class="notes-bar" id="notes-10">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
           "SENTINEL logs every triage event to an append-only audit trail and generates a 1-page courtroom-ready executive PDF report in under 30 seconds."
         </div>
       </div>
 
-      <!-- SLIDE 10 -->
+      <!-- SLIDE 11 -->
       <div class="slide">
-        <h1 class="slide-title">🏆 Competitive Victory: Why SENTINEL Wins</h1>
-        <div class="slide-subtitle">10/10 Architectural Level Verification PASSED</div>
+        <h1 class="slide-title">🏆 Enterprise Impact & System Verification</h1>
+        <div class="slide-subtitle">All 10 Architectural Levels Verified Operational</div>
+        <div class="takeaway-bar">📌 TOP TAKEAWAY: SENTINEL is 100% verified operational across all 10 architectural levels.</div>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">🟢</div>
@@ -508,9 +556,9 @@
             <div class="card-text">All 10 architectural levels verified operational and live on GitHub master branch.</div>
           </div>
         </div>
-        <div class="notes-bar" id="notes-10">
+        <div class="notes-bar" id="notes-11">
           <div class="notes-title">🗣️ Solo Presenter Script (Say Aloud)</div>
-          "To conclude, judges: SENTINEL delivers Zero-Trust Privacy, 3-Tier AI Cost Optimization, AST Code Security, and Courtroom PDF Briefs. Thank you, and I am ready for your questions!"
+          "To conclude, judges: SENTINEL delivers Zero-Trust Privacy, 3-Tier AI Cost Optimization, AST Code Security, and Courtroom PDF Briefs. All 10 architectural levels are verified live. Thank you!"
         </div>
       </div>
     </div>
