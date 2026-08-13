@@ -20,6 +20,15 @@ Whenever you or your AI agent (Antigravity) adds a feature, fixes a bug, or modi
 
 ## 🔔 Latest Activity Feed
 
+### 🗓️ 13 Aug 2026, 09:20 PM IST — Integrated Phase 3 Correlation Engine & Phase 13 Audit Logger
+- **Author / Agent**: `Sivabalan (Lead)` & `Antigravity`
+- **Component**: `src/correlation/`, `src/audit_logger.py`, `src/triage_agent.py`
+- **Key Changes**:
+  - Built Phase 3 Incident Correlation Engine (`incident_correlator.py`, `entity_correlator.py`, `temporal_engine.py`, `attack_graph.py`).
+  - Added multi-factor incident correlation scoring (0.0 to 1.0) and machine-readable JSON Attack Graph generation (`nodes` & `edges`).
+  - Built Phase 13 Immutable Audit Logger (`audit_logger.py`) saving append-only JSON logs (`sentinel_audit_trail.jsonl`) with strict PII data isolation.
+  - Integrated both Phase 3 and Phase 13 directly into `SentinelTriageAgent` pipeline (`triage_agent.py`).
+
 ### 🗓️ 12 Aug 2026, 11:45 PM IST — Complete SENTINEL Core Prototype & Pitch Suite
 - **Author / Agent**: `Sivabalan (Lead)` & `Antigravity`
 - **Component**: `src/sanitizer.py`, `src/router.py`, `src/ai_client.py`, `src/mitre_mapper.py`, `src/triage_agent.py`, `src/reports/pdf_generator.py`, `src/demo_runner.py`, `src/samples/`
