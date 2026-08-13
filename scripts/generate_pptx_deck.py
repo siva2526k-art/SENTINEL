@@ -1,8 +1,9 @@
 """
-SENTINEL — Professional Visual PowerPoint (.pptx) Deck Generator
-Follows the Top-Down Presentation Structure & Enterprise Product Layout.
-Includes dedicated Slide 4: Open-Source Feature Adaptation & Provenance.
-Front page is 100% clean enterprise product software platform (No venue/hackathon text).
+SENTINEL — Customized Professional Visual PowerPoint (.pptx) Deck Generator
+Front page customized:
+  - Presenter: Sivabalan T (2nd Year CSE, Sri Sairam Engineering College)
+  - Version Tag & Status removed from Page 1.
+Includes Full System Architecture Diagram & Step-by-Step Talking Hint Points slide.
 """
 import os
 import sys
@@ -13,13 +14,13 @@ from pptx.dml.color import RGBColor
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-def create_topdown_enterprise_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Enterprise_Pitch_Deck.pptx"):
+def create_customized_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL_Enterprise_Pitch_Deck.pptx"):
     prs = Presentation()
     prs.slide_width = Inches(13.33)
     prs.slide_height = Inches(7.5)
     blank_layout = prs.slide_layouts[6]
 
-    # Enterprise Dark Palette
+    # Dark Enterprise Palette
     BG_NAVY = RGBColor(9, 13, 22)
     TEXT_WHITE = RGBColor(248, 250, 252)
     TEXT_MUTED = RGBColor(148, 163, 184)
@@ -28,20 +29,32 @@ def create_topdown_enterprise_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL
     ACCENT_YELLOW = RGBColor(234, 179, 8)
 
     slides_content = [
-        # SLIDE 1: PURE ENTERPRISE PRODUCT TITLE (No Venue / Hackathon text)
+        # SLIDE 1: FRONT PAGE (No Version Tag, No Status, Sri Sairam Engineering College details)
         {
             "is_title_slide": True,
             "slide_title": "SENTINEL",
             "subtitle": "Autonomous AI SOC Triage & Zero-Trust Privacy Platform",
-            "version_tag": "Enterprise Product Brief • Version 1.0",
             "cards": [
-                {"icon": "🛡️", "title": "Product Platform", "text": "Autonomous Security Operations Center Triage Engine"},
-                {"icon": "👤", "title": "System Architect", "text": "Sivabalan T\nLead Security Engineer & System Architect"},
-                {"icon": "🚀", "title": "Core Architecture", "text": "Zero-Trust Privacy Shield + 3-Tier MoE Router + AST Sandbox Guard"}
+                {"icon": "🎓", "title": "Presenter & Affiliation", "text": "<b>Sivabalan T</b>\nDepartment of Computer Science & Engineering (2nd Year)\nSri Sairam Engineering College"},
+                {"icon": "🛡️", "title": "System Architecture", "text": "Autonomous Security Operations Center Triage Engine & Zero-Trust Privacy Shield"},
+                {"icon": "🚀", "title": "Core Technical Breakthrough", "text": "Zero-Trust Data Sanitizer + 3-Tier MoE AI Router + AST Code Sandbox Guard"}
             ],
-            "notes": "Good morning. I am Sivabalan T, Lead Architect of SENTINEL. Today I introduce SENTINEL—an enterprise-grade autonomous AI SOC triage and privacy platform engineered for next-generation cyber defense."
+            "notes": "Good morning respected judges. I am Sivabalan T, 2nd year Computer Science Engineering student from Sri Sairam Engineering College. Today I present SENTINEL—an autonomous AI SOC triage and zero-trust privacy platform."
         },
-        # SLIDE 2
+        # SLIDE 2: FULL SYSTEM ARCHITECTURE & TALKING HINT POINTS (NEW!)
+        {
+            "takeaway": "TOP TAKEAWAY: Complete end-to-end telemetry pipeline from Zero-Trust Sanitization to Courtroom PDF Generation.",
+            "slide_title": "🏗️ Full System Architecture & Execution Pipeline",
+            "subtitle": "Step-by-Step Data Flow with Easy Talking Hint Points",
+            "cards": [
+                {"icon": "1️⃣", "title": "Sanitizer & Firewall", "text": "• Replaces PII with [USER_1], [INTERNAL_IP_1] in local RAM.\n• Neutralizes log-embedded prompt injections."},
+                {"icon": "2️⃣", "title": "3-Tier MoE AI Router", "text": "• Maps MITRE tactics (T1110, T1059).\n• Tier 1 Local GPU ($0 cost) ──► Tier 2 Groq/Gemini ──► Tier 3 550B."},
+                {"icon": "3️⃣", "title": "Graph & AST Sandbox", "text": "• Reconstructs JSON attack graphs (Nodes & Edges).\n• AST syntax tree parsing (ast.parse) blocks os.system()."},
+                {"icon": "4️⃣", "title": "RAG, HITL & PDF Brief", "text": "• ChromaDB vector threat memory.\n• Human-in-the-Loop officer approval gate.\n• Courtroom PDF report generated in < 30s."}
+            ],
+            "notes": "Judges, here is our full 4-stage architecture pipeline: First, raw SIEM telemetry is scrubbed of PII in local RAM; second, our 3-Tier Router triages alerts locally on GPU; third, our AST sandbox blocks malicious code; and fourth, an executive PDF report is generated for authorized officers."
+        },
+        # SLIDE 3
         {
             "takeaway": "TOP TAKEAWAY: Manual log parsing drowns analysts while basic AI wrappers leak sensitive police data to public clouds.",
             "slide_title": "🚨 The Crisis in Digital Incident Triage",
@@ -53,29 +66,16 @@ def create_topdown_enterprise_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL
             ],
             "notes": "Cyber investigators drown in raw JSON logs daily. When teams use basic commercial AI, they leak confidential police PII to public cloud servers while burning thousands of dollars in API fees."
         },
-        # SLIDE 3
-        {
-            "takeaway": "TOP TAKEAWAY: SENTINEL unifies Zero-Trust Privacy, 3-Tier AI Cost Control, and AST Code Execution Guarding.",
-            "slide_title": "💡 SENTINEL Architecture Matrix",
-            "subtitle": "First-Principles AI System Architecture for Cyber Operations",
-            "cards": [
-                {"icon": "🔒", "title": "1. Zero-Trust Sanitizer", "text": "Replaces PII with synthetic tokens ([USER_1], [INTERNAL_IP_1]) in encrypted local RAM before transit."},
-                {"icon": "🛡️", "title": "2. Injection Neutralizer", "text": "Neutralizes log-embedded attack phrases ([NEUTRALIZED_PROMPT_INJECTION]) before AI processing."},
-                {"icon": "🤖", "title": "3. 3-Tier System MoE", "text": "Triages 90% routine alerts offline on workstation GPUs for $0 software cost."},
-                {"icon": "🔒", "title": "4. AST Code Sandbox", "text": "Parses Python AST syntax trees to block dangerous shell execution (os.system)."}
-            ],
-            "notes": "SENTINEL solves this through 4 technical pillars: Zero-Trust Data Sanitization, Prompt Injection Neutralization, 3-Tier AI Cost Optimization, and AST Code Execution Guarding."
-        },
-        # SLIDE 4: OPEN-SOURCE FEATURE ADAPTATION & PROVENANCE (NEW!)
+        # SLIDE 4: OPEN-SOURCE ADAPTATION & PROVENANCE
         {
             "takeaway": "TOP TAKEAWAY: SENTINEL adapts industry open-source standards, fixing critical privacy, security, and cost flaws.",
             "slide_title": "🏛️ Architectural Provenance & Open-Source Adaptation",
             "subtitle": "How SENTINEL Improves Upon Established Open-Source Projects",
             "cards": [
-                {"icon": "🔒", "title": "Sanitizer (from Presidio)", "text": "<b>Presidio Flaw</b>: Destroys PII or sends raw text.\n<b>SENTINEL Innovation</b>: Reversible token mapping ([USER_1]) stored in local RAM."},
-                {"icon": "🤖", "title": "AI Router (from RouteLLM)", "text": "<b>RouteLLM Flaw</b>: Leaks prompt metadata to cloud.\n<b>SENTINEL Innovation</b>: Sanitizes prompts first; processes 90% offline on local GPU ($0)."},
-                {"icon": "🔒", "title": "AST Guard (from PyInquirer)", "text": "<b>PyInquirer Flaw</b>: Unsafe eval() wrappers.\n<b>SENTINEL Innovation</b>: AST syntax tree parsing (ast.parse) blocking os.system()."},
-                {"icon": "🧠", "title": "RAG Memory (from ChromaDB)", "text": "<b>LangChain Flaw</b>: Stores raw PII in vectors.\n<b>SENTINEL Innovation</b>: Embeds only PII-scrubbed threat vectors in ChromaDB."}
+                {"icon": "🔒", "title": "Sanitizer (from Presidio)", "text": "<b>Presidio Flaw</b>: Destroys PII or sends raw text.\n<b>SENTINEL Fix</b>: Reversible token mapping ([USER_1]) stored in local RAM."},
+                {"icon": "🤖", "title": "AI Router (from RouteLLM)", "text": "<b>RouteLLM Flaw</b>: Leaks prompt metadata to cloud.\n<b>SENTINEL Fix</b>: Sanitizes prompts first; processes 90% offline on local GPU ($0)."},
+                {"icon": "🔒", "title": "AST Guard (from PyInquirer)", "text": "<b>PyInquirer Flaw</b>: Unsafe eval() runtime wrappers.\n<b>SENTINEL Fix</b>: AST syntax tree parsing (ast.parse) blocking os.system()."},
+                {"icon": "🧠", "title": "RAG Memory (from ChromaDB)", "text": "<b>LangChain Flaw</b>: Stores raw PII in vectors.\n<b>SENTINEL Fix</b>: Embeds only PII-scrubbed threat vectors in ChromaDB RAG."}
             ],
             "notes": "To ensure maximum robustness, we adapted established open-source projects—Microsoft Presidio for sanitization, RouteLLM for routing, and ChromaDB for vector memory—while fixing their security and privacy limitations."
         },
@@ -240,8 +240,8 @@ def create_topdown_enterprise_pptx(output_path=r"C:\Users\siva2\Desktop\SENTINEL
         tf_notes.text = data.get("notes", "")
 
     prs.save(output_path)
-    print(f"🎉 Enterprise Top-Down PowerPoint Deck (with Provenance) created successfully at: {output_path}")
+    print(f"🎉 Customized PowerPoint Deck created successfully at: {output_path}")
     return output_path
 
 if __name__ == "__main__":
-    create_topdown_enterprise_pptx()
+    create_customized_pptx()
