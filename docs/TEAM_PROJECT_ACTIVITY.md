@@ -20,6 +20,14 @@ Whenever you or your AI agent (Antigravity) adds a feature, fixes a bug, or modi
 
 ## 🔔 Latest Activity Feed
 
+### 🗓️ 13 Aug 2026, 09:50 PM IST — Implemented Phase 6 Safe AI Code Execution & AST Sandbox Guard
+- **Author / Agent**: `Sivabalan (Lead)` & `Antigravity`
+- **Component**: `src/sandbox.py`, `src/triage_agent.py`
+- **Key Changes**:
+  - Built Phase 6 AST Code Sandbox Inspector (`src/sandbox.py`) using Python's `ast` module.
+  - Implemented zero-trust code inspection blocking forbidden calls (`exec`, `eval`, `open`, `compile`) and forbidden module imports (`os`, `sys`, `subprocess`, `shutil`, `socket`).
+  - Integrated Phase 6 AST Inspection directly into `SentinelTriageAgent` pipeline (`triage_agent.py`).
+
 ### 🗓️ 13 Aug 2026, 09:20 PM IST — Integrated Phase 3 Correlation Engine & Phase 13 Audit Logger
 - **Author / Agent**: `Sivabalan (Lead)` & `Antigravity`
 - **Component**: `src/correlation/`, `src/audit_logger.py`, `src/triage_agent.py`
