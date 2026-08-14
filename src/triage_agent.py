@@ -15,6 +15,11 @@ from audit_logger import SentinelAuditLogger
 from sandbox import SentinelCodeSandbox
 from memory import SentinelMemoryStore
 from response.response_engine import ResponseEngine
+try:
+    from integrations.discord_bot import SentinelDiscordNotifier
+    _DISCORD_AVAILABLE = True
+except ImportError:
+    _DISCORD_AVAILABLE = False
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -32,6 +37,10 @@ class SentinelTriageAgent:
         self.sandbox = SentinelCodeSandbox()
         self.memory = SentinelMemoryStore()
         self.response = ResponseEngine()
+        # Discord real-time SOC notification channel
+        self.discord = SentinelDiscordNotifier() if _DISCORD_AVAILABLE else None
+        if self.discord:
+            self.discord.send_startup_ping()
 
     def process_alert(self, raw_alert_text: str) -> dict:
         print("\n" + "="*70)
@@ -133,6 +142,27 @@ result = f"De-obfuscated Command Fragment: {decoded}"
         if rag_matches:
             print(f"   • Top Match Summary     : \"{rag_matches[0]['sanitized_summary']}\"")
         print("="*70 + "\n")
+
+        # Step 10: Real-Time Discord SOC Notification
+        result_payload = {
+            "raw_alert":        raw_alert_text,
+            "sanitized_alert":  sanitized_alert,
+            "reidentified_alert": reidentified_alert,
+            "ip_map":           ip_map,
+            "sanitizer":        scrubbed,
+            "mitre":            mitre_info,
+            "triage":           triage_verdict,
+            "attack_graph":     attack_graph,
+            "audit_entry":      audit_entry,
+            "sandbox_result":   sandbox_result,
+            "rag_matches":      rag_matches
+        }
+        if self.discord:
+            print("\n📨 [STEP 10: DISCORD REAL-TIME SOC NOTIFICATION]")
+            self.discord.send_alert(result_payload)
+            # If HIGH or CRITICAL, also send HITL approval ping
+            if triage_verdict.get("severity", "").upper() in ("HIGH", "CRITICAL"):
+                self.discord.send_hitl_request(result_payload)
 
         return {
             "raw_alert": raw_alert_text,

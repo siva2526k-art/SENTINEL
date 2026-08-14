@@ -22,3 +22,6 @@
 {"timestamp": "2026-08-13T17:47:21Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "203.0.113.88", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1041", "severity": "LOW"}}
 {"timestamp": "2026-08-13T17:51:22Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "192.168.1.45", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1110", "severity": "HIGH"}}
 {"timestamp": "2026-08-13T17:51:22Z", "actor": "POLICE_OFFICER_01", "action": "APPROVE_CONTAINMENT", "incident": "INC-TEST-99", "target": "192.168.1.45", "result": "EXECUTED_SUCCESS", "metadata": {}}
+{"timestamp": "2026-08-14T04:44:05Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "192.168.1.45", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1110", "severity": "HIGH"}}
+{"timestamp": "2026-08-14T04:44:31Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "Local Host", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1059", "severity": "HIGH"}}
+{"timestamp": "2026-08-14T04:44:50Z", "actor": "SYSTEM_AGENT", "action": "ALERT_TRIAGED", "incident": "INC-2026-8801", "target": "10.0.4.15", "result": "TRIAGED_SUCCESSFULLY", "metadata": {"mitre": "T1041", "severity": "LOW"}}
