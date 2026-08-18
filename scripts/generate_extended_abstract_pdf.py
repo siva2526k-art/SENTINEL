@@ -36,7 +36,7 @@ class NumberedCanvas(canvas.Canvas):
         self.setFillColor(colors.HexColor("#0f172a"))
         
         # Header
-        self.drawString(36, 756, "SENTINEL — TECHNICAL ABSTRACT & ARCHITECTURE SPECIFICATION")
+        self.drawString(36, 756, "SHIELD AI — TECHNICAL ABSTRACT & ARCHITECTURE SPECIFICATION")
         self.setStrokeColor(colors.HexColor("#cbd5e1"))
         self.setLineWidth(0.5)
         self.line(36, 748, 576, 748)
@@ -69,8 +69,8 @@ def build_pdf():
         'TitleStyle',
         parent=styles['Heading1'],
         fontName='Helvetica-Bold',
-        fontSize=15,
-        leading=19,
+        fontSize=14,
+        leading=18,
         textColor=colors.HexColor('#0f172a'),
         alignment=1,
         spaceAfter=4
@@ -80,11 +80,11 @@ def build_pdf():
         'SubtitleStyle',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=10,
-        leading=13,
+        fontSize=9.5,
+        leading=12.5,
         textColor=colors.HexColor('#2563eb'),
         alignment=1,
-        spaceAfter=8
+        spaceAfter=6
     )
 
     meta_style = ParagraphStyle(
@@ -110,18 +110,6 @@ def build_pdf():
         keepWithNext=True
     )
 
-    h2_style = ParagraphStyle(
-        'H2Style',
-        parent=styles['Heading3'],
-        fontName='Helvetica-Bold',
-        fontSize=9,
-        leading=11.5,
-        textColor=colors.HexColor('#2563eb'),
-        spaceBefore=6,
-        spaceAfter=2,
-        keepWithNext=True
-    )
-
     body_style = ParagraphStyle(
         'BodyStyle',
         parent=styles['Normal'],
@@ -132,21 +120,12 @@ def build_pdf():
         spaceAfter=4
     )
 
-    code_style = ParagraphStyle(
-        'CodeStyle',
-        parent=styles['Normal'],
-        fontName='Courier',
-        fontSize=7.5,
-        leading=9.5,
-        textColor=colors.HexColor('#0f172a')
-    )
-
     story = []
 
-    # Title Banner
-    story.append(Paragraph("SENTINEL: Security Event Network Triage Investigation with Neural Engine and Large Language Models", title_style))
-    story.append(Paragraph("<b>Author:</b> Sivabalan T &nbsp;|&nbsp; <b>Dept:</b> Computer Science & Engineering, Sri Sai Ram Engineering College (TNEA Code: 1419)", subtitle_style))
-    story.append(Paragraph("<b>Academic Year:</b> 2026–2027 &nbsp;|&nbsp; <b>Repository:</b> github.com/siva2526k-art/SENTINEL &nbsp;|&nbsp; <b>Target:</b> Hac'KP 2026 Specification", meta_style))
+    # Title Banner (NO AUTHOR NAME)
+    story.append(Paragraph("SHIELD AI — AUTONOMOUS CYBER DEFENCE AND SECURITY INTELLIGENCE PLATFORM", title_style))
+    story.append(Paragraph("Department of Computer Science & Engineering, Sri Sai Ram Engineering College (TNEA Code: 1419)", subtitle_style))
+    story.append(Paragraph("<b>Academic Year:</b> 2026–2027 &nbsp;|&nbsp; <b>Repository:</b> github.com/siva2526k-art/SENTINEL &nbsp;|&nbsp; <b>Target:</b> Hac'KP 2026 Technical Abstract", meta_style))
     story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor("#2563eb"), spaceAfter=8))
 
     # Section 1: Abstract
@@ -158,14 +137,14 @@ def build_pdf():
         "Intelligence and Large Language Models (LLMs) offer advanced natural-language reasoning for threat analysis, transmitting raw security "
         "telemetry to commercial cloud APIs creates severe data privacy vulnerabilities and risks exposing sensitive credentials, internal IP topographies, "
         "and employee data to external endpoints.<br/><br/>"
-        "This paper presents <b>SENTINEL</b> (<i>Security Event Network Triage Investigation with Neural Engine and Large Language Models</i>), an open-source "
-        "research prototype designed to evaluate a privacy-aware, human-supervised approach to automated SOC alert triage. SENTINEL implements an asynchronous "
+        "This paper presents <b>SHIELD AI</b> (<i>Autonomous Cyber Defence and Security Intelligence Platform</i>, formerly SENTINEL), an open-source "
+        "research prototype designed to evaluate a privacy-aware, human-supervised approach to automated SOC alert triage. SHIELD AI implements an asynchronous "
         "SIEM syslog ingestion bridge, a local zero-trust regex sanitizer with an inline prompt-injection firewall, a three-tier AI routing module, an embedded "
         "vector threat memory store (ChromaDB), a temporal entity correlator with directed attack-graph construction, an Abstract Syntax Tree (AST) Python code "
         "execution sandbox, human-in-the-loop (HITL) authorization gates, mock-mode active response controllers, JSONL audit logging, and automated executive PDF "
         "incident report generation via ReportLab.<br/><br/>"
-        "By retaining token de-anonymization lookup dictionaries strictly within volatile local RAM, SENTINEL prevents sensitive network identifiers from "
-        "traversing external boundaries during AI triage. SENTINEL is currently implemented as an early-stage Minimum Viable Product (MVP) to demonstrate "
+        "By retaining token de-anonymization lookup dictionaries strictly within volatile local RAM, SHIELD AI prevents sensitive network identifiers from "
+        "traversing external boundaries during AI triage. SHIELD AI is currently implemented as an early-stage Minimum Viable Product (MVP) to demonstrate "
         "architectural feasibility. Future work will focus on empirical evaluation against labeled SIEM datasets, production-grade security hardening, and "
         "formal bench-testing prior to operational deployment.<br/><br/>"
         "<b>Keywords:</b> Privacy-Preserving AI, SOC Alert Triage, Multi-Tier Model Cascading, Zero-Trust Sanitization, MITRE ATT&CK, Attack Graphs, AST Code Sandbox, Human-in-the-Loop, Digital Forensics."
@@ -186,7 +165,7 @@ def build_pdf():
     # Section 3: Proposed System
     story.append(Paragraph("3. PROPOSED SYSTEM", h1_style))
     s3_text = (
-        "SENTINEL is engineered as a modular Python framework incorporating the following core technical components:<br/>"
+        "SHIELD AI is engineered as a modular Python framework incorporating the following core technical components:<br/>"
         "• <b>Wazuh / SIEM Webhook Ingestion</b> (<code>src/ingestion/wazuh_listener.py</code>): Non-blocking asynchronous FastAPI listener.<br/>"
         "• <b>Local Zero-Trust Data Sanitizer</b> (<code>src/sanitizer.py</code>): Regex pattern matching scrubbing IPs, emails, MACs, and API tokens (e.g., <code>[USER_1]</code>, <code>[INTERNAL_IP_1]</code>), holding lookup tables in volatile RAM.<br/>"
         "• <b>Prompt Injection Firewall Guard</b> (<code>src/sanitizer.py</code>): Detects adversarial prompt overrides, replacing them with a <code>[NEUTRALIZED_PROMPT_INJECTION]</code> marker.<br/>"
@@ -216,7 +195,7 @@ def build_pdf():
     # Section 5: Current Prototype Status
     story.append(Paragraph("5. CURRENT PROTOTYPE STATUS", h1_style))
     s5_text = (
-        "SENTINEL is an early-stage <b>research prototype and Minimum Viable Product (MVP)</b> designed to evaluate privacy-preserving AI triage workflows. "
+        "SHIELD AI is an early-stage <b>research prototype and Minimum Viable Product (MVP)</b> designed to evaluate privacy-preserving AI triage workflows. "
         "It is <b>not</b> a production-ready SOC platform, commercial SOAR software, or verified legal forensics tool. Current capabilities represent architectural proofs-of-concept."
     )
     story.append(Paragraph(s5_text, body_style))
@@ -239,10 +218,10 @@ def build_pdf():
     # Section 7: Conclusion
     story.append(Paragraph("7. CONCLUSION", h1_style))
     s7_text = (
-        "SENTINEL demonstrates a privacy-preserving, human-supervised approach to AI-assisted SIEM alert triage. "
+        "SHIELD AI demonstrates a privacy-preserving, human-supervised approach to AI-assisted SIEM alert triage. "
         "By combining local regex data sanitization, prompt-injection neutralization, three-tier model routing, vector threat memory, and mandatory human authorization gates, "
         "the framework illustrates how organizations can leverage language models while retaining control over sensitive telemetry. "
-        "SENTINEL requires rigorous, reproducible benchmark evaluation and extensive security hardening before any real-world operational deployment."
+        "SHIELD AI requires rigorous, reproducible benchmark evaluation and extensive security hardening before any real-world operational deployment."
     )
     story.append(Paragraph(s7_text, body_style))
 

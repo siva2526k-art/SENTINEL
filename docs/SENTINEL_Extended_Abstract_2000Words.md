@@ -1,6 +1,5 @@
-# SENTINEL: Security Event Network Triage Investigation with Neural Engine and Large Language Models
+# SHIELD AI — AUTONOMOUS CYBER DEFENCE AND SECURITY INTELLIGENCE PLATFORM
 
-**Author**: Sivabalan T  
 **Department**: Department of Computer Science & Engineering, Sri Sai Ram Engineering College (TNEA Code: 1419), Chennai  
 **Academic Year**: 2026–2027  
 **Project Repository**: [github.com/siva2526k-art/SENTINEL](https://github.com/siva2526k-art/SENTINEL)  
@@ -12,9 +11,9 @@
 
 Security Operations Centers (SOCs) face acute operational bottlenecks driven by overwhelming telemetry volume, high false-positive rates, and analyst burnout. In typical enterprise environments, security analysts spend between 30 and 45 minutes investigating individual alerts, leading to significant delays and leaving a major portion of security notifications unreviewed. Concurrently, while Generative Artificial Intelligence and Large Language Models (LLMs) offer advanced natural-language reasoning for threat analysis, transmitting raw security telemetry to commercial cloud APIs creates severe data privacy vulnerabilities and risks exposing sensitive credentials, internal IP topographies, and employee data to external endpoints.
 
-This paper presents **SENTINEL** (*Security Event Network Triage Investigation with Neural Engine and Large Language Models*), an open-source research prototype designed to evaluate a privacy-aware, human-supervised approach to automated SOC alert triage. SENTINEL implements an asynchronous SIEM syslog ingestion bridge, a local zero-trust regex sanitizer with an inline prompt-injection firewall, a three-tier AI routing module, an embedded vector threat memory store (ChromaDB), a temporal entity correlator with directed attack-graph construction, an Abstract Syntax Tree (AST) Python code execution sandbox, human-in-the-loop (HITL) authorization gates, mock-mode active response controllers, JSONL audit logging, and automated executive PDF incident report generation via ReportLab.
+This paper presents **SHIELD AI** (*Autonomous Cyber Defence and Security Intelligence Platform*, formerly SENTINEL), an open-source research prototype designed to evaluate a privacy-aware, human-supervised approach to automated SOC alert triage. SHIELD AI implements an asynchronous SIEM syslog ingestion bridge, a local zero-trust regex sanitizer with an inline prompt-injection firewall, a three-tier AI routing module, an embedded vector threat memory store (ChromaDB), a temporal entity correlator with directed attack-graph construction, an Abstract Syntax Tree (AST) Python code execution sandbox, human-in-the-loop (HITL) authorization gates, mock-mode active response controllers, JSONL audit logging, and automated executive PDF incident report generation via ReportLab.
 
-By retaining token de-anonymization lookup dictionaries strictly within volatile local RAM, SENTINEL prevents sensitive network identifiers from traversing external boundaries during AI triage. SENTINEL is currently implemented as an early-stage Minimum Viable Product (MVP) to demonstrate architectural feasibility. Future work will focus on empirical evaluation against labeled SIEM datasets, production-grade security hardening, and formal bench-testing prior to operational deployment.
+By retaining token de-anonymization lookup dictionaries strictly within volatile local RAM, SHIELD AI prevents sensitive network identifiers from traversing external boundaries during AI triage. SHIELD AI is currently implemented as an early-stage Minimum Viable Product (MVP) to demonstrate architectural feasibility. Future work will focus on empirical evaluation against labeled SIEM datasets, production-grade security hardening, and formal bench-testing prior to operational deployment.
 
 *Keywords*: Privacy-Preserving AI, SOC Alert Triage, Multi-Tier Model Cascading, Zero-Trust Sanitization, MITRE ATT&CK, Attack Graphs, AST Code Sandbox, Human-in-the-Loop, Digital Forensics.
 
@@ -32,7 +31,7 @@ Modern enterprise, municipal, and government computer networks rely on Security 
 
 ## 3. PROPOSED SYSTEM
 
-SENTINEL is engineered as a modular Python framework that bridges local telemetry collection with privacy-preserving multi-tier AI reasoning. The current prototype incorporates the following core technical components:
+SHIELD AI is engineered as a modular Python framework that bridges local telemetry collection with privacy-preserving multi-tier AI reasoning. The current prototype incorporates the following core technical components:
 
 * **Wazuh / SIEM Webhook Ingestion** (`src/ingestion/wazuh_listener.py`): Non-blocking asynchronous FastAPI listener that receives raw JSON log streams and syslog payloads from SIEM agents.
 * **Local Zero-Trust Data Sanitizer** (`src/sanitizer.py`): A pre-processing engine using regular expression (Regex) pattern matching to scrub sensitive identifiers—including IPv4/IPv6 addresses, email addresses, MAC addresses, and API/JWT tokens—replacing them with synthetic tokens (e.g., `[USER_1]`, `[INTERNAL_IP_1]`). The de-anonymization lookup table is retained strictly in volatile RAM memory.
@@ -55,7 +54,7 @@ SENTINEL is engineered as a modular Python framework that bridges local telemetr
 
 ## 4. END-TO-END SYSTEM ARCHITECTURE
 
-SENTINEL structures its dataflow into three sequential operational stages, establishing a perimeter boundary between the local trust zone and external computational resources:
+SHIELD AI structures its dataflow into three sequential operational stages, establishing a perimeter boundary between the local trust zone and external computational resources:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────┐
@@ -75,7 +74,7 @@ SENTINEL structures its dataflow into three sequential operational stages, estab
 │       STAGE 3: AI TRIAGE, HUMAN APPROVAL, CONTROLLED RESPONSE, AUDIT & REPORTING        │
 │  3-Tier AI Router (Ollama Tier-1 / Cloud Tier-2/3) ──► AST Sandbox ──► HITL Approval Gate│
 │  ──► Mock Response Controllers ──► JSONL Audit Trail ──► ReportLab PDF & Discord Bot   │
-└─────────────────────────────────────────────────────────────────────────────────────────┘
+└───────────────────────────────────────────┴─────────────────────────────────────────────┘
 ```
 
 ### Stage 1: Ingestion & Privacy Boundary
@@ -93,13 +92,13 @@ If the model outputs Python code for payload de-obfuscation, `SentinelCodeSandbo
 
 ## 5. CURRENT PROTOTYPE STATUS
 
-SENTINEL is an early-stage **research prototype and Minimum Viable Product (MVP)** designed to evaluate privacy-preserving AI triage workflows. It is **not** a production-ready SOC platform, commercial SOAR software, or verified legal forensics tool. Current capabilities represent architectural proofs-of-concept operating within controlled test environments.
+SHIELD AI is an early-stage **research prototype and Minimum Viable Product (MVP)** designed to evaluate privacy-preserving AI triage workflows. It is **not** a production-ready SOC platform, commercial SOAR software, or verified legal forensics tool. Current capabilities represent architectural proofs-of-concept operating within controlled test environments.
 
 ---
 
 ## 6. LIMITATIONS AND FUTURE WORK
 
-To advance SENTINEL from an experimental prototype toward operational viability, several technical limitations must be addressed:
+To advance SHIELD AI from an experimental prototype toward operational viability, several technical limitations must be addressed:
 
 ### Current Limitations:
 1. **Sanitizer Scope & RAM Security**: The current sanitizer relies on regular expressions rather than Contextual Named Entity Recognition (NER). Unformatted usernames, street addresses, or arbitrary organizational names may bypass regex rules. Furthermore, the RAM lookup table is stored in unencrypted memory structures.
@@ -119,7 +118,7 @@ To advance SENTINEL from an experimental prototype toward operational viability,
 
 ## 7. CONCLUSION
 
-SENTINEL demonstrates a privacy-preserving, human-supervised approach to AI-assisted SIEM alert triage. By combining local regular-expression data sanitization, prompt-injection neutralization, three-tier model routing, vector threat memory, and mandatory human authorization gates, the framework illustrates how organizations can leverage language models for threat analysis while maintaining control over sensitive telemetry. SENTINEL requires rigorous, reproducible benchmark evaluation and extensive security hardening before any real-world operational deployment.
+SHIELD AI demonstrates a privacy-preserving, human-supervised approach to AI-assisted SIEM alert triage. By combining local regular-expression data sanitization, prompt-injection neutralization, three-tier model routing, vector threat memory, and mandatory human authorization gates, the framework illustrates how organizations can leverage language models for threat analysis while maintaining control over sensitive telemetry. SHIELD AI requires rigorous, reproducible benchmark evaluation and extensive security hardening before any real-world operational deployment.
 
 ---
 
