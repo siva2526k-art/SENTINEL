@@ -8,7 +8,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, HRFlowable
+    SimpleDocTemplate, Paragraph, HRFlowable
 )
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.pdfgen import canvas
@@ -122,7 +122,7 @@ def build_pdf():
 
     story = []
 
-    # Title Banner (Strict Monochrome - Black & White)
+    # Title Banner (Strict B&W Monochrome - Humanized Style)
     story.append(Paragraph("SHIELD AI — AUTONOMOUS CYBER DEFENCE AND SECURITY INTELLIGENCE PLATFORM", title_style))
     story.append(Paragraph("Department of Computer Science & Engineering, Sri Sai Ram Engineering College, Chennai", subtitle_style))
     story.append(Paragraph("<b>Academic Year:</b> 2026–2027 &nbsp;|&nbsp; <b>Domain:</b> Cybersecurity, Artificial Intelligence & Autonomous Systems", meta_style))
@@ -132,27 +132,24 @@ def build_pdf():
     story.append(Paragraph("EXECUTIVE ABSTRACT", h1_style))
 
     p1 = (
-        "Security Operations Centers (SOCs) face critical operational bottlenecks caused by overwhelming alert volume, high false-positive rates, and severe analyst fatigue. "
-        "Enterprise networks routinely ingest over 5,000 security logs daily, requiring 30 to 45 minutes of manual investigation per incident. Consequently, nearly 70% of security "
-        "notifications remain unexamined, expanding attacker dwell time. Furthermore, transmitting raw telemetry containing internal IP topographies, employee emails, and credentials "
-        "to commercial cloud AI services introduces catastrophic data privacy leakage and violates statutory regulations."
+        "Security Operations Centers (SOCs) struggle daily with excessive alert volume and analyst burnout. Enterprise networks routinely generate over 5,000 security logs every 24 hours, "
+        "taking 30 to 45 minutes of manual triage per incident. Because of this delay, nearly 70% of alerts end up unexamined. At the same time, sending raw log data—full of internal IP maps, "
+        "staff emails, and auth tokens—to public cloud AI models risks major privacy leaks and violates data protection laws."
     )
     story.append(Paragraph(p1, body_style))
 
     p2 = (
-        "<b>SHIELD AI</b> is a privacy-preserving, AI-assisted SOC triage and security intelligence framework engineered to solve these challenges. Operating on a Zero-Trust architecture, "
-        "SHIELD AI ingests real-time SIEM logs via non-blocking FastAPI webhooks. An inline Data Sanitizer performs local regular-expression (Regex) tokenization—scrubbing IPv4/v6 addresses, "
-        "emails, MAC addresses, and API keys into synthetic handles (<code>[USER_1]</code>, <code>[INTERNAL_IP_1]</code>) while holding lookup tables strictly within volatile RAM memory. "
-        "An integrated Prompt-Injection Firewall neutralizes adversarial prompt overrides in raw logs before processing."
+        "<b>SHIELD AI</b> addresses these operational and privacy hurdles through a zero-trust, hybrid architecture. Built around non-blocking FastAPI webhooks, the system processes raw SIEM logs locally. "
+        "An inline Data Sanitizer uses regular expressions to strip out IP addresses, email handles, MAC addresses, and API keys, replacing them with dummy tokens like <code>[USER_1]</code> or <code>[INTERNAL_IP_1]</code>. "
+        "Sensitive mapping dictionaries stay isolated in volatile RAM. Before any reasoning occurs, an integrated firewall scans for and neutralizes prompt-injection commands inside raw log strings."
     )
     story.append(Paragraph(p2, body_style))
 
     p3 = (
-        "Triage queries are dispatched through a Three-Tier AI Router: Tier 1 executes locally on workstation GPUs using open-weights models (Ollama <code>deepseek-r1:8b</code>) for 100% offline "
-        "triage with zero data egress, while policy-controlled cloud fallbacks (Groq/Gemini) receive only anonymized tokens. Sanitized incidents are mapped to MITRE ATT&CK tactics and techniques, "
-        "correlated into Directed Acyclic Attack Graphs (DAGs), and matched against historical cases via ChromaDB vector embeddings. To ensure safety, an AST Code Sandbox parses script syntax trees "
-        "to block dangerous primitives, and a Human-in-the-Loop (HITL) gate requires explicit analyst approval before executing containment actions. Audit milestones are recorded in append-only JSONL "
-        "trails, and ReportLab compiles executive PDF incident briefs."
+        "A three-tier model router directs the anonymized logs. Routine alerts run 100% offline on local workstation GPUs using Ollama (<code>deepseek-r1:8b</code>) at zero marginal cost. "
+        "Higher-severity incidents escalate to cloud APIs (Groq or Gemini) using scrubbed tokens only. The platform maps alerts to MITRE ATT&CK tactics, correlates events into attack graphs (DAGs), "
+        "and retrieves similar past incidents via ChromaDB vector embeddings. Safe Python AST parsing checks de-obfuscation scripts before execution, and a human-in-the-loop gate mandates explicit analyst "
+        "approval for any containment action. Finally, JSONL audit trails log system milestones while ReportLab compiles clean PDF reports."
     )
     story.append(Paragraph(p3, body_style))
 
@@ -161,7 +158,7 @@ def build_pdf():
 
     doc.build(story, canvasmaker=NumberedCanvas)
     shutil.copy2(pdf_path, desktop_path)
-    print(f"✅ Generated & Saved Black & White Abstract PDF to Desktop: {desktop_path}")
+    print(f"✅ Generated & Saved Humanized B&W Abstract PDF to Desktop: {desktop_path}")
 
 if __name__ == "__main__":
     build_pdf()
