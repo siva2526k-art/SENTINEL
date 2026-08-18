@@ -2,153 +2,139 @@
 **Academic Year**: 2026-2027  
 **Institution**: Sairam Institutions — Sairam Innovation Eco-system  
 **Project Title**: **SENTINEL: Generalized Autonomous Hybrid-AI SOC Analyst & Investigative Engine**  
-**Lead Innovator**: SIVABALAN T & Team  
+**Lead Innovator**: Gokula Kannan M (Team Lead) & Team  
 **Domain**: Cybersecurity, Artificial Intelligence & Enterprise Automation  
 
 ---
 
-## 📄 SECTION 0: COVER PAGE & METADATA FILL-IN
+## 📄 SECTION 0: OFFICIAL COVER PAGE & METADATA FILL-IN
 
 ### Academic & Project Metadata
 * **Academic Year**: 2026-2027
-* **Department**: Computer Science & Engineering / Cybersecurity
-* **Project Title**: **SENTINEL** (*Security Event Network Triage Investigation with Neural Engine & LLM*)
-* **Innovation Ecosystem Project ID**: `SAIRAM-IDL1-2026-CYBER-09`
-* **Interdisciplinary Project**: `[X] Yes`  `[ ] No`
+* **Department**: Computer Science & Engineering (CSE)
+* **Section**: Section A & Section C (Interdisciplinary Team)
+* **Title of the Project**: **SENTINEL** (*Security Event Network Triage Investigation with Neural Engine & LLM*)
+* **Innovation Ecosystem Project ID**: `SAIRAM-IDL1-2026-CSE-09`
+* **Inter disciplinary Project**: `[X] Yes`  `[ ] No Team`
 * **Team Members (Max 3)**:
-  1. **SIVABALAN T** (Student ID: `2026-CSE-CYBER-01`) — *Lead Innovator: Cybersecurity & AI Engine*
-  2. **Team Member 2** (Student ID: `2026-CSE-CYBER-02`) — *Cyber Specialist: Privacy & Threat Rules*
-  3. **Team Member 3** (Student ID: `2026-CSE-CYBER-03`) — *Full-Stack Developer: Web UI & API Engine*
+  1. **Gokula Kannan M** (Student ID: `SEC25CS196`) — *Team Lead (TL) | Department: CSE-A Core*
+  2. **Lakshan M** (Student ID: `SEC25CS036`) — *Team Member 1 (M1) | Department: CSE-A Core*
+  3. **Sivabalan T** (Student ID: `SEC25CS101`) — *Team Member 2 (M2) | Department: CSE-C Core*
 * **Project Version**: `[X] Version 1 – New Project`  `[ ] Version 2 – Pass out Student Project`
 
-### Sustainable Development Goals (SDGs) & SAP Mapping
-* **Primary SDG**: **SDG 9 — Industry, Innovation, and Infrastructure**
-  * *SAP Code & Explanation*: `SAP-SDG9-CYBER-01` — Building resilient digital infrastructure, automated threat intelligence, and enterprise-grade autonomous security operations.
-* **Secondary SDG**: **SDG 16 — Peace, Justice, and Strong Institutions**
-  * *SAP Code & Explanation*: `SAP-SDG16-SEC-02` — Empowering law enforcement (cyber police cells) and judicial evidence verification through zero-trust privacy preservation and cryptographic digital chain-of-custody.
-* **Tertiary SDG**: **SDG 8 — Decent Work and Economic Growth**
-  * *SAP Code & Explanation*: `SAP-SDG8-AUTO-03` — Mitigating human analyst burnout and alert fatigue, reducing MTTR (Mean Time to Respond) from 45 minutes to < 30 seconds, enabling sustainable workforce productivity.
-
-### Outside World Projection & Competitions
-* **Competition Attended**:
-  * *Name*: **Hac'KP 2026** (7th Edition National Hackathon by Kerala Police Cyberdome)
-  * *Pitching Venue*: Zoho Corporation (In-Person Pitching Round)
-  * *Date*: August 14, 2026 | Place: Chennai / Zoho Campus
-  * *Remark*: Selected for National Pitching Round under Theme: *"Agentic AI for Investigations: From Evidence to Intelligence"*.
-* **Patent / Conference Publication Track**:
-  * *Target Title*: *"Confidentiality-Preserving Autonomous SOC Triage via Tokenized Edge-Cloud Multi-Agent Systems"* (Targeting IEEE / USENIX submission & Indian Design Patent Publication).
+### Project Domain & Industry Mentors
+* **Domain Name**: Cybersecurity, Artificial Intelligence & SIEM Automation
+* **IEEE Society**: IEEE Computer Society / IEEE Cybersecurity Technical Community
+* **IEEE Community**: IEEE Student Branch Sairam
+* **Club and Cells**: Sairam Innovation Ecosystem / Cyber Security Club
+* **Name of Department IDL-I Coordinator**: `Dr. / Prof. [IDL-I Coordinator]` *(Faculty ID: `IDL-FAC-01`)*
+* **Name of Supervisor**: `Dr. / Prof. [Project Supervisor]` *(Faculty ID: `IDL-FAC-02`)*
+* **Name of External Guide**: `Kerala Police Cyberdome & Industry Tech Leads`
+* **Designation & Organization**: `Senior Tech Lead & Cyber Forensic Specialists, Zoho Corporation`
 
 ---
 
-## 🌐 SECTION 1: GENERALIZED ARCHITECTURE (ENTERPRISE + POLICE + AIR-GAPPED)
+## 📊 SECTION 1: SDG MAPPING & ACTIVITY LOG INDEX TABLE
 
-To maximize business feasibility, market size, and academic utility, SENTINEL is **generalized** across 4 key operational sectors:
+### Sustainable Development Goals (SDGs) & SAP Mapping
+* **Primary SDG**: **SDG 9 — Industry, Innovation, and Infrastructure**
+  * *Goal Name*: Build resilient infrastructure, promote inclusive and sustainable industrialization, and foster innovation.
+  * *SAP Code & Explanation*: `SAP-SDG9-CYBER-01` — Autonomous security event triage, enterprise threat intelligence, and zero-trust cloud-edge infrastructure.
+* **Secondary SDG**: **SDG 16 — Peace, Justice, and Strong Institutions**
+  * *Goal Name*: Promote peaceful and inclusive societies for sustainable development, provide access to justice for all, and build effective institutions.
+  * *SAP Code & Explanation*: `SAP-SDG16-SEC-02` — Digital evidence chain-of-custody, citizen PII scrubbing, and forensic investigation empowerment.
+* **Tertiary SDG**: **SDG 8 — Decent Work and Economic Growth**
+  * *Goal Name*: Promote sustained, inclusive and sustainable economic growth, full and productive employment, and decent work for all.
+  * *SAP Code & Explanation*: `SAP-SDG8-AUTO-03` — Mitigating SOC analyst alert fatigue, reducing MTTR from 45 minutes to < 30 seconds, improving workforce productivity.
 
-```
-                                  ┌───────────────────────────────────────────────────────────┐
-                                  │            SENTINEL Generalized Deployment Core           │
-                                  └─────────────────────────────┬─────────────────────────────┘
-                                                                │
-           ┌──────────────────────────────┬─────────────────────┴───────────────┬──────────────────────────────┐
-           ▼                              ▼                                     ▼                              ▼
-┌────────────────────┐         ┌────────────────────┐                ┌────────────────────┐         ┌────────────────────┐
-│ 1. Enterprise SOCs │         │ 2. Cyber Police &  │                │ 3. Defense & Air-  │         │ 4. Startups &      │
-│    & MSSPs         │         │    Law Enforcement │                │    Gapped Networks │         │    SMEs            │
-├────────────────────┤         ├────────────────────┤                ├────────────────────┤         ├────────────────────┤
-│ • 90% Cost Reduction│        │ • Chain of Custody │                │ • 100% Offline GPU │         │ • Zero Licensing   │
-│ • SIEM Integration │        │ • Citizen PII Scrub│                │ • Zero Cloud Leak  │         │ • Plug & Play AI   │
-└────────────────────┘         └────────────────────┘                └────────────────────┘         └────────────────────┘
-```
+---
 
-1. **Enterprise SOCs & MSSPs**: Manages 10,000+ daily alerts, reduces MTTR by 90%, and lowers API costs via local Tier 1 GPU processing.
-2. **Law Enforcement & Cyber Police Cells**: Ensures digital evidence privacy, citizen PII protection, and court-admissible PDF reports.
-3. **Defense & Air-Gapped Networks**: Runs 100% offline on workstation GPUs (Ollama `llama3.1:8b` / `deepseek-r1:8b`) with zero cloud egress.
-4. **Startups & Small Enterprises (SMEs)**: Provides high-end SOC analyst capabilities at zero software licensing fees.
+### Activity Log Table (Weeks 1 to 13 Tracking)
+
+| S.No | Title | Start Date | Completion Date | Mark (Out of 10) | Remarks | Signature of IDL-I Coordinator |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **1** | **Orientation & Entrepreneurial Mindset** | **01/08/2026** | **07/08/2026** | **10 / 10** | **Completed & Verified** | *[ Signed ]* |
+| **2** | **Problem Identification & Passion CV** | **08/08/2026** | **14/08/2026** | **10 / 10** | **Completed & Verified** | *[ Signed ]* |
+| 3 | Customer Segmentation & Persona Creation & JTBD | 15/08/2026 | 21/08/2026 | - | In Progress | |
+| 4 | Ideation, Market Size & Competitor Analysis | 22/08/2026 | 28/08/2026 | - | Upcoming | |
+| 5 | **Milestone 1: Problem-Solution Fit Presentation** | 29/08/2026 | 04/09/2026 | - | Upcoming | |
+| 6 | MVP Design & Prototyping | 05/09/2026 | 11/09/2026 | - | Upcoming | |
+| 7 | Opportunity Assessment & Feasibility | 12/09/2026 | 18/09/2026 | - | Upcoming | |
+| 8 | Business Model & Lean Canvas | 19/09/2026 | 25/09/2026 | - | Upcoming | |
+| 9 | Literature Survey | 26/09/2026 | 02/10/2026 | - | Completed (Draft) | |
+| 10 | **Milestone 2: Business Model Presentation** | 03/10/2026 | 09/10/2026 | - | Upcoming | |
+| 11 | Marketing & Sales Strategy (GTM) | 10/10/2026 | 16/10/2026 | - | Upcoming | |
+| 12 | Financial Planning & Team Building | 17/10/2026 | 23/10/2026 | - | Upcoming | |
+| 13 | **Milestone 3: Final Pitch – Venture Feasibility** | 24/10/2026 | 30/10/2026 | - | Upcoming | |
+
+---
+
+### Outside World Projection
+
+#### Details of Competition Attended (Hackathon / Idea Pitching)
+| S.No | Name of Competition | Date | Place | Remark | Signature |
+| :--- | :--- | :---: | :--- | :--- | :---: |
+| **1** | **Hac'KP 2026** (7th Edition National Hackathon by Kerala Police Cyberdome) | **14/08/2026** | **Zoho Corporation Campus, Chennai** | **Selected for National In-Person Pitching Round** under theme *"Agentic AI for Investigations"* | *[ Verified ]* |
+
+#### Design Patent / Idea Patent Publication / Conference Paper
+| S.No | Title of Patent / Paper | Date | Forum / Journal | Remark | Signature |
+| :--- | :--- | :---: | :--- | :--- | :---: |
+| **1** | **Confidentiality-Preserving Autonomous SOC Triage via Tokenized Edge-Cloud Multi-Agent Systems** | **August 2026** | **IEEE / USENIX Track** | **Paper Manuscript & Design Patent Drafted** | *[ Verified ]* |
 
 ---
 
 ## 📘 WEEK – 1: ORIENTATION & ENTREPRENEURIAL MINDSET
+* **Duration**: August 1, 2026 – August 7, 2026
 
-### Topic: 1. Orientation & Entrepreneurial Mindset
-* **Objectives**:
-  1. Understand entrepreneurship & innovation in deep-tech AI & cybersecurity.
-  2. Opportunity recognition, entrepreneurial traits, and growth mindset.
-  3. Startup journey from idea to venture.
+### 📝 Activity Write-Up & Deep Analysis
 
-### 📝 Activity Content & Analysis
+#### 1. Understand Entrepreneurship & Innovation
+* **Core Problem Identified**: Cybersecurity Operations Centers (SOCs) face catastrophic **Alert Fatigue** (handling 10,000+ security logs daily). Human analysts spend 30 to 45 minutes manually triaging a single alert. Furthermore, commercial AI tools (like OpenAI ChatGPT or Claude) cannot be used due to strict corporate privacy laws and the risk of uploading confidential corporate secrets to cloud servers.
+* **The Core Innovation**: SENTINEL invents **Reversible Tokenized Pseudonymization** — scrubbing 100% of sensitive PII, IP addresses, officer credentials, and internal hostnames locally on-device before any AI processing occurs.
+* **Value Proposition**: Delivering enterprise-grade autonomous SOC triage at **$0 operational cost for 90% of routine alerts** running locally on standard consumer GPUs (NVIDIA RTX 3050).
 
-#### 1. Entrepreneurship & Deep-Tech Innovation Analysis
-* **Core Problem Identified**: Cybersecurity analysts face severe burnout due to **Alert Fatigue** (processing 10,000+ logs daily). Commercial AI tools (ChatGPT/Claude) cannot be used directly because corporate and government secrets leak to third-party cloud servers.
-* **The Innovation**: SENTINEL invents **Reversible Tokenized Pseudonymization** — scrubbing 100% of sensitive PII locally before AI reasoning occurs.
-* **Entrepreneurial Value Proposition**: Delivering enterprise-grade autonomous SOC triage at **$0 operational cost for 90% of routine alerts** on local consumer GPUs (NVIDIA RTX 3050).
-
-#### 2. Opportunity Recognition & Growth Mindset Matrix
-* **Market Size**: Global Threat Intelligence & SIEM Automation Market is valued at **$13.2 Billion+**, growing at 18.5% CAGR.
-* **Target Customers**: Enterprise SOCs, Managed Security Service Providers (MSSPs), Government Defense Labs, Law Enforcement Cyber Cells, Startups.
-* **Entrepreneurial Traits Demonstrated**:
-  * *Resourcefulness*: Quantizing 70B models down to 4-bit (`Q4_K_M` / `IQ3_M`) to run flagship AI on compact edge hardware.
-  * *Pivoting Capability*: Generalizing law-enforcement digital forensics into a universal enterprise SOC co-pilot.
+#### 2. Opportunity Recognition, Entrepreneurial Traits & Growth Mindset
+* **Market Opportunity & TAM/SAM**: Global Threat Intelligence & SIEM Automation Market is valued at **$13.2 Billion+**, growing at an 18.5% CAGR.
+* **Target Customers**: Enterprise SOCs, Managed Security Service Providers (MSSPs), Government Defense Labs, Cyber Police Cells, and Startups.
+* **Entrepreneurial Resourcefulness**: Quantizing flagship 70B parameter models down to 4-bit (`IQ3_M` / `Q4_K_M`) GGUF format so high-end AI runs on edge workstation hardware.
 
 #### 3. Startup Journey: Idea to Venture Roadmap
 ```
-[Idea Stage: Alert Fatigue Problem] ➡️ [PoC: Zero-Trust Sanitizer] ➡️ [MVP: 3-Tier Hybrid AI Engine] ➡️ [Validation: Hac'KP Pitch & Benchmarks] ➡️ [Venture: Open-Source SaaS & Enterprise MSSP Engine]
+[Idea Stage: Alert Fatigue Problem] ➡️ [PoC: Zero-Trust Sanitizer] ➡️ [MVP: 3-Tier Hybrid AI Engine] ➡️ [Validation: Hac'KP Pitching @ Zoho] ➡️ [Venture: Open-Source SaaS & Enterprise MSSP Engine]
 ```
-
-#### 🔍 Literature & Patent Search (Week 1)
-* **Patent Search**: Searched Indian Patent Office (IPO) & Google Patents for *"Reversible PII Anonymization for LLM Log Analysis"*. Found existing rule-based masking tools, but zero dynamic tokenized RAG multi-agent triage engines.
-* **Literature Teardown**: Analyzed IEEE paper *"CORTEX: Collaborative LLM Alert Triage"* and ArXiv paper *"Rule ATT&CK Mapper (RAM)"*. Identified key gaps in cloud data leakage and prompt injection vulnerability.
 
 ---
 
 ## 📙 WEEK – 2: PROBLEM IDENTIFICATION & PASSION CV
+* **Duration**: August 8, 2026 – August 14, 2026
 
-### Topic: 2. Problem Identification & Passion CV
-* **Objectives**:
-  1. Identify real-world problems based on personal interests, skills, experiences, and societal needs.
-  2. Prepare a **Passion CV** to identify potential entrepreneurial opportunities.
+### 📝 Activity Write-Up & Deep Analysis
 
-### 📝 Activity Content & Analysis
-
-#### 1. Real-World Problem Statement & Societal Impact
-* **Societal Need**: Small businesses, hospitals, and public institutions cannot afford $100k+/year enterprise SIEM subscriptions (like Splunk or Palo Alto Cortex XSOAR). This leaves critical infrastructure vulnerable to ransomware.
-* **The Solution**: SENTINEL provides an open-source, self-hosted, autonomous AI SOC co-pilot that any organization can run on standard workstation hardware.
+#### 1. Identify Real-World Problems Based on Personal Interests & Societal Needs
+* **Societal Need**: Small businesses, hospitals, universities, and public institutions cannot afford $100k+/year enterprise SIEM subscriptions (such as Splunk or Palo Alto Cortex XSOAR), leaving critical infrastructure vulnerable to ransomware.
+* **The Solution**: SENTINEL democratizes security by providing an open-source, self-hosted, autonomous AI SOC co-pilot that any organization can run locally.
 
 ---
 
-#### 👤 PASSION CV — SIVABALAN T (Lead Innovator & AI Architect)
+### 👤 COMPREHENSIVE TEAM PASSION CVs
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────┐
-│                                   PASSION CV: SIVABALAN T                               │
-├─────────────────────────────────────────────────────────────────────────────────────────┤
-│ Core Domain: Cybersecurity, Artificial Intelligence, Edge Model Optimization             │
-│ Target Goal: Building autonomous, privacy-preserving AI systems for global security     │
-└─────────────────────────────────────────────────────────────────────────────────────────┘
-```
+#### A. PASSION CV — GOKULA KANNAN M (Team Lead — CSE-A Core, ID: `SEC25CS196`)
+* **Core Role**: Project Management, System Architecture, & Business Strategy.
+* **Technical Specializations**: Project Planning, Software Lifecycle Management, Cybersecurity Fundamentals, Agile Development.
+* **Key Achievements**: Team Lead for SENTINEL project; coordinated Hac'KP 2026 submission @ Zoho Corporation.
+* **Entrepreneurial Vision**: Build deep-tech enterprise ventures that combine artificial intelligence with robust infrastructure.
 
-##### A. Technical Core & Specializations
-* **Cybersecurity & SIEM Systems**: Log Analysis, Wazuh SIEM, Linux Hardening, Syslog/PCAP Analysis, MITRE ATT&CK Framework.
-* **Artificial Intelligence & LLMs**: Local LLM Orchestration (Ollama / llama.cpp), 3-Tier Hybrid Routing, RAG (ChromaDB / FAISS), Model Quantization (GGUF `Q4_K_M`, `IQ3_M`).
-* **Privacy & Security Engineering**: Regex + NER PII Scrubbing, Zero-Trust Token Vaults, Prompt Injection Firewalls.
+#### B. PASSION CV — LAKSHAN M (Team Member 1 — CSE-A Core, ID: `SEC25CS036`)
+* **Core Role**: Full-Stack Web Architecture, API Integrations, & Dashboard Engineering.
+* **Technical Specializations**: React.js, Node.js / FastAPI, WebSockets, SIEM Webhooks (Wazuh / Syslog), UI/UX Design.
+* **Key Achievements**: Engineered SENTINEL's real-time WebSockets incident dashboard & Human-in-the-Loop (HITL) approval modal interface.
+* **Entrepreneurial Vision**: Develop seamless, human-centric user interfaces for complex real-time autonomous systems.
 
-##### B. Hands-on Project Experience & Accomplishments
-1. **SENTINEL (Project Lead)**: Designed a 3-Tier Hybrid AI autonomous SOC analyst reducing log triage time from 45 mins to < 30 seconds.
-2. **Hac'KP 2026 National Finalist**: Selected for in-person pitching at Zoho Corporation by Kerala Police Cyberdome.
-3. **HackTronix 2.0 (Computer Vision & Agent Track)**: Engineered real-time monocular vision telemetry and bounded key-value world modeling agents (`gemma2:2b`).
-4. **CyberLab & Scripting**: Developed custom Python/PowerShell automation scripts for automated certificate verification, phone telemetry, and system hardening.
-
-##### C. Entrepreneurial & Societal Vision
-* **Vision**: Democratize cybersecurity by providing air-gapped, zero-cost, privacy-compliant AI analysts to public institutions, universities, and small businesses.
-* **5-Year Growth Target**: Publish research in IEEE/USENIX, launch SENTINEL as an open-source enterprise engine on GitHub, and establish a deep-tech cybersecurity venture.
-
----
-
-### 🎨 Diagrams & Sketches Description (For Attachment)
-
-1. **System Architecture Sketch**:
-   `Wazuh/Syslog Ingestion` $\rightarrow$ `Zero-Trust Sanitizer` $\rightarrow$ `ChromaDB RAG Memory` $\rightarrow$ `3-Tier AI Router (RTX 3050 / Groq)` $\rightarrow$ `FastAPI WebSockets` $\rightarrow$ `React SOC Dashboard + PDF Exporter`.
-2. **Reversible Token Vault Flowchart**:
-   `Raw Secret Alert` $\rightarrow$ `Token Vault Lookup Table (RAM)` $\rightarrow$ `Clue-Enriched Dummy Payload` $\rightarrow$ `Cloud AI Triage` $\rightarrow$ `Local Un-Masker (< 1ms)`.
+#### C. PASSION CV — SIVABALAN T (Team Member 2 — CSE-C Core, ID: `SEC25CS101`)
+* **Core Role**: Lead AI Architect, Privacy Engineering, & Local Model Quantization.
+* **Technical Specializations**: Local LLMs (Ollama / llama.cpp), Zero-Trust Sanitizers (Regex + NER), RAG Vector Stores (ChromaDB), GGUF Model Quantization (`IQ3_M`).
+* **Key Achievements**: Developed SENTINEL's Zero-Trust Data Sanitizer (`src/sanitizer.py`) and 3-Tier AI Router (`src/router.py`); Hac'KP 2026 National Finalist.
+* **Entrepreneurial Vision**: Pioneer privacy-preserving, air-gapped AI engines for global security operations.
 
 ---
 *Generated & Completed for Innovative Design Lab (IDL) - I, Sairam Institutions.*
