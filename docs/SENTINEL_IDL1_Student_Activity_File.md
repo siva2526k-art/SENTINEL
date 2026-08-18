@@ -1,13 +1,14 @@
 # 🎓 STUDENT ACTIVITY FILE — INNOVATIVE DESIGN LAB (IDL) - I
 **Academic Year**: 2026-2027  
-**Institution**: Sairam Institutions — Sairam Innovation Eco-system  
+**Institution**: Sri Sai Ram Engineering College, Chennai — Sairam Innovation Eco-system  
 **Project Title**: **SENTINEL: Generalized Autonomous Hybrid-AI SOC Analyst & Investigative Engine**  
-**Lead Innovator**: Gokula Kannan M (Team Lead) & Team  
-**Domain**: Cybersecurity, Artificial Intelligence & Enterprise Automation  
+**Submitted By (Team Lead)**: GOKULA KANNAN M (Student ID: `SEC25CS196` | Dept: CSE-A Core)  
+**Team Members**: Lakshan M (`SEC25CS036` | CSE-A), Sivabalan T (`SEC25CS101` | CSE-C)  
+**Faculty Supervisor**: Dr. A. SHEELA (Associate Professor, Dept. of CSE)  
 
 ---
 
-## 📄 SECTION 0: OFFICIAL COVER PAGE & METADATA FILL-IN
+## 📄 SECTION 0: OFFICIAL COVER PAGE & METADATA SHEET
 
 ### Academic & Project Metadata
 * **Academic Year**: 2026-2027
@@ -16,10 +17,10 @@
 * **Title of the Project**: **SENTINEL** (*Security Event Network Triage Investigation with Neural Engine & LLM*)
 * **Innovation Ecosystem Project ID**: `SAIRAM-IDL1-2026-CSE-09`
 * **Inter disciplinary Project**: `[X] Yes`  `[ ] No Team`
-* **Team Members (Max 3)**:
-  1. **Gokula Kannan M** (Student ID: `SEC25CS196`) — *Team Lead (TL) | Department: CSE-A Core*
-  2. **Lakshan M** (Student ID: `SEC25CS036`) — *Team Member 1 (M1) | Department: CSE-A Core*
-  3. **Sivabalan T** (Student ID: `SEC25CS101`) — *Team Member 2 (M2) | Department: CSE-C Core*
+* **Team Leadership & Structure**:
+  1. **Gokula Kannan M** (Student ID: `SEC25CS196`) — **Team Lead (TL)** | *Department: CSE-A Core*
+  2. **Lakshan M** (Student ID: `SEC25CS036`) — **Team Member 1 (M1)** | *Department: CSE-A Core*
+  3. **Sivabalan T** (Student ID: `SEC25CS101`) — **Team Member 2 (M2)** | *Department: CSE-C Core*
 * **Project Version**: `[X] Version 1 – New Project`  `[ ] Version 2 – Pass out Student Project`
 
 ### Project Domain & Industry Mentors
@@ -27,8 +28,8 @@
 * **IEEE Society**: IEEE Computer Society / IEEE Cybersecurity Technical Community
 * **IEEE Community**: IEEE Student Branch Sairam
 * **Club and Cells**: Sairam Innovation Ecosystem / Cyber Security Club
-* **Name of Department IDL-I Coordinator**: `Dr. / Prof. [IDL-I Coordinator]` *(Faculty ID: `IDL-FAC-01`)*
-* **Name of Supervisor**: `Dr. / Prof. [Project Supervisor]` *(Faculty ID: `IDL-FAC-02`)*
+* **Name of Department IDL-I Coordinator**: **Dr. A. SHEELA** *(Associate Professor, Dept. of CSE | Email: `sheela.cse@sairam.edu.in` | Mobile: `9884973270`)*
+* **Name of Supervisor**: **Dr. A. SHEELA** *(Associate Professor, Dept. of CSE)*
 * **Name of External Guide**: `Kerala Police Cyberdome & Industry Tech Leads`
 * **Designation & Organization**: `Senior Tech Lead & Cyber Forensic Specialists, Zoho Corporation`
 
@@ -84,57 +85,68 @@
 ---
 
 ## 📘 WEEK – 1: ORIENTATION & ENTREPRENEURIAL MINDSET
-* **Duration**: August 1, 2026 – August 7, 2026
+* **Duration**: August 1, 2026 – August 7, 2026  
+* **Perspective**: *Written from the point of view of Team Lead Gokula Kannan M.*
 
 ### 📝 Activity Write-Up & Deep Analysis
 
 #### 1. Understand Entrepreneurship & Innovation
-* **Core Problem Identified**: Cybersecurity Operations Centers (SOCs) face catastrophic **Alert Fatigue** (handling 10,000+ security logs daily). Human analysts spend 30 to 45 minutes manually triaging a single alert. Furthermore, commercial AI tools (like OpenAI ChatGPT or Claude) cannot be used due to strict corporate privacy laws and the risk of uploading confidential corporate secrets to cloud servers.
-* **The Core Innovation**: SENTINEL invents **Reversible Tokenized Pseudonymization** — scrubbing 100% of sensitive PII, IP addresses, officer credentials, and internal hostnames locally on-device before any AI processing occurs.
+* **Core Problem Identified (Team Lead Perspective)**: As the Team Lead guiding our cybersecurity venture SENTINEL, I identified that modern Security Operations Centers (SOCs) are overwhelmed by **Alert Fatigue** (handling 10,000+ daily logs). Human analysts spend 30 to 45 minutes manually parsing each alert. Crucially, commercial cloud AI tools (ChatGPT/Claude) cannot be used directly because corporate and government data leakage violates privacy laws.
+* **Our Team Innovation**: Under my leadership, our team engineered **SENTINEL** — introducing **Reversible Tokenized Pseudonymization**. SENTINEL scrubs 100% of sensitive PII, IP addresses, officer credentials, and internal hostnames locally on-device before any AI reasoning occurs.
 * **Value Proposition**: Delivering enterprise-grade autonomous SOC triage at **$0 operational cost for 90% of routine alerts** running locally on standard consumer GPUs (NVIDIA RTX 3050).
 
 #### 2. Opportunity Recognition, Entrepreneurial Traits & Growth Mindset
-* **Market Opportunity & TAM/SAM**: Global Threat Intelligence & SIEM Automation Market is valued at **$13.2 Billion+**, growing at an 18.5% CAGR.
+* **Market Opportunity (TAM/SAM)**: I directed our market analysis toward the **$13.2 Billion+ Global SIEM Automation & Threat Intel Market** (growing at an 18.5% CAGR).
 * **Target Customers**: Enterprise SOCs, Managed Security Service Providers (MSSPs), Government Defense Labs, Cyber Police Cells, and Startups.
-* **Entrepreneurial Resourcefulness**: Quantizing flagship 70B parameter models down to 4-bit (`IQ3_M` / `Q4_K_M`) GGUF format so high-end AI runs on edge workstation hardware.
+* **Entrepreneurial Resourcefulness**: I led our technical strategy to quantize flagship 70B parameter models down to 4-bit (`IQ3_M` / `Q4_K_M`) GGUF format so high-end AI operates on edge workstation hardware.
 
 #### 3. Startup Journey: Idea to Venture Roadmap
 ```
-[Idea Stage: Alert Fatigue Problem] ➡️ [PoC: Zero-Trust Sanitizer] ➡️ [MVP: 3-Tier Hybrid AI Engine] ➡️ [Validation: Hac'KP Pitching @ Zoho] ➡️ [Venture: Open-Source SaaS & Enterprise MSSP Engine]
+[TL Idea Formulation: Alert Fatigue] ➡️ [PoC: Zero-Trust Sanitizer] ➡️ [MVP: 3-Tier Hybrid AI Engine] ➡️ [Validation: Hac'KP Pitch @ Zoho] ➡️ [Venture: Open-Source SaaS & MSSP Engine]
 ```
 
 ---
 
 ## 📙 WEEK – 2: PROBLEM IDENTIFICATION & PASSION CV
-* **Duration**: August 8, 2026 – August 14, 2026
+* **Duration**: August 8, 2026 – August 14, 2026  
+* **Perspective**: *Written from the point of view of Team Lead Gokula Kannan M.*
 
 ### 📝 Activity Write-Up & Deep Analysis
 
 #### 1. Identify Real-World Problems Based on Personal Interests & Societal Needs
-* **Societal Need**: Small businesses, hospitals, universities, and public institutions cannot afford $100k+/year enterprise SIEM subscriptions (such as Splunk or Palo Alto Cortex XSOAR), leaving critical infrastructure vulnerable to ransomware.
-* **The Solution**: SENTINEL democratizes security by providing an open-source, self-hosted, autonomous AI SOC co-pilot that any organization can run locally.
+* **Societal Need (Team Lead Perspective)**: My team and I recognized that small businesses, hospitals, universities, and public institutions cannot afford $100k+/year enterprise SIEM subscriptions (such as Splunk or Palo Alto Cortex XSOAR), leaving critical infrastructure vulnerable to ransomware.
+* **The Solution**: As Team Lead, I guided SENTINEL to democratize security by providing an open-source, self-hosted, autonomous AI SOC co-pilot that any organization can deploy locally.
 
 ---
 
 ### 👤 COMPREHENSIVE TEAM PASSION CVs
 
-#### A. PASSION CV — GOKULA KANNAN M (Team Lead — CSE-A Core, ID: `SEC25CS196`)
-* **Core Role**: Project Management, System Architecture, & Business Strategy.
-* **Technical Specializations**: Project Planning, Software Lifecycle Management, Cybersecurity Fundamentals, Agile Development.
-* **Key Achievements**: Team Lead for SENTINEL project; coordinated Hac'KP 2026 submission @ Zoho Corporation.
-* **Entrepreneurial Vision**: Build deep-tech enterprise ventures that combine artificial intelligence with robust infrastructure.
+#### A. PASSION CV — GOKULA KANNAN M (TEAM LEAD — CSE-A Core, ID: `SEC25CS196`)
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────┐
+│                               PASSION CV: GOKULA KANNAN M                               │
+├─────────────────────────────────────────────────────────────────────────────────────────┤
+│ Role: Team Lead & Chief Systems Architect                                               │
+│ Domain: Project Management, System Governance, Venture Strategy, Software Architecture  │
+└─────────────────────────────────────────────────────────────────────────────────────────┘
+```
+* **Project Leadership**: Directing the architectural design, sprint planning, and competition milestones for SENTINEL; leading our national pitch at Hac'KP 2026 @ Zoho Corporation.
+* **Technical Specializations**: Software Architecture, Systems Engineering, Cybersecurity Governance, Agile Project Management, Requirements Engineering.
+* **Key Achievements**: Formulated the venture vision for SENTINEL; led interdisciplinary team (CSE-A & CSE-C) to win selection in Hac'KP 2026 National Pitching Round.
+* **Entrepreneurial Vision**: Build deep-tech enterprise ventures that combine artificial intelligence with robust infrastructure to solve high-stakes global security challenges.
 
-#### B. PASSION CV — LAKSHAN M (Team Member 1 — CSE-A Core, ID: `SEC25CS036`)
-* **Core Role**: Full-Stack Web Architecture, API Integrations, & Dashboard Engineering.
-* **Technical Specializations**: React.js, Node.js / FastAPI, WebSockets, SIEM Webhooks (Wazuh / Syslog), UI/UX Design.
+#### B. PASSION CV — LAKSHAN M (TEAM MEMBER 1 — CSE-A Core, ID: `SEC25CS036`)
+* **Role**: Full-Stack Web Architect & Dashboard Engineer.
+* **Technical Specializations**: React.js UI, Node.js / FastAPI, WebSockets, SIEM Webhooks (Wazuh / Syslog), Human-in-the-Loop (HITL) Modal Interfaces.
 * **Key Achievements**: Engineered SENTINEL's real-time WebSockets incident dashboard & Human-in-the-Loop (HITL) approval modal interface.
-* **Entrepreneurial Vision**: Develop seamless, human-centric user interfaces for complex real-time autonomous systems.
 
-#### C. PASSION CV — SIVABALAN T (Team Member 2 — CSE-C Core, ID: `SEC25CS101`)
-* **Core Role**: Lead AI Architect, Privacy Engineering, & Local Model Quantization.
-* **Technical Specializations**: Local LLMs (Ollama / llama.cpp), Zero-Trust Sanitizers (Regex + NER), RAG Vector Stores (ChromaDB), GGUF Model Quantization (`IQ3_M`).
-* **Key Achievements**: Developed SENTINEL's Zero-Trust Data Sanitizer (`src/sanitizer.py`) and 3-Tier AI Router (`src/router.py`); Hac'KP 2026 National Finalist.
-* **Entrepreneurial Vision**: Pioneer privacy-preserving, air-gapped AI engines for global security operations.
+#### C. PASSION CV — SIVABALAN T (TEAM MEMBER 2 — CSE-C Core, ID: `SEC25CS101`)
+* **Role**: Lead AI Architect & Privacy Systems Engineer.
+* **Technical Specializations**: Local LLMs (Ollama / llama.cpp), Zero-Trust Privacy Engineering (`src/sanitizer.py`), 3-Tier AI Router (`src/router.py`), ChromaDB Vector RAG Memory.
+* **Key Achievements**: Developed SENTINEL's Zero-Trust Data Sanitizer and 3-Tier AI Router; co-architected local GPU model quantization (`IQ3_M`).
+
+#### D. FACULTY SUPERVISOR & GUIDE
+* **Dr. A. SHEELA**: Associate Professor, Department of Computer Science & Engineering, Sri Sai Ram Engineering College, Chennai.
 
 ---
 *Generated & Completed for Innovative Design Lab (IDL) - I, Sairam Institutions.*

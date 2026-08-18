@@ -34,7 +34,7 @@ class NumberedCanvas(canvas.Canvas):
         self.setFillColor(colors.HexColor("#0f172a"))
         
         # Header
-        self.drawString(36, 756, "SAIRAM INSTITUTIONS — INNOVATIVE DESIGN LAB (IDL) - I")
+        self.drawString(36, 756, "SRI SAI RAM ENGINEERING COLLEGE — INNOVATIVE DESIGN LAB (IDL) - I")
         self.setStrokeColor(colors.HexColor("#cbd5e1"))
         self.setLineWidth(0.5)
         self.line(36, 748, 576, 748)
@@ -65,8 +65,8 @@ def build_pdf():
         'TitleStyle',
         parent=styles['Heading1'],
         fontName='Helvetica-Bold',
-        fontSize=16,
-        leading=20,
+        fontSize=15,
+        leading=19,
         textColor=colors.HexColor('#0f172a'),
         alignment=1,
         spaceAfter=4
@@ -76,11 +76,11 @@ def build_pdf():
         'SubtitleStyle',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=10.5,
+        fontSize=10,
         leading=13,
         textColor=colors.HexColor('#2563eb'),
         alignment=1,
-        spaceAfter=10
+        spaceAfter=8
     )
 
     meta_style = ParagraphStyle(
@@ -91,17 +91,17 @@ def build_pdf():
         leading=11,
         textColor=colors.HexColor('#475569'),
         alignment=1,
-        spaceAfter=10
+        spaceAfter=8
     )
 
     h1_style = ParagraphStyle(
         'H1Style',
         parent=styles['Heading2'],
         fontName='Helvetica-Bold',
-        fontSize=11,
-        leading=14,
+        fontSize=10.5,
+        leading=13,
         textColor=colors.HexColor('#1e293b'),
-        spaceBefore=10,
+        spaceBefore=8,
         spaceAfter=4,
         keepWithNext=True
     )
@@ -110,10 +110,10 @@ def build_pdf():
         'BodyStyle',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=8.5,
-        leading=12,
+        fontSize=8,
+        leading=11.5,
         textColor=colors.HexColor('#334155'),
-        spaceAfter=5
+        spaceAfter=4
     )
 
     table_header_style = ParagraphStyle(
@@ -149,8 +149,8 @@ def build_pdf():
     # Title Banner
     story.append(Paragraph("STUDENT ACTIVITY FILE — INNOVATIVE DESIGN LAB (IDL) - I", title_style))
     story.append(Paragraph("SENTINEL: Autonomous Hybrid-AI SOC Analyst & Investigative Engine", subtitle_style))
-    story.append(Paragraph("<b>Academic Year:</b> 2026-2027 &nbsp;|&nbsp; <b>Team Lead:</b> Gokula Kannan M (SEC25CS196) &nbsp;|&nbsp; <b>Institution:</b> Sri Sai Ram Engineering College", meta_style))
-    story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor("#2563eb"), spaceAfter=8))
+    story.append(Paragraph("<b>Submitted By (Team Lead):</b> Gokula Kannan M (SEC25CS196) &nbsp;|&nbsp; <b>Institution:</b> Sri Sai Ram Engineering College", meta_style))
+    story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor("#2563eb"), spaceAfter=6))
 
     # Section 0: Official Cover Page & Metadata Sheet
     story.append(Paragraph("📄 SECTION 0: OFFICIAL COVER PAGE & METADATA SHEET", h1_style))
@@ -176,11 +176,11 @@ def build_pdf():
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#cbd5e1')),
         ('BACKGROUND', (0, 1), (0, -1), colors.HexColor('#f8fafc')),
-        ('TOPPADDING', (0, 0), (-1, -1), 3),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+        ('TOPPADDING', (0, 0), (-1, -1), 2.5),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.5),
     ]))
     story.append(t_meta)
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
 
     # Section 1: Activity Log Table (Weeks 1 to 13)
     story.append(Paragraph("📊 SECTION 1: ACTIVITY LOG INDEX TABLE (WEEKS 1 - 13)", h1_style))
@@ -243,37 +243,37 @@ def build_pdf():
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#cbd5e1')),
         ('BACKGROUND', (0, 1), (-1, 2), colors.HexColor('#e0f2fe')),
-        ('TOPPADDING', (0, 0), (-1, -1), 3),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+        ('TOPPADDING', (0, 0), (-1, -1), 2.5),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.5),
     ]))
     story.append(t_log)
-    story.append(Spacer(1, 8))
-
-    # Section 2: Week 1 Fill-in
-    story.append(Paragraph("📘 WEEK – 1: ORIENTATION & ENTREPRENEURIAL MINDSET", h1_style))
-    w1_text = (
-        "<b>1. Understand Entrepreneurship & Innovation:</b><br/>"
-        "• <b>Core Problem:</b> Security Operation Centers face extreme alert fatigue (10,000+ daily logs). Commercial AI tools (ChatGPT) cannot be used directly because corporate/government data leaks to third-party cloud servers.<br/>"
-        "• <b>Innovation:</b> SENTINEL invents Reversible Tokenized Pseudonymization — scrubbing 100% of sensitive PII locally before AI reasoning occurs.<br/>"
-        "• <b>Value Proposition:</b> Delivering enterprise-grade autonomous triage at $0 operational cost for 90% of routine alerts on local consumer GPUs (NVIDIA RTX 3050).<br/><br/>"
-        "<b>2. Opportunity Recognition & Growth Mindset:</b><br/>"
-        "• <b>Market Size (TAM/SAM):</b> $13.2 Billion+ Global SIEM Automation & Threat Intel Market (18.5% CAGR).<br/>"
-        "• <b>Target Customers:</b> Enterprise SOCs, MSSPs, Air-Gapped Government Labs, Cyber Police Cells, Startups.<br/>"
-        "• <b>Entrepreneurial Resourcefulness:</b> Quantizing 70B models down to 4-bit (IQ3_M) to run flagship AI on compact edge hardware."
-    )
-    story.append(Paragraph(w1_text, body_style))
     story.append(Spacer(1, 6))
 
-    # Section 3: Week 2 Fill-in
-    story.append(Paragraph("📙 WEEK – 2: PROBLEM IDENTIFICATION & PASSION CV", h1_style))
+    # Section 2: Week 1 Fill-in (Team Lead Perspective)
+    story.append(Paragraph("📘 WEEK – 1: ORIENTATION & ENTREPRENEURIAL MINDSET (TEAM LEAD PERSPECTIVE)", h1_style))
+    w1_text = (
+        "<b>1. Understand Entrepreneurship & Innovation (Written by Team Lead Gokula Kannan M):</b><br/>"
+        "• <b>Core Problem:</b> As Team Lead guiding SENTINEL, I identified that Security Operation Centers face extreme alert fatigue (10,000+ daily logs). Commercial AI tools (ChatGPT) cannot be used directly because corporate/government data leaks to cloud servers.<br/>"
+        "• <b>Team Innovation:</b> Under my leadership, our team engineered Reversible Tokenized Pseudonymization — scrubbing 100% of sensitive PII locally before AI reasoning occurs.<br/>"
+        "• <b>Value Proposition:</b> Delivering enterprise-grade autonomous triage at $0 operational cost for 90% of routine alerts on local consumer GPUs (NVIDIA RTX 3050).<br/><br/>"
+        "<b>2. Opportunity Recognition & Growth Mindset:</b><br/>"
+        "• <b>Market Size (TAM/SAM):</b> I directed our market analysis toward the $13.2 Billion+ Global SIEM Automation Market (18.5% CAGR).<br/>"
+        "• <b>Target Customers:</b> Enterprise SOCs, MSSPs, Air-Gapped Government Labs, Cyber Police Cells, Startups.<br/>"
+        "• <b>Entrepreneurial Resourcefulness:</b> Quantizing 70B models down to 4-bit (IQ3_M) to run flagship AI on edge hardware."
+    )
+    story.append(Paragraph(w1_text, body_style))
+    story.append(Spacer(1, 5))
+
+    # Section 3: Week 2 Fill-in (Team Lead Perspective)
+    story.append(Paragraph("📙 WEEK – 2: PROBLEM IDENTIFICATION & PASSION CV (TEAM LEAD PERSPECTIVE)", h1_style))
     w2_text = (
         "<b>1. Real-World Societal Need:</b><br/>"
-        "Small businesses, hospitals, and universities cannot afford $100k+/year enterprise SIEM subscriptions (Splunk / Cortex XSOAR), leaving them vulnerable to ransomware. SENTINEL democratizes security by providing an open-source, self-hosted, autonomous AI SOC co-pilot running locally.<br/><br/>"
+        "My team and I recognized that small businesses, hospitals, and universities cannot afford $100k+/year enterprise SIEM subscriptions (Splunk / Cortex XSOAR), leaving them vulnerable to ransomware. As Team Lead, I guided SENTINEL to democratize security co-pilots locally.<br/><br/>"
         "<b>2. Passion CV — Team Profiles:</b><br/>"
-        "• <b>Gokula Kannan M (Team Lead — SEC25CS196, CSE-A):</b> Project Planning, Architecture Governance, Systems Engineering, Venture Strategy.<br/>"
-        "• <b>Lakshan M (Member 1 — SEC25CS036, CSE-A):</b> Full-Stack Web Development, React.js UI, WebSockets Integrations, HITL Approval Modals.<br/>"
+        "• <b>Gokula Kannan M (TEAM LEAD — SEC25CS196, CSE-A):</b> Chief Systems Architect, Sprint Planning, Architecture Governance, Systems Engineering, Venture Strategy.<br/>"
+        "• <b>Lakshan M (Member 1 — SEC25CS036, CSE-A):</b> Full-Stack Web Architecture, React.js UI, WebSockets Integrations, HITL Approval Modals.<br/>"
         "• <b>Sivabalan T (Member 2 — SEC25CS101, CSE-C):</b> Lead AI Architect, Zero-Trust Privacy Engineering (src/sanitizer.py), 3-Tier Router, RAG Vector Stores.<br/>"
-        "• <b>Faculty Supervisor:</b> Dr. A. SHEELA (Associate Professor, Department of Computer Science & Engineering, Sri Sai Ram Engineering College)."
+        "• <b>Faculty Supervisor:</b> Dr. A. SHEELA (Associate Professor, Dept. of CSE, Sri Sai Ram Engineering College)."
     )
     story.append(Paragraph(w2_text, body_style))
 
