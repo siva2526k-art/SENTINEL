@@ -8,7 +8,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, HRFlowable
+    SimpleDocTemplate, Paragraph, HRFlowable, Spacer
 )
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.pdfgen import canvas
@@ -32,7 +32,7 @@ class NumberedCanvas(canvas.Canvas):
 
     def draw_page_decorations(self, page_count):
         self.saveState()
-        self.setFont("Helvetica-Bold", 8)
+        self.setFont("Helvetica-Bold", 8.5)
         self.setFillColor(colors.black)
         
         # Black Header Line & Text
@@ -42,7 +42,7 @@ class NumberedCanvas(canvas.Canvas):
         self.line(36, 748, 576, 748)
         
         # Black Footer Line & Text
-        self.setFont("Helvetica", 8)
+        self.setFont("Helvetica", 8.5)
         self.setFillColor(colors.black)
         self.drawString(36, 30, "Sri Sai Ram Engineering College | Academic Year 2026–2027")
         page_text = f"Page {self._pageNumber} of {page_count}"
@@ -59,8 +59,8 @@ def build_pdf():
         pagesize=letter,
         leftMargin=36,
         rightMargin=36,
-        topMargin=50,
-        bottomMargin=50
+        topMargin=45,
+        bottomMargin=45
     )
 
     styles = getSampleStyleSheet()
@@ -69,8 +69,8 @@ def build_pdf():
         'TitleStyle',
         parent=styles['Heading1'],
         fontName='Helvetica-Bold',
-        fontSize=14,
-        leading=18,
+        fontSize=15.5,
+        leading=19.5,
         textColor=colors.black,
         alignment=1,
         spaceAfter=6
@@ -80,8 +80,8 @@ def build_pdf():
         'SubtitleStyle',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=9.5,
-        leading=12.5,
+        fontSize=10.5,
+        leading=13.5,
         textColor=colors.black,
         alignment=1,
         spaceAfter=4
@@ -91,22 +91,22 @@ def build_pdf():
         'MetaStyle',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=8.5,
-        leading=11.5,
+        fontSize=9,
+        leading=12,
         textColor=colors.black,
         alignment=1,
-        spaceAfter=8
+        spaceAfter=10
     )
 
     h1_style = ParagraphStyle(
         'H1Style',
         parent=styles['Heading2'],
         fontName='Helvetica-Bold',
-        fontSize=11,
-        leading=14,
+        fontSize=12,
+        leading=15,
         textColor=colors.black,
-        spaceBefore=8,
-        spaceAfter=6,
+        spaceBefore=10,
+        spaceAfter=8,
         keepWithNext=True
     )
 
@@ -114,19 +114,19 @@ def build_pdf():
         'BodyStyle',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=8.5,
-        leading=12,
+        fontSize=9.5,
+        leading=13.5,
         textColor=colors.black,
-        spaceAfter=8
+        spaceAfter=10
     )
 
     story = []
 
-    # Title Banner (Strict Monochrome B&W - Ultra Humanized Style)
+    # Title Banner (Larger Font, Strict B&W Monochrome)
     story.append(Paragraph("SHIELD AI — AUTONOMOUS CYBER DEFENCE AND SECURITY INTELLIGENCE PLATFORM", title_style))
     story.append(Paragraph("Department of Computer Science & Engineering, Sri Sai Ram Engineering College, Chennai", subtitle_style))
     story.append(Paragraph("<b>Academic Year:</b> 2026–2027 &nbsp;|&nbsp; <b>Domain:</b> Cybersecurity, Artificial Intelligence & Autonomous Systems", meta_style))
-    story.append(HRFlowable(width="100%", thickness=1.5, color=colors.black, spaceAfter=8))
+    story.append(HRFlowable(width="100%", thickness=1.5, color=colors.black, spaceAfter=12))
 
     # Executive Abstract Heading
     story.append(Paragraph("EXECUTIVE ABSTRACT", h1_style))
@@ -159,7 +159,7 @@ def build_pdf():
 
     doc.build(story, canvasmaker=NumberedCanvas)
     shutil.copy2(pdf_path, desktop_path)
-    print(f"✅ Generated & Saved Ultra-Humanized B&W Abstract PDF to Desktop: {desktop_path}")
+    print(f"✅ Generated & Saved PDF with Larger Font (Filling Full Page) to Desktop: {desktop_path}")
 
 if __name__ == "__main__":
     build_pdf()
