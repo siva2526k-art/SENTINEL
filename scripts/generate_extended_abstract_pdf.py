@@ -1,5 +1,7 @@
 import os
 import sys
+import shutil
+
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
@@ -34,7 +36,7 @@ class NumberedCanvas(canvas.Canvas):
         self.setFillColor(colors.HexColor("#0f172a"))
         
         # Header
-        self.drawString(36, 756, "SENTINEL — EXTENDED MASTER PROJECT ABSTRACT & TECHNICAL SYNOPSIS")
+        self.drawString(36, 756, "SENTINEL — TECHNICAL ABSTRACT & ARCHITECTURE SPECIFICATION")
         self.setStrokeColor(colors.HexColor("#cbd5e1"))
         self.setLineWidth(0.5)
         self.line(36, 748, 576, 748)
@@ -42,7 +44,7 @@ class NumberedCanvas(canvas.Canvas):
         # Footer
         self.setFont("Helvetica", 8)
         self.setFillColor(colors.HexColor("#64748b"))
-        self.drawString(36, 30, "Sri Sai Ram Engineering College | Academic Year 2026-2027")
+        self.drawString(36, 30, "Sri Sai Ram Engineering College | Academic Year 2026–2027")
         page_text = f"Page {self._pageNumber} of {page_count}"
         self.drawRightString(576, 30, page_text)
         self.line(36, 42, 576, 42)
@@ -67,8 +69,8 @@ def build_pdf():
         'TitleStyle',
         parent=styles['Heading1'],
         fontName='Helvetica-Bold',
-        fontSize=18,
-        leading=22,
+        fontSize=15,
+        leading=19,
         textColor=colors.HexColor('#0f172a'),
         alignment=1,
         spaceAfter=4
@@ -78,33 +80,33 @@ def build_pdf():
         'SubtitleStyle',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=11,
-        leading=14,
+        fontSize=10,
+        leading=13,
         textColor=colors.HexColor('#2563eb'),
         alignment=1,
-        spaceAfter=10
+        spaceAfter=8
     )
 
     meta_style = ParagraphStyle(
         'MetaStyle',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=8.5,
+        fontSize=8,
         leading=11,
         textColor=colors.HexColor('#475569'),
         alignment=1,
-        spaceAfter=10
+        spaceAfter=8
     )
 
     h1_style = ParagraphStyle(
         'H1Style',
         parent=styles['Heading2'],
         fontName='Helvetica-Bold',
-        fontSize=11.5,
-        leading=15,
+        fontSize=10.5,
+        leading=13.5,
         textColor=colors.HexColor('#1e293b'),
-        spaceBefore=12,
-        spaceAfter=4,
+        spaceBefore=10,
+        spaceAfter=3,
         keepWithNext=True
     )
 
@@ -112,11 +114,11 @@ def build_pdf():
         'H2Style',
         parent=styles['Heading3'],
         fontName='Helvetica-Bold',
-        fontSize=9.5,
-        leading=12.5,
+        fontSize=9,
+        leading=11.5,
         textColor=colors.HexColor('#2563eb'),
-        spaceBefore=8,
-        spaceAfter=3,
+        spaceBefore=6,
+        spaceAfter=2,
         keepWithNext=True
     )
 
@@ -124,103 +126,139 @@ def build_pdf():
         'BodyStyle',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=8.5,
-        leading=12,
+        fontSize=8,
+        leading=11,
         textColor=colors.HexColor('#334155'),
-        spaceAfter=6
+        spaceAfter=4
+    )
+
+    code_style = ParagraphStyle(
+        'CodeStyle',
+        parent=styles['Normal'],
+        fontName='Courier',
+        fontSize=7.5,
+        leading=9.5,
+        textColor=colors.HexColor('#0f172a')
     )
 
     story = []
 
     # Title Banner
-    story.append(Paragraph("SENTINEL — EXTENDED MASTER PROJECT ABSTRACT", title_style))
-    story.append(Paragraph("Security Event Network Triage Investigation with Neural Engine and LLM", subtitle_style))
-    story.append(Paragraph("<b>Academic Year:</b> 2026-2027 &nbsp;|&nbsp; <b>Institution:</b> Sri Sai Ram Engineering College &nbsp;|&nbsp; <b>Target:</b> IEEE TIFS / USENIX", meta_style))
-    story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor("#2563eb"), spaceAfter=10))
+    story.append(Paragraph("SENTINEL: Security Event Network Triage Investigation with Neural Engine and Large Language Models", title_style))
+    story.append(Paragraph("<b>Author:</b> Sivabalan T &nbsp;|&nbsp; <b>Dept:</b> Computer Science & Engineering, Sri Sai Ram Engineering College (TNEA Code: 1419)", subtitle_style))
+    story.append(Paragraph("<b>Academic Year:</b> 2026–2027 &nbsp;|&nbsp; <b>Repository:</b> github.com/siva2526k-art/SENTINEL &nbsp;|&nbsp; <b>Target:</b> Hac'KP 2026 Specification", meta_style))
+    story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor("#2563eb"), spaceAfter=8))
 
-    # Section 1: Master Abstract
-    story.append(Paragraph("📌 SECTION 1: MASTER ABSTRACT", h1_style))
-    abs_text = (
-        "Modern Security Operations Centers (SOCs), enterprise networks, and law enforcement cyber crime cells face an unprecedented operational crisis "
-        "driven by the sheer velocity and volume of security telemetry. Contemporary Security Information and Event Management (SIEM) systems generate "
-        "upwards of 10,000 security events per day. This inundation results in severe <b>Alert Fatigue</b>, where security analysts are overwhelmed "
-        "by high false-positive rates and repetitive manual log parsing. On average, a human Tier-1 security analyst spends between 30 to 45 minutes "
-        "manually triaging a single security incident—leaving more than 70% of ingested security alerts completely unexamined.<br/><br/>"
-        "Simultaneously, the direct adoption of commercial cloud-hosted LLM APIs (such as OpenAI GPT-4o or Anthropic Claude 3.5 Sonnet) introduces grave "
-        "vulnerabilities. Corporate network telemetry, digital forensic artifacts, and law enforcement evidence contain highly sensitive Personal Identifiable "
-        "Information (PII), confidential user credentials, internal network topographies, and trade secrets. Transmitting un-sanitized log streams across public "
-        "cloud boundaries violates strict legal mandates (GDPR, HIPAA, IT Act) and compromises digital evidence chain-of-custody.<br/><br/>"
-        "To solve this dual crisis, we introduce <b>SENTINEL</b> (<i>Security Event Network Triage Investigation with Neural Engine and LLM</i>), an open-source, "
-        "autonomous, hybrid-AI SOC analyst engine. At its core, SENTINEL features a <b>Zero-Trust Data Sanitizer</b> executing Reversible Tokenized Pseudonymization, "
-        "scrubbing PII locally on-device in under 12ms alongside an inline <b>Prompt Injection Firewall Guard</b>. SENTINEL deploys a <b>3-Tier Hybrid AI Router</b> "
-        "that resolves 90% of routine alerts 100% offline on consumer GPUs (NVIDIA RTX 3050) at $0 cost via local small language models (Ollama <code>llama3.1:8b</code>).<br/><br/>"
-        "SENTINEL incorporates <b>Automated MITRE ATT&CK Mapping</b>, a persistent <b>ChromaDB Vector RAG Threat Memory Store</b>, an <b>AST Code Execution Sandbox</b>, "
-        "and an interactive <b>Human-in-the-Loop (HITL)</b> analyst approval modal. Empirical evaluation demonstrates that SENTINEL reduces Mean Time to Triage (MTTR) "
-        "from 45 minutes to <b>< 30 seconds</b>, achieves <b>91.4% precision</b> in MITRE TTP mapping, and lowers cloud API expenditures by <b>78% to 85%</b>."
+    # Section 1: Abstract
+    story.append(Paragraph("1. ABSTRACT / EXECUTIVE SUMMARY", h1_style))
+    s1_text = (
+        "Security Operations Centers (SOCs) face acute operational bottlenecks driven by overwhelming telemetry volume, high false-positive rates, "
+        "and analyst burnout. In typical enterprise environments, security analysts spend between 30 and 45 minutes investigating individual alerts, "
+        "leading to significant delays and leaving a major portion of security notifications unreviewed. Concurrently, while Generative Artificial "
+        "Intelligence and Large Language Models (LLMs) offer advanced natural-language reasoning for threat analysis, transmitting raw security "
+        "telemetry to commercial cloud APIs creates severe data privacy vulnerabilities and risks exposing sensitive credentials, internal IP topographies, "
+        "and employee data to external endpoints.<br/><br/>"
+        "This paper presents <b>SENTINEL</b> (<i>Security Event Network Triage Investigation with Neural Engine and Large Language Models</i>), an open-source "
+        "research prototype designed to evaluate a privacy-aware, human-supervised approach to automated SOC alert triage. SENTINEL implements an asynchronous "
+        "SIEM syslog ingestion bridge, a local zero-trust regex sanitizer with an inline prompt-injection firewall, a three-tier AI routing module, an embedded "
+        "vector threat memory store (ChromaDB), a temporal entity correlator with directed attack-graph construction, an Abstract Syntax Tree (AST) Python code "
+        "execution sandbox, human-in-the-loop (HITL) authorization gates, mock-mode active response controllers, JSONL audit logging, and automated executive PDF "
+        "incident report generation via ReportLab.<br/><br/>"
+        "By retaining token de-anonymization lookup dictionaries strictly within volatile local RAM, SENTINEL prevents sensitive network identifiers from "
+        "traversing external boundaries during AI triage. SENTINEL is currently implemented as an early-stage Minimum Viable Product (MVP) to demonstrate "
+        "architectural feasibility. Future work will focus on empirical evaluation against labeled SIEM datasets, production-grade security hardening, and "
+        "formal bench-testing prior to operational deployment.<br/><br/>"
+        "<b>Keywords:</b> Privacy-Preserving AI, SOC Alert Triage, Multi-Tier Model Cascading, Zero-Trust Sanitization, MITRE ATT&CK, Attack Graphs, AST Code Sandbox, Human-in-the-Loop, Digital Forensics."
     )
-    story.append(Paragraph(abs_text, body_style))
-    story.append(Spacer(1, 6))
+    story.append(Paragraph(s1_text, body_style))
 
-    # Section 2: Crisis in Modern SOCs
-    story.append(Paragraph("🔍 SECTION 2: THE CRISIS IN MODERN SECURITY OPERATIONS", h1_style))
-    
-    story.append(Paragraph("2.1 Alert Fatigue & Analyst Cognitive Overload", h2_style))
-    s2_1 = (
-        "Traditional SIEM platforms trigger notifications for benign anomalous behavior, producing thousands of false positives daily. "
-        "Human analysts experience severe cognitive burnout, leading to >70% of alerts being closed un-investigated. "
-        "Adversaries exploit this noise by masking low-and-slow Advanced Persistent Threats (APTs) inside routine background telemetry."
+    # Section 2: Problem Statement
+    story.append(Paragraph("2. PROBLEM STATEMENT", h1_style))
+    s2_text = (
+        "Modern enterprise, municipal, and government computer networks rely on SIEM platforms—such as Wazuh, Elastic, or Splunk—to aggregate logs. "
+        "However, security teams face three fundamental systemic challenges:<br/>"
+        "1. <b>Alert Fatigue & Manual Triage Delay:</b> Rule-based detection signatures trigger thousands of notifications daily. Tier-1 analysts spend 30 to 45 minutes per alert, causing severe cognitive burnout and extended attacker dwell time.<br/>"
+        "2. <b>Data Privacy & Telemetry Leakage Risks:</b> Ingesting un-scrubbed security logs into commercial cloud LLM APIs introduces compliance risks. Telemetry contains Personal Identifiable Information (PII), employee emails, internal IPs (RFC 1918), MAC addresses, and API/JWT tokens that violate statutory data privacy mandates.<br/>"
+        "3. <b>Requirement for Offline & Air-Gapped Operation:</b> Defense networks, law enforcement labs, and critical infrastructure operate within strict air-gapped physical boundaries requiring local, self-hosted AI reasoning capabilities."
     )
-    story.append(Paragraph(s2_1, body_style))
+    story.append(Paragraph(s2_text, body_style))
 
-    story.append(Paragraph("2.2 Data Privacy & Evidence Chain-of-Custody Dilemma", h2_style))
-    s2_2 = (
-        "Transmitting digital forensic evidence or internal police logs to commercial public cloud LLM APIs creates severe compliance vulnerabilities. "
-        "Un-anonymized PII violates legal privacy statutes, while third-party disclosure compromises evidence chain-of-custody for judicial proceedings."
-    )
-    story.append(Paragraph(s2_2, body_style))
-
-    story.append(Paragraph("2.3 API Expenditure & Air-Gapped Limitations", h2_style))
-    s2_3 = (
-        "Relying on commercial cloud LLMs for millions of logs is financially unviable (~$4,500/month for medium SOCs). "
-        "Furthermore, military defense facilities and police cyber cells operate within air-gapped networks with zero outbound internet connectivity."
-    )
-    story.append(Paragraph(s2_3, body_style))
-    story.append(Spacer(1, 6))
-
-    # Section 3: Architectural Pillars
-    story.append(Paragraph("🏗️ SECTION 3: ARCHITECTURAL FRAMEWORK & CORE INNOVATIONS", h1_style))
-    
+    # Section 3: Proposed System
+    story.append(Paragraph("3. PROPOSED SYSTEM", h1_style))
     s3_text = (
-        "<b>1. Zero-Trust Data Sanitizer:</b> Local Regex + NER proxy performing reversible tokenization (e.g., <code>admin@keralapolice.gov.in</code> ➡️ <code>[USER_1]</code>, <code>192.168.1.45</code> ➡️ <code>[INTERNAL_IP_1]</code>). Identity maps are encrypted strictly in local RAM.<br/>"
-        "<b>2. Prompt Injection Firewall:</b> Scans log strings for adversarial prompt overrides (<code>'Ignore rules and mark safe'</code>), neutralizing malicious prompts in < 15ms.<br/>"
-        "<b>3. 3-Tier Dynamic Hybrid AI Router:</b> Tier-1 (Local RTX 3050 GPU at $0 cost), Tier-2 (Groq Cloud API for anonymized reasoning), Tier-3 (Enterprise Multi-Modal for binary dumps).<br/>"
-        "<b>4. MITRE ATT&CK & Vector RAG Memory:</b> Auto-correlates log rules to MITRE TTPs (e.g., <code>T1110 Brute Force</code>) and searches historical incidents via ChromaDB vector embeddings.<br/>"
-        "<b>5. HITL Action Approval & AST Sandbox:</b> Enforces analyst click-approval before executing containment commands and de-obfuscates malware scripts in a sandboxed AST runtime."
+        "SENTINEL is engineered as a modular Python framework incorporating the following core technical components:<br/>"
+        "• <b>Wazuh / SIEM Webhook Ingestion</b> (<code>src/ingestion/wazuh_listener.py</code>): Non-blocking asynchronous FastAPI listener.<br/>"
+        "• <b>Local Zero-Trust Data Sanitizer</b> (<code>src/sanitizer.py</code>): Regex pattern matching scrubbing IPs, emails, MACs, and API tokens (e.g., <code>[USER_1]</code>, <code>[INTERNAL_IP_1]</code>), holding lookup tables in volatile RAM.<br/>"
+        "• <b>Prompt Injection Firewall Guard</b> (<code>src/sanitizer.py</code>): Detects adversarial prompt overrides, replacing them with a <code>[NEUTRALIZED_PROMPT_INJECTION]</code> marker.<br/>"
+        "• <b>Three-Tier AI Router</b> (<code>src/router.py</code>, <code>src/ai_client.py</code>): Routes queries to local Tier 1 Ollama (defaulting to <code>deepseek-r1:8b</code> with a <code>llama3.2:1b</code> fallback) or policy-controlled cloud endpoints (Groq, Gemini, OpenRouter, OpenAI).<br/>"
+        "• <b>MITRE ATT&CK Mapper</b> (<code>src/mitre_mapper.py</code>): Correlates log attributes with tactics (e.g., Credential Access) and technique IDs (e.g., <code>T1110</code> Brute Force).<br/>"
+        "• <b>Vector Threat Memory / RAG</b> (<code>src/memory.py</code>): Embedded ChromaDB store calculating cosine similarity against historical incidents.<br/>"
+        "• <b>Entity, Temporal & Attack-Graph Correlation</b> (<code>src/correlation/</code>): Clusters events into Directed Acyclic Graphs (DAGs).<br/>"
+        "• <b>AST Code Execution Sandbox</b> (<code>src/sandbox.py</code>): Inspects script syntax trees with <code>ast.parse()</code>, blocking dangerous primitives (<code>os</code>, <code>sys</code>, <code>subprocess</code>, <code>eval</code>).<br/>"
+        "• <b>FastAPI REST API</b> (<code>src/api/main.py</code>): Application gateway for REST and real-time WebSockets integration.<br/>"
+        "• <b>Human-in-the-Loop Authorization Gate</b> (<code>src/response/response_engine.py</code>): Requires explicit analyst sign-off before containment actions proceed.<br/>"
+        "• <b>Mock-Mode Active Response Controllers</b> (<code>src/response/</code>): Simulated containment modules (firewall, process kill, host isolation).<br/>"
+        "• <b>JSONL Audit Logger</b> (<code>src/audit_logger.py</code>): File-backed audit logger (<code>sentinel_audit_trail.jsonl</code>).<br/>"
+        "• <b>Executive PDF Generator</b> (<code>src/reports/pdf_generator.py</code>): Compiles ReportLab PDF incident summaries.<br/>"
+        "• <b>Discord SOC Notifier</b> (<code>src/integrations/discord_bot.py</code>): Dispatches real-time alerts and HITL approval pings."
     )
     story.append(Paragraph(s3_text, body_style))
-    story.append(Spacer(1, 6))
 
-    # Section 4: Empirical Evaluation
-    story.append(Paragraph("📊 SECTION 4: EMPIRICAL PERFORMANCE EVALUATION", h1_style))
+    # Section 4: End-to-End Architecture
+    story.append(Paragraph("4. END-TO-END SYSTEM ARCHITECTURE", h1_style))
     s4_text = (
-        "• <b>Triage Latency:</b> Reduced from 45 minutes (2,700s) to <b>< 30 seconds</b> (98.8% latency reduction).<br/>"
-        "• <b>Accuracy Metrics:</b> 91.4% Precision, 93.8% Recall, 92.58% F1-Score, and 85.2% false-positive reduction.<br/>"
-        "• <b>Cost Efficiency:</b> Reduces cloud API expenditure from ~$4,500/month to <b><$650/month</b> (78% to 85% cost savings)."
+        "<b>Stage 1: Ingestion & Privacy Boundary:</b> Telemetry arrives via FastAPI syslog webhooks. <code>DataSanitizer</code> neutralizes prompt injections and tokenizes PII via regex. Lookup tables reside exclusively in volatile RAM.<br/>"
+        "<b>Stage 2: Context, RAG, Correlation & Attack Graph:</b> Sanitized logs are mapped to MITRE ATT&CK TTPs, queried against ChromaDB embeddings, and clustered into Directed Acyclic Graphs (DAGs).<br/>"
+        "<b>Stage 3: AI Triage, Human Approval, Controlled Response, Audit & Reporting:</b> <code>SentinelRouter</code> dispatches to Tier-1 local Ollama or cloud endpoints. AST Code Sandbox inspects de-obfuscation scripts. Containment recommendations require analyst HITL authorization before mock response execution. Audit milestones append to JSONL, and ReportLab compiles incident PDFs."
     )
     story.append(Paragraph(s4_text, body_style))
-    story.append(Spacer(1, 6))
 
-    # Section 5: Conclusion
-    story.append(Paragraph("🎓 SECTION 5: CONCLUSION & ACADEMIC ALIGNMENT", h1_style))
+    # Section 5: Current Prototype Status
+    story.append(Paragraph("5. CURRENT PROTOTYPE STATUS", h1_style))
     s5_text = (
-        "SENTINEL proves that enterprise SOC triage can be automated at machine speed without sacrificing data privacy or incurring prohibitive cloud costs. "
-        "The system is fully documented for academic submission to IEEE Transactions on Information Forensics and Security (TIFS) and USENIX Security."
+        "SENTINEL is an early-stage <b>research prototype and Minimum Viable Product (MVP)</b> designed to evaluate privacy-preserving AI triage workflows. "
+        "It is <b>not</b> a production-ready SOC platform, commercial SOAR software, or verified legal forensics tool. Current capabilities represent architectural proofs-of-concept."
     )
     story.append(Paragraph(s5_text, body_style))
 
+    # Section 6: Limitations & Future Work
+    story.append(Paragraph("6. LIMITATIONS AND FUTURE WORK", h1_style))
+    s6_text = (
+        "<b>Current Limitations:</b><br/>"
+        "1. <i>Sanitizer Scope & RAM Security:</i> Relies on Regex rather than Named Entity Recognition (NER); RAM identity maps are stored in unencrypted volatile memory.<br/>"
+        "2. <i>Security Hardening & RBAC:</i> Lacks production-grade Role-Based Access Control (RBAC), multi-factor authentication, and encrypted secret stores.<br/>"
+        "3. <i>Audit Log Verification:</i> Audit records are stored in a standard local JSONL text file without cryptographic signatures or hardware tamper-evident enforcement.<br/>"
+        "4. <i>Model Output Schema & Containment Controls:</i> Model outputs require strict JSON schema validation. Active containment runs in mock mode by default.<br/><br/>"
+        "<b>Future Work Roadmap:</b><br/>"
+        "• Construct a labeled benchmark dataset using Wazuh SIEM logs to measure triage accuracy, latency, and false-positive reduction.<br/>"
+        "• Integrate lightweight local NER models (spaCy / ONNX) and encrypt RAM lookup tables.<br/>"
+        "• Implement JWT-based RBAC, TLS-encrypted webhooks, tamper-evident audit logs, mandatory IP allowlists, and containerization (Docker/CI/CD)."
+    )
+    story.append(Paragraph(s6_text, body_style))
+
+    # Section 7: Conclusion
+    story.append(Paragraph("7. CONCLUSION", h1_style))
+    s7_text = (
+        "SENTINEL demonstrates a privacy-preserving, human-supervised approach to AI-assisted SIEM alert triage. "
+        "By combining local regex data sanitization, prompt-injection neutralization, three-tier model routing, vector threat memory, and mandatory human authorization gates, "
+        "the framework illustrates how organizations can leverage language models while retaining control over sensitive telemetry. "
+        "SENTINEL requires rigorous, reproducible benchmark evaluation and extensive security hardening before any real-world operational deployment."
+    )
+    story.append(Paragraph(s7_text, body_style))
+
+    # Section 8: References
+    story.append(Paragraph("8. REFERENCES", h1_style))
+    ref_text = (
+        "1. <b>MITRE ATT&CK Framework:</b> MITRE Corporation, 'MITRE ATT&CK Enterprise Matrix,' 2024. Available: attack.mitre.org<br/>"
+        "2. <b>Wazuh Open Source SIEM:</b> Wazuh Inc., 'Wazuh Documentation & Active Response Architecture,' 2024. Available: documentation.wazuh.com<br/>"
+        "3. <b>ChromaDB Vector Store:</b> Chroma Core Inc., 'Chroma: The Open-Source Embedding Database,' 2024. Available: docs.trychroma.com<br/>"
+        "4. <b>FastAPI Framework:</b> S. Ramírez, 'FastAPI High Performance Web Framework,' 2024. Available: fastapi.tiangolo.com<br/>"
+        "5. <b>Ollama Local LLM Runtime:</b> Ollama Project, 'Ollama: Get up and running with Llama 3.2 and DeepSeek locally,' 2024. Available: ollama.com<br/>"
+        "6. <b>ReportLab PDF Library:</b> ReportLab Software Ltd., 'ReportLab Open Source PDF Toolkit,' 2024. Available: www.reportlab.com"
+    )
+    story.append(Paragraph(ref_text, body_style))
+
     doc.build(story, canvasmaker=NumberedCanvas)
-    
-    import shutil
     shutil.copy2(pdf_path, desktop_path)
     print(f"✅ Generated & Saved to Desktop: {desktop_path}")
 
