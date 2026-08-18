@@ -122,7 +122,7 @@ def build_pdf():
 
     story = []
 
-    # Title Banner (Strict B&W Monochrome - Humanized Style)
+    # Title Banner (Strict Monochrome B&W - Ultra Humanized Style)
     story.append(Paragraph("SHIELD AI — AUTONOMOUS CYBER DEFENCE AND SECURITY INTELLIGENCE PLATFORM", title_style))
     story.append(Paragraph("Department of Computer Science & Engineering, Sri Sai Ram Engineering College, Chennai", subtitle_style))
     story.append(Paragraph("<b>Academic Year:</b> 2026–2027 &nbsp;|&nbsp; <b>Domain:</b> Cybersecurity, Artificial Intelligence & Autonomous Systems", meta_style))
@@ -132,24 +132,25 @@ def build_pdf():
     story.append(Paragraph("EXECUTIVE ABSTRACT", h1_style))
 
     p1 = (
-        "Security Operations Centers (SOCs) struggle daily with excessive alert volume and analyst burnout. Enterprise networks routinely generate over 5,000 security logs every 24 hours, "
-        "taking 30 to 45 minutes of manual triage per incident. Because of this delay, nearly 70% of alerts end up unexamined. At the same time, sending raw log data—full of internal IP maps, "
-        "staff emails, and auth tokens—to public cloud AI models risks major privacy leaks and violates data protection laws."
+        "Security Operations Centers struggle every day with massive log volume and analyst burnout. A typical enterprise network churns out over 5,000 security events daily. "
+        "Investigating just one alert manually takes 30 to 45 minutes, meaning roughly 70% of security notifications get skipped entirely. Worse yet, feeding raw event logs—which "
+        "contain internal IP maps, staff email addresses, and auth tokens—into cloud AI models creates serious privacy risks and violates data protection laws."
     )
     story.append(Paragraph(p1, body_style))
 
     p2 = (
-        "<b>SHIELD AI</b> addresses these operational and privacy hurdles through a zero-trust, hybrid architecture. Built around non-blocking FastAPI webhooks, the system processes raw SIEM logs locally. "
-        "An inline Data Sanitizer uses regular expressions to strip out IP addresses, email handles, MAC addresses, and API keys, replacing them with dummy tokens like <code>[USER_1]</code> or <code>[INTERNAL_IP_1]</code>. "
-        "Sensitive mapping dictionaries stay isolated in volatile RAM. Before any reasoning occurs, an integrated firewall scans for and neutralizes prompt-injection commands inside raw log strings."
+        "We built <b>SHIELD AI</b> to solve these operational and data privacy issues using a zero-trust hybrid architecture. The platform receives raw SIEM telemetry through non-blocking "
+        "FastAPI webhooks. Our inline Data Sanitizer uses regular expressions to automatically redact IP addresses, email handles, MAC addresses, and API keys, replacing them with synthetic tokens "
+        "like <code>[USER_1]</code> or <code>[INTERNAL_IP_1]</code>. De-anonymization lookup tables stay isolated in volatile RAM. Before running any AI model, a built-in firewall scans for and "
+        "neutralizes prompt-injection commands hidden inside incoming log payloads."
     )
     story.append(Paragraph(p2, body_style))
 
     p3 = (
-        "A three-tier model router directs the anonymized logs. Routine alerts run 100% offline on local workstation GPUs using Ollama (<code>deepseek-r1:8b</code>) at zero marginal cost. "
-        "Higher-severity incidents escalate to cloud APIs (Groq or Gemini) using scrubbed tokens only. The platform maps alerts to MITRE ATT&CK tactics, correlates events into attack graphs (DAGs), "
-        "and retrieves similar past incidents via ChromaDB vector embeddings. Safe Python AST parsing checks de-obfuscation scripts before execution, and a human-in-the-loop gate mandates explicit analyst "
-        "approval for any containment action. Finally, JSONL audit trails log system milestones while ReportLab compiles clean PDF reports."
+        "An intelligent three-tier router handles the anonymized logs. Routine alerts run 100% offline on local workstation GPUs using Ollama (<code>deepseek-r1:8b</code>) at zero extra cost. "
+        "High-severity incidents escalate to cloud APIs (Groq or Gemini) using scrubbed tokens only. SHIELD AI maps events to MITRE ATT&CK tactics, correlates alerts into attack graphs (DAGs), "
+        "and pulls up similar past cases through ChromaDB vector embeddings. To maintain safety, an AST Code Sandbox checks de-obfuscation scripts before execution, and a human-in-the-loop "
+        "approval gate requires analyst sign-off before running containment actions. Detailed JSONL audit logs record every step while ReportLab generates clean PDF incident reports."
     )
     story.append(Paragraph(p3, body_style))
 
@@ -158,7 +159,7 @@ def build_pdf():
 
     doc.build(story, canvasmaker=NumberedCanvas)
     shutil.copy2(pdf_path, desktop_path)
-    print(f"✅ Generated & Saved Humanized B&W Abstract PDF to Desktop: {desktop_path}")
+    print(f"✅ Generated & Saved Ultra-Humanized B&W Abstract PDF to Desktop: {desktop_path}")
 
 if __name__ == "__main__":
     build_pdf()
