@@ -27,7 +27,6 @@ def apply_background(slide):
     fill.fore_color.rgb = BG_COLOR
 
 def add_header(slide, title_text, category_text="SHIELD AI | TEAM LEAD PRESENTATION"):
-    # Category / Tagline
     tag_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.4), Inches(11.7), Inches(0.3))
     tf_tag = tag_box.text_frame
     tf_tag.word_wrap = True
@@ -38,7 +37,6 @@ def add_header(slide, title_text, category_text="SHIELD AI | TEAM LEAD PRESENTAT
     p_tag.font.bold = True
     p_tag.font.color.rgb = BLUE_ACCENT
 
-    # Main Title Header
     title_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.65), Inches(11.7), Inches(0.6))
     tf_title = title_box.text_frame
     tf_title.word_wrap = True
@@ -49,7 +47,6 @@ def add_header(slide, title_text, category_text="SHIELD AI | TEAM LEAD PRESENTAT
     p_title.font.bold = True
     p_title.font.color.rgb = NAVY_HEADER
 
-    # Header Divider Line
     line = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(1.3), Inches(11.733), Inches(0.02))
     line.fill.solid()
     line.fill.fore_color.rgb = BLUE_ACCENT
@@ -65,14 +62,12 @@ def add_footer(slide, current_slide, total_slides=10):
     p.font.color.rgb = TEXT_MUTED
 
 def add_card(slide, left, top, width, height, title, content_bullets, title_color=NAVY_HEADER):
-    # Base rounded card
     card = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height)
     card.fill.solid()
     card.fill.fore_color.rgb = CARD_BG
     card.line.color.rgb = CARD_BORDER
     card.line.width = Pt(1)
 
-    # Content Frame
     tb = slide.shapes.add_textbox(left + Inches(0.15), top + Inches(0.15), width - Inches(0.3), height - Inches(0.3))
     tf = tb.text_frame
     tf.word_wrap = True
@@ -105,13 +100,11 @@ def create_presentation():
     s1 = prs.slides.add_slide(blank_layout)
     apply_background(s1)
 
-    # Title Card Accent Box
     accent_bar = s1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(1.2), Inches(0.15), Inches(4.8))
     accent_bar.fill.solid()
     accent_bar.fill.fore_color.rgb = BLUE_ACCENT
     accent_bar.line.color.rgb = BLUE_ACCENT
 
-    # Main Title
     tb1 = s1.shapes.add_textbox(Inches(1.2), Inches(1.2), Inches(11.0), Inches(2.2))
     tf1 = tb1.text_frame
     tf1.word_wrap = True
@@ -138,7 +131,6 @@ def create_presentation():
     p3.font.color.rgb = TEXT_MUTED
     p3.space_before = Pt(8)
 
-    # Team Members Metadata Box
     card_meta = s1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.2), Inches(3.8), Inches(11.3), Inches(2.3))
     card_meta.fill.solid()
     card_meta.fill.fore_color.rgb = CARD_BG
@@ -149,7 +141,7 @@ def create_presentation():
     tf_m.word_wrap = True
 
     p_m0 = tf_m.paragraphs[0]
-    p_m0.text = "PROJECT LEADERSHIP & TEAM COMPOSITION"
+    p_m0.text = "PROJECT LEADERSHIP & TEAM ROLES"
     p_m0.font.name = "Calibri"
     p_m0.font.size = Pt(13)
     p_m0.font.bold = True
@@ -157,10 +149,10 @@ def create_presentation():
     p_m0.space_after = Pt(6)
 
     members_text = [
-        "• Team Lead (TL): Gokula Kannan M (SEC25CS196 | CSE-A) — Systems Architecture & Venture Strategy",
-        "• Team Member 1 (M1): Lakshan M (SEC25CS036 | CSE-A) — Full-Stack Dashboard Architect & HITL UI",
-        "• Team Member 2 (M2): Sivabalan T (SEC25CS101 | CSE-C) — AI Engine Architecture & Zero-Trust Sanitizer",
-        "• Faculty Supervisor: Dr. A. SHEELA (Associate Professor, Dept. of Computer Science & Engineering)",
+        "• Team Lead (TL): Gokula Kannan M (SEC25CS196 | CSE-A) — Full-Stack Development, Software Engineering & AI Integration",
+        "• Team Member 1 (M1): Lakshan M (SEC25CS036 | CSE-A) — Cybersecurity, Threat Modeling & SIEM Active Defense",
+        "• Team Member 2 (M2): Sivabalan T (SEC25CS101 | CSE-C) — Core AI Engineering, Zero-Trust Privacy & Quantization",
+        "• Faculty Supervisor: Dr. A. SHEELA (Associate Professor, Department of Computer Science & Engineering)",
         "• Institution: Sri Sai Ram Engineering College, Chennai | Academic Year: 2026–2027"
     ]
     for m in members_text:
@@ -357,21 +349,20 @@ def create_presentation():
     add_footer(s7, 7)
 
     # ==========================================
-    # SLIDE 8: TEAM COMPOSITION & ROLE MATRIX
+    # SLIDE 8: TEAM COMPOSITION & UPDATED ROLE MATRIX
     # ==========================================
     s8 = prs.slides.add_slide(blank_layout)
     apply_background(s8)
-    add_header(s8, "Team Composition & Division of Responsibilities")
+    add_header(s8, "Team Composition & Specialized Technical Roles")
 
-    # Team Members Table
     table_shape = s8.shapes.add_table(5, 4, Inches(0.8), Inches(1.6), Inches(11.733), Inches(5.1))
     table = table_shape.table
     table.columns[0].width = Inches(2.2)
-    table.columns[1].width = Inches(2.0)
+    table.columns[1].width = Inches(2.1)
     table.columns[2].width = Inches(3.5)
-    table.columns[3].width = Inches(4.033)
+    table.columns[3].width = Inches(3.933)
 
-    headers = ["Team Member", "Role & Section", "Core Technical Domain", "Project Deliverables & Contributions"]
+    headers = ["Team Member", "Role & Section", "Technical Specialization", "Project Deliverables & Ownership"]
     for i, h in enumerate(headers):
         cell = table.cell(0, i)
         cell.fill.solid()
@@ -385,9 +376,9 @@ def create_presentation():
         p.alignment = PP_ALIGN.CENTER
 
     rows_data = [
-        ("Gokula Kannan M", "Team Lead (TL)\nSEC25CS196 | CSE-A", "Systems Architecture, Asynchronous Backends & Venture Strategy", "Overall system architecture, 3-Tier AI Router design, sprint management, leading national pitch at Hac'KP 2026 @ Zoho."),
-        ("Lakshan M", "Team Member 1 (M1)\nSEC25CS036 | CSE-A", "Full-Stack Web Architecture, React.js UI & WebSockets", "Real-time incident dashboard engineering, WebSockets live feed, and Human-in-the-Loop (HITL) analyst approval interface."),
-        ("Sivabalan T", "Team Member 2 (M2)\nSEC25CS101 | CSE-C", "AI Engine Architecture, Zero-Trust Privacy & Quantization", "Development of Zero-Trust Data Sanitizer (src/sanitizer.py), 3-Tier AI Router (src/router.py), and local GGUF quantization."),
+        ("Gokula Kannan M", "Team Lead (TL)\nSEC25CS196 | CSE-A", "Full-Stack Development, Software Engineering & AI Integration", "Overall system architecture, async FastAPI backend, React dashboard integration, 3-Tier AI router pipeline, sprint leadership & Hac'KP 2026 pitching."),
+        ("Lakshan M", "Team Member 1 (M1)\nSEC25CS036 | CSE-A", "Cybersecurity, Threat Modeling & SIEM Active Defense", "Wazuh SIEM active response ingestion bridge, MITRE ATT&CK taxonomy mapper (src/mitre_mapper.py), attack graph correlation & response controller."),
+        ("Sivabalan T", "Team Member 2 (M2)\nSEC25CS101 | CSE-C", "Core AI Engineering, Zero-Trust Privacy & Quantization", "Development of Zero-Trust Data Sanitizer (src/sanitizer.py), in-RAM token vault, Prompt Injection Firewall, ChromaDB RAG & local GPU model quantization."),
         ("Dr. A. SHEELA", "Faculty Supervisor\nAssoc. Prof., CSE", "Academic Supervision, Research Guidance & Governance", "Project oversight, academic literature review guidance, and regulatory compliance alignment for Sairam Institutions.")
     ]
 
@@ -399,7 +390,7 @@ def create_presentation():
             p = cell.text_frame.paragraphs[0]
             p.text = val
             p.font.name = "Calibri"
-            p.font.size = Pt(10)
+            p.font.size = Pt(9.5)
             p.font.color.rgb = TEXT_DARK
 
     add_footer(s8, 8)
@@ -460,7 +451,7 @@ def create_presentation():
 
     prs.save(output_path)
     shutil.copy2(output_path, desktop_path)
-    print(f"🎉 MASTER POWERPOINT PRESENTATION CREATED: {desktop_path}")
+    print(f"🎉 UPDATED MASTER POWERPOINT PRESENTATION CREATED: {desktop_path}")
     return desktop_path
 
 if __name__ == "__main__":
